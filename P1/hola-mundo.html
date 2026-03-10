@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Ejemplo de página web</title>
+    </head>
+    <body>
+        <p title="texto">¡Hola, Mundo!</p>
+        <table summary="Esta tabla nos ofrece un ejemplo de cómo construirlas en HTML">
+            <caption>Título de la tabla – caption</caption>
+            <thead>
+                <tr>
+                    <th rowspan="2">Encabezamiento multifila - thead/tr/th - Ejemplo de rowspan</th>
+                    <th colspan="2">Encabezamiento multicolumna - thead/tr/th Ejemplo de colspan</th>
+                </tr>
+                <tr>
+                    <th>Encabezamiento columna 1 – tr/th</th>
+                    <th>Encabezamiento columna 2 - tr/th </th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Esto es un ejemplo de un pié de tabla - Ejemplo de tfoot y colspan</td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr>
+                    <th>Fila 1 – tr/th</th>
+                    <td>Fila 1 - Columna 1 – tr/td</td>
+                    <td>Fila 1 - Columna 2 - tr/td </td>
+                </tr>
+                <tr>
+                    <th>Fila 2 - tr/th </th>
+                    <td>Fila 2 - Columna 1 – tr/td</td>
+                    <td>Fila 2 - Columna 2 – tr/td</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table>
+            <caption>Horario</caption>
+            <thead>
+                <tr>
+                    <th rowspan="2">Hora</th>
+                    <th  rowspan="2" colspan="2">Lunes</th>
+                </tr>
+                <tr>
+                    <th rowspan="2">3:30</th>
+                    <th colspan="2">SMD</th>
+                </tr>
+                <tr>
+                    <th rowspan="2">5:30</th>
+                    <th colspan="2">SMD</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Esto es un ejemplo de un pié de tabla - Ejemplo de tfoot y colspan</td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr>
+                    <th>Fila 1 – tr/th</th>
+                    <td>Fila 1 - Columna 1 – tr/td</td>
+                    <td>Fila 1 - Columna 2 - tr/td </td>
+                </tr>
+                <tr>
+                    <th>Fila 2 - tr/th </th>
+                    <td>Fila 2 - Columna 1 – tr/td</td>
+                    <td>Fila 2 - Columna 2 – tr/td</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <ul>
+            <li> un ítem </li>
+            <li> otro ítem </li>
+            <li> y uno final</li>
+        </ul>
+        <ol>
+            <li> ítem 1</li>
+            <li> ítem 2</li>
+            <li value="33"> ítem 32</li>
+        </ol>
+
+
+        <h1>Encabezado de nivel 1</h1>
+        <h2>Encabezado de nivel 2</h2>
+        <h3>Encabezado de nivel 3</h3>
+        <h4>Encabezado de nivel 4</h4>
+        <h5>Encabezado de nivel 5</h5>
+        <h6>Encabezado de nivel 6</h6>
+
+
+        <section>
+            <article>
+                <h1>Artículo 1</h1>
+                <p>Este es el primer artículo de la sección.</p>
+            </article>
+        </section>
+
+
+        <form>
+            <fieldset>
+                <legend> Datos personales </legend> Conjunto de componentes del formulario agrupados
+            </fieldset>
+        </form>
+
+
+        <form action="procesar.php" method="post">
+            <label for="campoDeTexto1">Nombre:</label>
+            <input type = "text" id = "campoDeTexto1" name="campoDeTexto1" value = "Texto por defecto" size="5" maxlength="6"/>
+        </form>
+
+
+        <form>
+            <label for="lista1">Lista desplegable </label>
+            <select id = "lista1" >
+                <option value = "1">Uno</option>
+                <option value = "2">Dos</option>
+                <option value = "3">Tres</option>
+                <option value = "4">Cuatro</option>
+            </select>
+        </form>
+
+
+        <form action="procesar.php" method="post">
+            <datalist id="listaSuperheroes">
+                <option value="Superman">
+                <option value="Spiderman">
+                <option value="Hulk">
+            </datalist>
+            <label for="campoDeTexto1">Lista de superherores </label>
+            <input type="text" id="campoDeTexto1" list="listaSuperheroes">
+        </form>
+
+        <form action="procesar.php" method="post">
+            <progress value="70" max="100"></progress>
+        </form>
+
+        <form action="procesar.php" method="post">
+            <label for="disk_c">Uso unidad C:</label>
+            <meter id="disk_c" value="2" min="0" max="10">2 de 10</meter><br>
+            <label for="disk_d">Uso unidad D:</label>
+            <meter id="disk_d" value="0.6">60%</meter>
+        </form>
+
+        <form action="procesar.php" method="post">
+            <input type = "submit" id = "button1" value = "Procesar datos"/>
+            <input type = "reset" id = "button2" value = "Reiniciar formulario" />
+            <input type = "button" id = "button3" value = "Calcular trayectoria" />
+        </form>
+
+    </body>
+</html>

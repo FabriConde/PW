@@ -1,0 +1,40 @@
+p {
+    background-color: lightblue;
+    color: blue;
+}
+#modificado {
+    background-color: black;
+    color: white;
+}
+.alternativo {
+    background-color: blue;
+    color: lightblue;
+}
+
+section p {
+    background-color: aquamarine;
+    color: black;
+}
+
+section > p {
+    background-color: pink;
+    color: black;
+    background-image: url('ugr.png');
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+h1 {
+    background-color: rgb(110, 50, 145);
+}
+
+body {background:#c09898 url('ugr.png') repeat-y right bottom;}
+
+ul { list-style-image: url('ugr.png'); }
+ol.a {list-style-type: upper-roman;}
+ol.b {list-style-type: lower-alpha;}
+
+a:link {color:#FF0000;text-decoration:none;}
+a:visited {background-color:#FFFF85; text-decoration:none;}
+a:hover {text-decoration:underline;}
+a:active {text-decoration:underline;}
