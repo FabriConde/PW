@@ -16,7 +16,7 @@ section p {
     color: black;
 }
 
-section > p {
+/* section > p {
     background-color: pink;
     color: black;
     background-image: url('ugr.png');
@@ -32,9 +32,18 @@ body {background:#c09898 url('ugr.png') repeat-y right bottom;}
 
 ul { list-style-image: url('ugr.png'); }
 ol.a {list-style-type: upper-roman;}
-ol.b {list-style-type: lower-alpha;}
+ol.b {list-style-type: lower-alpha;} */
 
 a:link {color:#FF0000;text-decoration:none;}
 a:visited {background-color:#FFFF85; text-decoration:none;}
 a:hover {text-decoration:underline;}
 a:active {text-decoration:underline;}
+
+strong {
+    margin-left: 10px;
+    border-color: crimson;
+    border-width: 16px;
+    border-style: groove;
+    border-radius: 20px;
+    padding: 5px;
+}
