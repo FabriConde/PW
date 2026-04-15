@@ -1,0 +1,97 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.header-section img {
+    width: 400px;
+    height: auto;
+}
+
+.header-section article,
+.header-section article form {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.header-section article {
+    margin: 15px;
+}
+
+.navbar-section nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f8df01;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-section nav ul li a {
+  display: block;
+  color: black;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar-section nav ul li a:hover {
+  background-color: #6866668c;
+}
+
+main {
+    display: grid;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.main-buscador-section form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.main-buscador-section form input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+footer {
+    padding: 20px;
+    background-color: #6866668c;
+    text-align: center;
+    margin-top: auto;
+}
+
+footer p {
+    margin-top: 15px;
+}
+
+.contacto-main-info-section {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 15px;
+}
+
+.contacto-main-info-section > ul > li:first-child {
+    background: #87CEEB;
+    color: white;
+}
+    
