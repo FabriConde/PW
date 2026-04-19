@@ -1,0 +1,111 @@
+
+<!doctype html>
+<html lang="es-ES">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/styles.css">     
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+        <title>PW-TravelPro</title>
+    </head>
+    <body>
+        <header>
+            <section class="header-section">
+                <h1>PW-TravelPro</h1>
+                <img src="img/logo.png" alt="Logo de la agencia">
+                <article>
+                    <form action="#" method="post">
+                            <input class="w3-input" type="text" name="username" placeholder="Usuario">
+                            <input class="w3-input" type="password" name="password" placeholder="Contraseña">
+                            <button class="w3-button w3-light-blue" type="submit">Iniciar Sesión</button>
+                    </form>
+                    <a class="w3-button w3-teal" href="altausuarios.html">Registrarse</a>
+                </article>
+            </section>
+            <section class="navbar-section">
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="viajes.html">Viajes</a></li>
+                        <li><a href="viajes_grupo.html">Viajes en Grupo</a></li>
+                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="sobre_agencia.html">Sobre nuestra agencia</a></li>
+                        <li><a href="sugerencias.html">Sugerencias</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </header>
+        <main>
+            <h2>Sugerencias</h2>
+            <p>En este apartado compartimos experiencias, opiniones y propuestas de mejora de usuarios que viajaron con PW-TravelPro.</p>
+
+            <section class="cards-sugerencias">
+                <article class="w3-card-4">
+                    <header class="w3-container w3-light-grey">
+                        <h4>Ana Ruiz Manjon</h4>
+                    </header>
+                    <article class="w3-container">
+                        <p><strong>Tipo:</strong> Experiencia</p>
+                        <p><strong>Destino:</strong> París</p>
+                        <p>La organización fue excelente. El hotel estaba bien ubicado y las excursiones se cumplieron tal y como se indicaba.</p>
+                    </article>
+                </article>
+                <article class="w3-card-4">
+                    <header class="w3-container w3-light-grey">
+                        <h4>Carlos Manjon</h4>
+                    </header>
+                    <article class="w3-container">
+                        <p><strong>Tipo:</strong> Sugerencia</p>
+                        <p><strong>Destino:</strong> Shanghái</p>
+                        <p>Propongo añadir packs opcionales para familias con niños y actividades culturales adaptadas.</p>
+                    </article>
+                </article>
+                <article class="w3-card-4">
+                    <header class="w3-container w3-light-grey">
+                        <h4>Carlos Gómez </h4>
+                    </header>
+                    <article class="w3-container">
+                        <p><strong>Tipo:</strong> Experiencia</p>
+                        <p><strong>Destino:</strong> París</p>
+                        <p>La organización fue excelente. El hotel estaba bien ubicado y las excursiones se cumplieron tal y como se indicaba.</p>
+                    </article>
+                </article>
+            </section>
+
+            <section class="formulario-sugerencia">
+                <fieldset>
+                    <legend><h3>Comparte tu experiencia, opinión o sugerencia</h3></legend>
+                    <form method="post">
+                        <label for="nombre">Nombre y apellidos</label>
+                        <input class="w3-input" type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+                        <label for="correo">Correo electrónico</label>
+                        <input class="w3-input" type="email" id="correo" name="correo" placeholder="ejemplo@ejemplo.com" required>
+
+                        <label for="tipo">Tipo de aportación</label>
+                        <select class="w3-select" id="tipo" name="tipo" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="experiencia">Experiencia</option>
+                            <option value="opinion">Opinión</option>
+                            <option value="sugerencia">Sugerencia</option>
+                        </select>
+                        <br>
+                        <label for="destino">Destino relacionado</label>
+                        <input class="w3-input" type="text" id="destino" name="destino" placeholder="Ejemplo: Niza, Toronto, Pekín">
+
+                        <label for="mensaje">Tu mensaje</label>
+                        <textarea class="w3-input" id="mensaje" name="mensaje" rows="2" placeholder="Escribe aquí tu experiencia, opinión o sugerencia" required></textarea>
+
+                        <button class="w3-button w3-teal" type="submit">Enviar</button>
+                    </form>
+                </fieldset>
+            </section>
+        </main>
+        <footer>
+            <a class="w3-button w3-white w3-border w3-border-yellow" href="contacto.html">Contacto</a>
+            <a class="w3-button w3-white w3-border w3-border-yellow" href="docs/como_se_hizo.docx">Como se hizo</a>   
+            <p>&copy; 2026 PW-TravelPro. Todos los derechos reservados.</p>
+            <p>Última fecha de modificación: <strong>19/04/2026</strong></p>
+        </footer>
+    </body>
+</html>
