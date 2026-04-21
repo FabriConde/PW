@@ -19,6 +19,7 @@ main {
 
 .header-section {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
@@ -89,6 +90,15 @@ footer p {
 }
 
 /* Estilos para la sección de Viajes */
+
+@media  (max-width: 760px){
+    .cards-viajes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
 .w3-third.w3-center img {
     width: 90%;
     height: auto;
@@ -151,112 +161,5 @@ footer p {
 
 /* Estilos para la sección de Ofertas */
 
-.leyenda {
-    margin: 16px 0 24px;
-    background: #fff8d6;
-    border: 1px solid #e6d88f;
-    border-radius: 8px;
-    padding: 12px;
-}
-
-
-.leyenda-temporadas ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 20px;
-    margin: 0;
-    padding: 0;
-}
-
-.leyenda-temporadas li {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.muestra-color {
-    width: 16px;
-    height: 16px;
-    display: inline-block;
-    border: 1px solid #777;
-    border-radius: 3px;
-}
-
-.calendario-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(280px, 1fr));
-    gap: 18px;
-}
-
-.mes-card {
-    border: 1px solid #d9d9d9;
-    border-radius: 10px;
-    background: #ffffff;
-    padding: 12px;
-}
-
-.mes-card h3 {
-    margin-top: 0;
-    text-align: center;
-}
-
-.mes-card table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-}
-
-.mes-card th,
-.mes-card td {
-    border: 1px solid #e0e0e0;
-    text-align: center;
-    padding: 7px 4px;
-    font-size: 14px;
-}
-
-.temporada-baja {
-    background-color: #d9f7d8;
-}
-
-.temporada-media {
-    background-color: #fff3bf;
-}
-
-.temporada-alta {
-    background-color: #ffc9c9;
-}
-
-.ofertas-epocas {
-    margin-top: 24px;
-    display: grid;
-    gap: 12px;
-}
-
-.ofertas-epocas h3 {
-    margin-bottom: 4px;
-}
-
-.oferta-epoca {
-    border-radius: 8px;
-    border: 1px solid #d7d7d7;
-    padding: 12px;
-}
-
-.oferta-baja {
-    background-color: #f2fff2;
-}
-
-.oferta-media {
-    background-color: #fffceb;
-}
-
-.oferta-alta {
-    background-color: #fff1f1;
-}
-
-.oferta-epoca h4 {
-    margin-top: 0;
-}
 
 
