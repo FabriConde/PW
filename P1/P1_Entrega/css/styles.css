@@ -3,12 +3,12 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: Tahoma, Verdana, sans-serif;
+    font-family: Geneva, Verdana, sans-serif;
     text-align: center;
 }
 
 main {
-    background-color: #fcf3f8;
+    background-color: #e8e8fa;
 }
 
 .header-section {
@@ -58,25 +58,33 @@ main {
 }
 
 footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
     background-color: #c0dada;
-    text-align: center;
     margin-top: auto;
 }
 
-footer p {
-    margin-top: 15px;
+.enlaces-section {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
-button {
+button,
+.boton-enlace {
     background-color: #8d8de9;
     color: white;
     padding: 10px 25px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-
+    text-decoration: none;
 }
+
+
 /* Estilos para la sección de Inicio */
 
 .main-section {
@@ -109,10 +117,10 @@ button {
 
 .buscador-section form {
     display: flex;
-    flex-direction: row;
-    gap: 10px;
     justify-content: center;
+    gap: 10px;
 }
+
 /* Estilos para la sección de Contacto */
 
 .contacto-section {
@@ -121,8 +129,13 @@ button {
     margin-top: 20px;
 }
 
+.contacto-section ul {
+    background-color: #fafae8;
+}
+
+
 .contacto-section ul > li:first-child {
-    background: #87CEEB;
+    background: #62a3a3;
     color: white;
 }
 
