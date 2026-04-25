@@ -1,27 +1,23 @@
 /* Estilos para todos los documentos */
-html,
-body {
-    height: 100%;
-}
-
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    font-family: Tahoma, Verdana, sans-serif;
+    text-align: center;
 }
 
 main {
-    display: grid;
-    justify-content: center;
-    gap: 15px;
-    text-align: center;
+    background-color: #fcf3f8;
 }
 
 .header-section {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
     justify-content: space-between;
+    align-items: center;
 }
 
 .header-section img {
@@ -29,30 +25,42 @@ main {
     height: auto;
 }
 
+.login-article,
+.login-article form {
+    display: flex;
+    flex-direction: row;
+     gap: 10px;
+}
+
+.navbar-section {
+    padding: 20px;
+    background-color: #e98d8d;
+}
+    
 .navbar-section nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: #f8df01;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .navbar-section nav ul li a {
-    display: block;
     color: black;
-    padding: 14px 16px;
+    padding: 20px;
     text-decoration: none;
 }
 
 .navbar-section nav ul li a:hover {
-  background-color: #6866668c;
+  background-color: #efafaf;
 }
 
 
 footer {
     padding: 10px;
-    background-color: #6866668c;
+    background-color: #8de9e9;
     text-align: center;
     margin-top: auto;
 }
@@ -61,21 +69,33 @@ footer p {
     margin-top: 15px;
 }
 
+button {
+    background-color: #8d8de9;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
 /* Estilos para la sección de Inicio */
 
-.buscador-section form {
+.main-section {
     display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
     justify-content: center;
+    align-items: center;
     gap: 10px;
 }
 
-.buscador-section form input {
-    padding: 10px;
-    width: 300px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.buscador-section form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
 }
-
 /* Estilos para la sección de Contacto */
 
 .contacto-section {
@@ -160,6 +180,18 @@ footer p {
 }
 
 /* Estilos para la sección de Ofertas */
+
+/* Estilos para la sección de Viajes en Grupo */
+
+@media (max-width: 760px) {
+    .viajes-grupo-main {
+        padding: 12px;
+    }
+
+    .viaje-grupo-card img {
+        height: 200px;
+    }
+}
 
 
 

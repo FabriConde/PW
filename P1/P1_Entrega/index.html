@@ -5,21 +5,19 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/styles.css">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
         <title>PW-TravelPro</title>
     </head>
     <body>
         <header>
             <section class="header-section">
-                <h1>PW-TravelPro</h1>
                 <img src="img/logo.png" alt="Logo de la agencia">
-                <article>
-                    <form action="#" method="post">
-                            <input class="w3-input" type="text" name="username" placeholder="Usuario">
-                            <input class="w3-input" type="password" name="password" placeholder="Contraseña">
-                            <button class="w3-button w3-light-blue" type="submit">Iniciar Sesión</button>
+                <article class="login-article">
+                    <form method="post">
+                        <input class="" type="text" name="username" placeholder="Usuario">
+                        <input class="" type="password" name="password" placeholder="Contraseña">
+                        <button class="" type="submit">Iniciar Sesión</button>
                     </form>
-                    <a class="w3-button w3-teal" href="altausuarios.html">Registrarse</a>
+                    <button onclick="location.href='altausuarios.html'">Registrarse</button>
                 </article>
             </section>
             <section class="navbar-section">
@@ -36,26 +34,23 @@
             </section>
         </header>
         <main>
-            <section>
+            <section class="main-section">
                 <img src="img/auroras-boreales-islandia.jpg" alt="Auroras Boreales en Islandia">
-                <article>
-                    <h2>Bienvenido a PW-TravelPro</h2>
-                    <p>Tu agencia de viajes confiable para explorar el mundo. Ofrecemos una amplia gama de destinos, paquetes personalizados y ofertas exclusivas para hacer de tu viaje una experiencia inolvidable.</p>
-                    <p><strong>¡Descubre el mundo con nosotros!</strong></p>
-                </article>
+                <h2>Bienvenido a PW-TravelPro</h2>
+                <p>Tu agencia de viajes confiable para explorar el mundo. Ofrecemos una amplia gama de destinos, paquetes personalizados y ofertas exclusivas para hacer de tu viaje una experiencia inolvidable.</p>
+                <p><strong>¡Descubre el mundo con nosotros!</strong></p>
             </section>
-            <hr>
             <section class="buscador-section">
                 <form method="post">
-                    <input class="w3-input w3-border w3-light-grey" type="text" name="viaje" placeholder="Buscar viajes...">
-                    <input class="w3-input w3-border w3-light-grey" type="date" name="fecha">
-                    <button class="w3-button w3-light-green" type="submit">Buscar</button>
+                    <input type="text" name="viaje" placeholder="Buscar viajes...">
+                    <input type="date" name="fecha">
+                    <button type="submit">Buscar</button>
                 </form>
             </section>
         </main>
         <footer>
-            <a class="w3-button w3-white w3-border w3-border-yellow" href="contacto.html">Contacto</a>
-            <a class="w3-button w3-white w3-border w3-border-yellow" href="docs/como_se_hizo.docx">Como se hizo</a>   
+            <button onclick="location.href='contacto.html'">Contacto</button>
+            <button onclick="location.href='docs/como_se_hizo.docx'">Como se hizo</button>   
             <p>&copy; 2026 PW-TravelPro. Todos los derechos reservados.</p>
             <p>Última fecha de modificación: <strong>15/06/2024</strong></p>
         </footer>
