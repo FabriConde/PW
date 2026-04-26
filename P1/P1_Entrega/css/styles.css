@@ -3,8 +3,16 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    font-family: Geneva, Verdana, sans-serif;
     text-align: center;
+}
+
+input,
+select,
+textarea,
+button {
+    min-height: 42.5px;
+    box-sizing: border-box;
+    font: inherit;
 }
 
 .cabecera {
@@ -85,7 +93,7 @@ button,
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: center;
+    justify-content: space-around;
     align-items: stretch;
     gap: 10px;
 }
@@ -107,7 +115,53 @@ h2 {
     font-weight: bold;
 }
 
-/* Estilos para la sección de Inicio */
+@media (max-width: 760px) {
+
+    .viajes .tarjetas {
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .viajes .tarjeta-viajes {
+        width: 90%;
+    }
+
+    .cabecera {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .barra-navegacion ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bienvenida {
+        gap: 20px;
+    }
+
+    .login,
+    .login form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .buscador {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .buscador form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+/* Estilos para la sección de INICIO */
+
 .pagina-principal {
     background-color: #e8e8fa;
 }
@@ -158,29 +212,54 @@ h2 {
     background-color: #fafae8;
 }
 
-
 .datos-contacto  ul > li:first-child {
     background: #62a3a3;
     color: white;
 }
 
-/* Estilos para la sección de Viajes */
+/* Estilos para la sección de VIAJES */
+.w3-sidebar.w3-bar-block {
+    background-color: #e8e8fa;
+    border: 5px solid #a9a9ec;
+    border-radius: 12px;
+}
 
-@media  (max-width: 760px){
-    .cards-viajes {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-} 
+.tarjeta-viajes {
+    display: block;
+    width: 32%;
+    border: 3px solid #d0d0e1;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit; /* para que no cambie de color el enlace */
+    cursor: pointer;
+}
 
-/* Estilos para la sección Sobre nuestra agencia */
+.tarjeta-viajes img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
 
+.tarjeta-viajes header {
+    background-color: #d0d0e1;
+    color: #2e2ece;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+}
+
+.tarjeta-viajes:hover,
+.tarjeta-viajes:focus-visible {
+    transform: translateY(-4px);
+    border-color: #52527d;
+    box-shadow: 0 12px 20px #52527d;
+}
+
+/* Estilos para la sección SOBRE NUESTRA AGENCIA */
 .tarjeta ul {
     list-style-type: none;
 }
 
-/* Estilos para la sección Sugerencias */
+/* Estilos para la sección SUGERENCIAS */
 .formulario-sugerencia,
 .formulario-sugerencia form {
     display: flex;
@@ -199,27 +278,10 @@ h2 {
     text-align: left;
 }
 
-.formulario-sugerencia input, 
-.formulario-sugerencia select, 
-.formulario-sugerencia textarea {
-    width: 100%; 
-    box-sizing: border-box; /* Importante para que el padding no los ensanche más del 100% */
-    padding: 10px;
-}
-/* Estilos para la sección de Ofertas */
+/* Estilos para la sección de OFERTAS */
 
 
-/* Estilos para la sección de Viajes en Grupo */
-
-@media (max-width: 760px) {
-    .viajes-grupo-main {
-        padding: 12px;
-    }
-
-    .viaje-grupo-card img {
-        height: 200px;
-    }
-}
+/* Estilos para la sección de VIAJES EN GRUPO */
 
 
 

@@ -3,149 +3,122 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+        <link rel="stylesheet" href="css/styles.css">
         <title>PW-TravelPro</title>
     </head>
     <body>
         <header>
-            <section class="header-section">
-                <h1>PW-TravelPro</h1>
+            <article class="cabecera">
                 <img src="img/logo.png" alt="Logo de la agencia">
-                <article>
-                    <form action="#" method="post">
-                            <input class="w3-input" type="text" name="username" placeholder="Usuario">
-                            <input class="w3-input" type="password" name="password" placeholder="Contraseña">
-                            <button class="w3-button w3-light-blue" type="submit">Iniciar Sesión</button>
+                <article class="login">
+                    <form method="post">
+                        <input class="" type="text" name="username" placeholder="Usuario">
+                        <input class="" type="password" name="password" placeholder="Contraseña">
+                        <button class="" type="submit">Iniciar Sesión</button>
                     </form>
-                    <a class="w3-button w3-teal" href="altausuarios.html">Registrarse</a>
+                    <a class="boton-enlace" href='altausuarios.html'>Registrarse</a>
                 </article>
-            </section>
-            <section class="navbar-section">
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="viajes.html">Viajes</a></li>
-                        <li><a href="viajes_grupo.html">Viajes en Grupo</a></li>
-                        <li><a href="ofertas.html">Ofertas</a></li>
-                        <li><a href="sobre_agencia.html">Sobre nuestra agencia</a></li>
-                        <li><a href="sugerencias.html">Sugerencias</a></li>
-                    </ul>
-                </nav>
-            </section>
+            </article>
+            <nav class="barra-navegacion">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="viajes.html">Viajes</a></li>
+                    <li><a href="viajes_grupo.html">Viajes en Grupo</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="sobre_agencia.html">Sobre nuestra agencia</a></li>
+                    <li><a href="sugerencias.html">Sugerencias</a></li>
+                </ul>
+            </nav>
         </header>
-        <main class="viajes-main">
+        <main>
             <aside class="w3-sidebar w3-bar-block" style="width:15%;">
-                <h5>Continentes</h5>
+                <h5><strong>Continentes</strong></h5>
                 <a href="viajes_francia.html" class="w3-bar-item w3-button w3-border-bottom">Francia</a>
                 <a href="viajes_canada.html" class="w3-bar-item w3-button w3-border-bottom">Canadá</a>
                 <a href="viajes_china.html" class="w3-bar-item w3-button w3-border-bottom">China</a>
             </aside>
                 
             <section style="margin-left:15%">
-                <h2>Catálogo de viajes</h2>
-
-                <section class="w3-row">
-                    <article class="w3-third w3-center">
+                <h2>Catálogo de viajes en Canadá</h2>
+                <article class="tarjetas">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Montreal</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Montreal, Canadá">
-                        <article class="viaje-info">
-                            <h3>Montreal</h3>
-                            <p><strong>Fechas:</strong> 14/05/2026 - 21/05/2026</p>
-                            <p>Recorrido histórico, gastronomía local y excursión urbana.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 14/05/2026 - 21/05/2026</p>
+                        <p>Recorrido histórico, gastronomía local y excursión urbana.</p>
+                    </a>
 
-                    <article class="w3-third w3-center">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Quebec</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Quebec, Canadá">
-                        <article class="viaje-info">
-                            <h3>Quebec</h3>
-                            <p><strong>Fechas:</strong> 03/06/2026 - 11/06/2026</p>
-                            <p>Patrimonio UNESCO, museos y paseo por ciudad amurallada.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 03/06/2026 - 11/06/2026</p>
+                        <p>Patrimonio UNESCO, museos y paseo por ciudad amurallada.</p>
+                    </a>
 
-                    <article class="w3-third w3-center">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Toronto</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Toronto, Canadá">
-                        <article class="viaje-info">
-                            <h3>Toronto</h3>
-                            <p><strong>Fechas:</strong> 15/06/2026 - 23/06/2026</p>
-                            <p>CN Tower, crucero urbano y escapada a Niágara.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 15/06/2026 - 23/06/2026</p>
+                        <p>CN Tower, crucero urbano y escapada a Niágara.</p>
+                    </a>
 
-                    <article class="w3-third w3-center">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Vancouver</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Vancouver, Canadá">
-                        <article class="viaje-info">
-                            <h3>Vancouver</h3>
-                            <p><strong>Fechas:</strong> 22/06/2026 - 30/06/2026</p>
-                            <p>Parques, senderismo suave y barrio costero de moda.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 22/06/2026 - 30/06/2026</p>
+                        <p>Parques, senderismo suave y barrio costero de moda.</p>
+                    </a>
 
-                    <article class="w3-third w3-center">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Ottawa</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Ottawa, Canadá">
-                        <article class="viaje-info">
-                            <h3>Ottawa</h3>
-                            <p><strong>Fechas:</strong> 29/06/2026 - 06/07/2026</p>
-                            <p>Parlamento, museos nacionales y bicicleta urbana.</p>    
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 29/06/2026 - 06/07/2026</p>
+                        <p>Parlamento, museos nacionales y bicicleta urbana.</p>
+                    </a>
 
-                    <article class="w3-third w3-center">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Calgary</h3></header>
                         <img src="img/calgary.jpg" alt="Calgary, Canadá">
-                        <article class="viaje-info">
-                            <h3>Calgary</h3>
-                            <p><strong>Fechas:</strong> 10/07/2026 - 18/07/2026</p>
-                            <p>Puerta a las Rocosas, naturaleza y cultura vaquera.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 10/07/2026 - 18/07/2026</p>
+                        <p>Puerta a las Rocosas, naturaleza y cultura vaquera.</p>
+                    </a>
 
-                    <article class="w3-third w3-center">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Edmonton</h3></header>
                         <img src="img/edmonton.jpg" alt="Edmonton, Canadá">
-                        <article class="viaje-info">
-                            <h3>Edmonton</h3>
-                            <p><strong>Fechas:</strong> 12/07/2026 - 20/07/2026</p>
-                            <p>Festivales, parques y gran centro comercial.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 12/07/2026 - 20/07/2026</p>
+                        <p>Festivales, parques y gran centro comercial.</p>
+                    </a>
 
-                    <article class="w3-third w3-center">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Halifax</h3></header>
                         <img src="img/halifax.jpg" alt="Halifax, Canadá">
-                        <article class="viaje-info">
-                            <h3>Halifax</h3>
-                            <p><strong>Fechas:</strong> 15/07/2026 - 22/07/2026</p>
-                            <p>Puerto atlántico, historia naval y mariscos.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 15/07/2026 - 22/07/2026</p>
+                        <p>Puerto atlántico, historia naval y mariscos.</p>
+                    </a>
 
-                    <article class="w3-third w3-center">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Winnipeg</h3></header>
                         <img src="img/winnipeg.jpg" alt="Winnipeg, Canadá">
-                        <article class="viaje-info">
-                            <h3>Winnipeg</h3>
-                            <p><strong>Fechas:</strong> 18/07/2026 - 25/07/2026</p>
-                            <p>Museos, cultura indígena y arquitectura moderna.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 18/07/2026 - 25/07/2026</p>
+                        <p>Museos, cultura indígena y arquitectura moderna.</p>
+                    </a>
 
-                    <article class="w3-third w3-center">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Victoria</h3></header>
                         <img src="img/victoria.jpg" alt="Victoria, Canadá">
-                        <article class="viaje-info">
-                            <h3>Victoria</h3>
-                            <p><strong>Fechas:</strong> 20/07/2026 - 28/07/2026</p>
-                            <p>Jardines, puerto pintoresco y estilo británico.</p>
-                        </article>
-                    </article>
-                </section>
-
-                <!-- <nav class="paginacion-viajes">
-                    <a href="#">Anterior</a>
-                    <a href="#">Siguiente 15 viajes</a>
-                </nav> -->
+                        <p><strong>Fechas:</strong> 20/07/2026 - 28/07/2026</p>
+                        <p>Jardines, puerto pintoresco y estilo británico.</p>
+                    </a>
+                </article>
             </section>
         </main>
         <footer>
-            <a class="w3-button w3-white w3-border w3-border-yellow" href="contacto.html">Contacto</a>
-            <a class="w3-button w3-white w3-border w3-border-yellow" href="docs/como_se_hizo.docx">Como se hizo</a>   
+            <nav class="enlaces-section">
+                <a class="boton-enlace" href='contacto.html'>Contacto</a>
+                <a class="boton-enlace" href='docs/como_se_hizo.docx'>Como se hizo</a>   
+            </nav>
             <p>&copy; 2026 PW-TravelPro. Todos los derechos reservados.</p>
             <p>Última fecha de modificación: <strong>15/06/2024</strong></p>
         </footer>

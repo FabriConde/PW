@@ -3,193 +3,162 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+        <link rel="stylesheet" href="css/styles.css">
         <title>PW-TravelPro</title>
     </head>
     <body>
         <header>
-            <section class="header-section">
-                <h1>PW-TravelPro</h1>
+            <article class="cabecera">
                 <img src="img/logo.png" alt="Logo de la agencia">
-                <article>
-                    <form action="#" method="post">
-                            <input class="w3-input" type="text" name="username" placeholder="Usuario">
-                            <input class="w3-input" type="password" name="password" placeholder="Contraseña">
-                            <button class="w3-button w3-light-blue" type="submit">Iniciar Sesión</button>
+                <article class="login">
+                    <form method="post">
+                        <input class="" type="text" name="username" placeholder="Usuario">
+                        <input class="" type="password" name="password" placeholder="Contraseña">
+                        <button class="" type="submit">Iniciar Sesión</button>
                     </form>
-                    <a class="w3-button w3-teal" href="altausuarios.html">Registrarse</a>
+                    <a class="boton-enlace" href='altausuarios.html'>Registrarse</a>
                 </article>
-            </section>
-            <section class="navbar-section">
-                <nav>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="viajes.html">Viajes</a></li>
-                        <li><a href="viajes_grupo.html">Viajes en Grupo</a></li>
-                        <li><a href="ofertas.html">Ofertas</a></li>
-                        <li><a href="sobre_agencia.html">Sobre nuestra agencia</a></li>
-                        <li><a href="sugerencias.html">Sugerencias</a></li>
-                    </ul>
-                </nav>
-            </section>
+            </article>
+            <nav class="barra-navegacion">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="viajes.html">Viajes</a></li>
+                    <li><a href="viajes_grupo.html">Viajes en Grupo</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="sobre_agencia.html">Sobre nuestra agencia</a></li>
+                    <li><a href="sugerencias.html">Sugerencias</a></li>
+                </ul>
+            </nav>
         </header>
-        <main class="viajes">
+        <main>
             <aside class="w3-sidebar w3-bar-block" style="width:15%;">
-                <h5>Continentes</h5>
+                <h5><strong>Continentes</strong></h5>
                 <a href="viajes_francia.html" class="w3-bar-item w3-button w3-border-bottom">Francia</a>
                 <a href="viajes_canada.html" class="w3-bar-item w3-button w3-border-bottom">Canadá</a>
                 <a href="viajes_china.html" class="w3-bar-item w3-button w3-border-bottom">China</a>
             </aside>
-            
-            <section class="cards-viajes" style="margin-left:15%">
+                
+            <section class="viajes" style="margin-left:15%">
                 <h2>Catálogo de viajes</h2>
-               <section class="w3-row">
-                    <article class="w3-container">
+                <article class="tarjetas">
+                    <a class="tarjeta-viajes" href="viajes_francia.html">
+                        <header><h3>Marsella</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Marsella, Francia">
-                        <article class="viaje-info">
-                            <h3>Marsella</h3>
-                            <p><strong>Fechas:</strong> 10/07/2026 - 17/07/2026</p>
-                            <p>Puerto antiguo, calas mediterráneas y gastronomía marinera.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 10/07/2026 - 17/07/2026</p>
+                        <p>Puerto antiguo, calas mediterráneas y gastronomía marinera.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_francia.html">
+                        <header><h3>Toulouse</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Toulouse, Francia">
-                        <article class="viaje-info">
-                            <h3>Toulouse</h3>
-                            <p><strong>Fechas:</strong> 12/07/2026 - 19/07/2026</p>
-                            <p>Ciudad rosa, canales y ambiente universitario.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 12/07/2026 - 19/07/2026</p>
+                        <p>Ciudad rosa, canales y ambiente universitario.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_francia.html">
+                        <header><h3>Lille</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Lille, Francia">
-                        <article class="viaje-info">
-                            <h3>Lille</h3>
-                            <p><strong>Fechas:</strong> 15/07/2026 - 22/07/2026</p>
-                            <p>Arquitectura flamenca, mercados y cultura local.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 15/07/2026 - 22/07/2026</p>
+                        <p>Arquitectura flamenca, mercados y cultura local.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_francia.html">
+                        <header><h3>Nantes</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Nantes, Francia">
-                        <article class="viaje-info">
-                            <h3>Nantes</h3>
-                            <p><strong>Fechas:</strong> 18/07/2026 - 25/07/2026</p>
-                            <p>Castillo de los duques, arte urbano y paseo fluvial.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 18/07/2026 - 25/07/2026</p>
+                        <p>Castillo de los duques, arte urbano y paseo fluvial.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_francia.html">
+                        <header><h3>Montpellier</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Montpellier, Francia">
-                        <article class="viaje-info">
-                            <h3>Montpellier</h3>
-                            <p><strong>Fechas:</strong> 20/07/2026 - 27/07/2026</p>
-                            <p>Centro histórico, playas cercanas y ambiente joven.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 20/07/2026 - 27/07/2026</p>
+                        <p>Centro histórico, playas cercanas y ambiente joven.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Calgary</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Calgary, Canadá">
-                        <article class="viaje-info">
-                            <h3>Calgary</h3>
-                            <p><strong>Fechas:</strong> 10/07/2026 - 18/07/2026</p>
-                            <p>Puerta a las Rocosas, naturaleza y cultura vaquera.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 10/07/2026 - 18/07/2026</p>
+                        <p>Puerta a las Rocosas, naturaleza y cultura vaquera.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Edmonton</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Edmonton, Canadá">
-                        <article class="viaje-info">
-                            <h3>Edmonton</h3>
-                            <p><strong>Fechas:</strong> 12/07/2026 - 20/07/2026</p>
-                            <p>Festivales, parques y gran centro comercial.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 12/07/2026 - 20/07/2026</p>
+                        <p>Festivales, parques y gran centro comercial.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Halifax</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Halifax, Canadá">
-                        <article class="viaje-info">
-                            <h3>Halifax</h3>
-                            <p><strong>Fechas:</strong> 15/07/2026 - 22/07/2026</p>
-                            <p>Puerto atlántico, historia naval y mariscos.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 15/07/2026 - 22/07/2026</p>
+                        <p>Puerto atlántico, historia naval y mariscos.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Winnipeg</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Winnipeg, Canadá">
-                        <article class="viaje-info">
-                            <h3>Winnipeg</h3>
-                            <p><strong>Fechas:</strong> 18/07/2026 - 25/07/2026</p>
-                            <p>Museos, cultura indígena y arquitectura moderna.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 18/07/2026 - 25/07/2026</p>
+                        <p>Museos, cultura indígena y arquitectura moderna.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_canada.html">
+                        <header><h3>Victoria</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Victoria, Canadá">
-                        <article class="viaje-info">
-                            <h3>Victoria</h3>
-                            <p><strong>Fechas:</strong> 20/07/2026 - 28/07/2026</p>
-                            <p>Jardines, puerto pintoresco y estilo británico.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 20/07/2026 - 28/07/2026</p>
+                        <p>Jardines, puerto pintoresco y estilo británico.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_china.html">
+                        <header><h3>Hong Kong</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Hong Kong, China">
-                        <article class="viaje-info">
-                            <h3>Hong Kong</h3>
-                            <p><strong>Fechas:</strong> 10/07/2026 - 18/07/2026</p>
-                            <p>Rascacielos, mercados nocturnos y vistas al puerto.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 10/07/2026 - 18/07/2026</p>
+                        <p>Rascacielos, mercados nocturnos y vistas al puerto.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_china.html">
+                        <header><h3>Chengdu</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Chengdu, China">
-                        <article class="viaje-info">
-                            <h3>Chengdu</h3>
-                            <p><strong>Fechas:</strong> 12/07/2026 - 20/07/2026</p>
-                            <p>Osos panda, gastronomía picante y templos.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 12/07/2026 - 20/07/2026</p>
+                        <p>Osos panda, gastronomía picante y templos.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_china.html">
+                        <header><h3>Hangzhou</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Hangzhou, China">
-                        <article class="viaje-info">
-                            <h3>Hangzhou</h3>
-                            <p><strong>Fechas:</strong> 15/07/2026 - 23/07/2026</p>
-                            <p>Lago del Oeste, paisajes y cultura tradicional.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 15/07/2026 - 23/07/2026</p>
+                        <p>Lago del Oeste, paisajes y cultura tradicional.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_china.html">
+                        <header><h3>Nanjing</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Nanjing, China">
-                        <article class="viaje-info">
-                            <h3>Nanjing</h3>
-                            <p><strong>Fechas:</strong> 18/07/2026 - 26/07/2026</p>
-                            <p>Historia imperial, murallas antiguas y museos.</p>
-                        </article>
-                    </article>
+                        <p><strong>Fechas:</strong> 18/07/2026 - 26/07/2026</p>
+                        <p>Historia imperial, murallas antiguas y museos.</p>
+                    </a>
 
-                    <article class="w3-container">
+                    <a class="tarjeta-viajes" href="viajes_china.html">
+                        <header><h3>Guilin</h3></header>
                         <img src="img/auroras-boreales-islandia.jpg" alt="Guilin, China">
-                        <article class="viaje-info">
-                            <h3>Guilin</h3>
-                            <p><strong>Fechas:</strong> 20/07/2026 - 28/07/2026</p>
-                            <p>Paisajes kársticos, ríos y naturaleza espectacular.</p>
-                        </article>
-                    </article>
-                </section>
+                        <p><strong>Fechas:</strong> 20/07/2026 - 28/07/2026</p>
+                        <p>Paisajes kársticos, ríos y naturaleza espectacular.</p>
+                    </a>
+                </article>
 
-                <section class="w3-bar w3-border w3-round">
+                <nav class="w3-bar w3-border w3-round">
                     <a href="viajes.html" class="w3-button">&#10094; Anterior</a>
-                    <a href="#" class="w3-button w3-right">Siguiente &#10095;</a>
-                </section>
+                    <a href="" class="w3-button w3-right">Siguiente &#10095;</a>
+                </nav>
             </section>
         </main>
-        <footer>
-            <a class="w3-button w3-white w3-border w3-border-yellow" href="contacto.html">Contacto</a>
-            <a class="w3-button w3-white w3-border w3-border-yellow" href="docs/como_se_hizo.docx">Como se hizo</a>   
+        <footer style="margin-left:15%">
+            <nav class="enlaces-section">
+                <a class="boton-enlace" href='contacto.html'>Contacto</a>
+                <a class="boton-enlace" href='docs/como_se_hizo.docx'>Como se hizo</a>   
+            </nav>
             <p>&copy; 2026 PW-TravelPro. Todos los derechos reservados.</p>
             <p>Última fecha de modificación: <strong>15/06/2024</strong></p>
         </footer>
