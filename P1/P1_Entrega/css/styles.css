@@ -11,7 +11,7 @@ main {
     background-color: #e8e8fa;
 }
 
-.header-section {
+.cabecera {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -20,24 +20,24 @@ main {
     align-items: center;
 }
 
-.header-section img {
+.cabecera img {
     width: 250px;
     height: auto;
 }
 
-.login-article,
-.login-article form {
+.login,
+.login form {
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
 
-.navbar-section {
+.barra-navegacion {
     padding: 20px;
     background-color: #e98d8d;
 }
     
-.navbar-section nav ul {
+.barra-navegacion ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -47,13 +47,13 @@ main {
     gap: 20px;
 }
 
-.navbar-section nav ul li a {
+.barra-navegacion ul li a {
     color: black;
     padding: 20px;
     text-decoration: none;
 }
 
-.navbar-section nav ul li a:hover {
+.barra-navegacion ul li a:hover {
   background-color: #efafaf;
 }
 
@@ -62,12 +62,12 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 25px;
     background-color: #c0dada;
     margin-top: auto;
 }
 
-.enlaces-section {
+.enlaces-footer {
     display: flex;
     flex-direction: row;
     gap: 20px;
@@ -83,7 +83,6 @@ button,
     cursor: pointer;
     text-decoration: none;
 }
-
 
 /* Estilos para la sección de Inicio */
 
@@ -123,18 +122,18 @@ button,
 
 /* Estilos para la sección de Contacto */
 
-.contacto-section {
+.datos-contacto  {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.contacto-section ul {
+.datos-contacto  ul {
     background-color: #fafae8;
 }
 
 
-.contacto-section ul > li:first-child {
+.datos-contacto  ul > li:first-child {
     background: #62a3a3;
     color: white;
 }
@@ -158,22 +157,33 @@ button,
 } 
 
 /* Estilos para la sección Sobre nuestra agencia */
-.sobre-agencia section{
+
+.tarjetas {
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    margin: 15px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
-.sobre-agencia .w3-row .w3-third.w3-center article {
-    border: 1px solid #ccc;
-    border-radius: 8px;
+.tarjeta-oficina {
+    border: 3px solid #a362a3;
+    border-radius: 12px;
 }
 
-.w3-panel.w3-pale-yellow.w3-border.w3-border-yellow ul {
-    border: 1px solid #ccc;
-    border-radius: 8px;
+.tarjeta-oficina header {
+    background-color: #62a3a3;
+    color: white;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
 }
+
+.tarjeta-oficina ul {
+    list-style-type: none;
+}
+
 
 /* Estilos para la sección Sugerencias */
 
