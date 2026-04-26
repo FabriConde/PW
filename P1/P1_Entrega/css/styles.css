@@ -15,6 +15,11 @@ button {
     font: inherit;
 }
 
+ul {
+    list-style-type: none;
+}
+
+
 .cabecera {
     display: flex;
     flex-direction: row;
@@ -42,7 +47,6 @@ button {
 }
     
 .barra-navegacion ul {
-    list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
@@ -116,19 +120,16 @@ h2 {
 }
 
 @media (max-width: 760px) {
-
-    .viajes .tarjetas {
-        flex-direction: column;
-        justify-content: center;
-    }
-    
-    .viajes .tarjeta-viajes {
-        width: 90%;
-    }
-
     .cabecera {
         flex-direction: column;
         gap: 20px;
+    }
+
+    .login,
+    .login form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
 
     .barra-navegacion ul {
@@ -138,13 +139,6 @@ h2 {
 
     .bienvenida {
         gap: 20px;
-    }
-
-    .login,
-    .login form {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
     }
 
     .buscador {
@@ -157,6 +151,15 @@ h2 {
         flex-direction: column;
         justify-content: center;
         gap: 10px;
+    }
+
+    .viajes .tarjetas {
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .viajes .tarjeta-viajes {
+        width: 90%;
     }
 }
 
@@ -255,9 +258,6 @@ h2 {
 }
 
 /* Estilos para la sección SOBRE NUESTRA AGENCIA */
-.tarjeta ul {
-    list-style-type: none;
-}
 
 /* Estilos para la sección SUGERENCIAS */
 .formulario-sugerencia,
@@ -279,6 +279,72 @@ h2 {
 }
 
 /* Estilos para la sección de OFERTAS */
+.calendario-ofertas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.titulo {
+    background-color: #c9e8fd;
+    color: #58346e;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.mes {
+    background-color: #e2d5f1;
+    color: #58346e;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.dia-semana {
+    background-color: #b8acd1;
+    color: #58346e;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.tmp-alta {
+    background-color: #f88383;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.tmp-media {
+    background-color: #fffbc8;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.tmp-baja {
+    background-color: #c8ffcf;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.leyenda {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #ede5f6;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.ofertas section {
+    margin-bottom: 20px;
+}
+
+.w3-ul.w3-card-4 {
+    border-radius: 12px;
+}
 
 
 /* Estilos para la sección de VIAJES EN GRUPO */
