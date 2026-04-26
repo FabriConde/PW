@@ -7,10 +7,6 @@ body {
     text-align: center;
 }
 
-main {
-    background-color: #e8e8fa;
-}
-
 .cabecera {
     display: flex;
     flex-direction: row;
@@ -84,9 +80,39 @@ button,
     text-decoration: none;
 }
 
-/* Estilos para la sección de Inicio */
+.tarjetas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+    gap: 10px;
+}
 
-.main-section {
+.tarjeta {
+    border: 3px solid #d0d0e1;
+    border-radius: 12px;
+    width: 32%;
+}
+
+.tarjeta header {
+    background-color: #d0d0e1;
+    color: black;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+/* Estilos para la sección de Inicio */
+.pagina-principal {
+    background-color: #e8e8fa;
+}
+
+.bienvenida {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -96,16 +122,16 @@ button,
     gap: 10px;
 }
 
-.main-section img {
+.bienvenida img {
     width: 90%;
     height: auto;
     border: 2px;
     border-radius: 8px;
-   
 }
 
-.buscador-section {
+.buscador {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     height: 200px;
@@ -114,7 +140,7 @@ button,
     background-position: center;
 }
 
-.buscador-section form {
+.buscador form {
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -146,80 +172,42 @@ button,
         flex-direction: column;
         justify-content: center;
     }
-}
-
-.w3-third.w3-center img {
-    width: 90%;
-    height: auto;
-    border: 2px;
-    border-radius: 8px;
-    margin-top: 10px;
 } 
 
 /* Estilos para la sección Sobre nuestra agencia */
 
-.tarjetas {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.tarjeta-oficina {
-    border: 3px solid #a362a3;
-    border-radius: 12px;
-}
-
-.tarjeta-oficina header {
-    background-color: #62a3a3;
-    color: white;
-    padding: 10px;
-    border-radius: 8px 8px 0 0;
-}
-
-.tarjeta-oficina ul {
+.tarjeta ul {
     list-style-type: none;
 }
 
-
 /* Estilos para la sección Sugerencias */
-
-.cards-sugerencias {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    margin: 20px;
-}
-
-.w3-card-4 article {
-    background-color: #daf1dc;
-    justify-self: stretch;
-}
-
-.formulario-sugerencia {
-    margin: 40px;
+.formulario-sugerencia,
+.formulario-sugerencia form {
     display: flex;
     justify-content: center;
 }
 
 .formulario-sugerencia fieldset {
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    border: 3px solid #d0d0e1;
+    border-radius: 12px;
     padding: 15px;
     margin: 15px;
-}
-
-.formulario-sugerencia form {
-    flex-direction: column;
-    gap: 12px;
     text-align: left;
-    margin-bottom: 15px;
 }
 
+.formulario-sugerencia input, 
+.formulario-sugerencia select, 
+.formulario-sugerencia textarea {
+    width: 100%; 
+    box-sizing: border-box; /* Importante para que el padding no los ensanche más del 100% */
+    padding: 10px;
+}
 /* Estilos para la sección de Ofertas */
+
 
 /* Estilos para la sección de Viajes en Grupo */
 
@@ -232,6 +220,7 @@ button,
         height: 200px;
     }
 }
+
 
 
 
