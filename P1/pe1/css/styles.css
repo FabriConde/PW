@@ -108,14 +108,15 @@ button,
     width: 32%;
 }
 
-.tarjeta header {
+.tarjeta h3 {
     background-color: #d0d0e1;
     color: black;
-    padding: 10px;
-    border-radius: 8px 8px 0 0;
+    padding: 15px;
+    padding: 15px;
+    margin: 0;
 }
 
-h2 {
+h2, h3 {
     font-weight: bold;
 }
 
@@ -243,11 +244,11 @@ h2 {
     display: block;
 }
 
-.tarjeta-viajes header {
+.tarjeta-viajes h3 {
     background-color: #d0d0e1;
     color: #2e2ece;
-    padding: 10px;
-    border-radius: 8px 8px 0 0;
+    padding: 15px;
+    margin: 0;
 }
 
 .tarjeta-viajes:hover,
@@ -266,6 +267,60 @@ h2 {
     flex-direction: row;
     justify-content: space-between;
 }
+
+/* Estilos para la sección DE VIAJE INDIVIDUAL */
+
+.banner-viaje {
+    width: 100%;
+    height: auto;
+    border: 2px;
+    border-radius: 8px;
+}
+
+.viaje-contenido {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 20px;
+}
+
+.info-viaje {
+    width: 63%;
+    border: 3px solid #d0d0e1;
+    border-radius: 12px;
+    margin-top: 10px;
+    text-align: left;
+    background-color: #f8f4f6;
+}
+
+.destinos-relacionados {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    border: 3px solid #d0d0e1;
+    margin-top: 10px;
+    border-radius: 12px;
+    background-color: #f8f4f6;
+}
+
+.info-viaje h3,
+.destinos-relacionados h3 {
+    text-align: center;
+    background-color: #d0d0e1;
+    margin: 0;
+    padding: 10px;
+}
+
+.info-viaje ul {
+    margin: 0;
+}
+
+.info-viaje p {
+    margin: 0 0 0 10px;
+    padding: 5px;
+}
+
 
 /* Estilos para la sección SOBRE NUESTRA AGENCIA */
 
@@ -373,10 +428,10 @@ h2 {
     background-color: #f8f4f6;
 }
 
-.tarjeta-viaje-grupo header {
-    border: 3px solid #d0d0e1;
-    border-radius: 8px 8px 0 0;
+.tarjeta-viaje-grupo h3 {
     background-color: #d0d0e1;
+    margin: 0;
+    padding: 15px;
 }
 
 .tarjeta-viaje-grupo img {
@@ -397,6 +452,7 @@ h2 {
     padding: 5px;
     margin: 0;
 }
+
 .tarjeta-viaje-grupo ul {
     margin: 0;
 }
