@@ -3,8 +3,10 @@
     --color-principal: #f2eff7;
     --color-bordes-tarjetas: #a9a9ec;
     --medida-bordes-tarjetas: 30px;
-    --color-texto-tarjetas: #936cff;
+    --color-texto-tarjetas: #5d448a;
     --medida-bordes-formulario: 20px;
+    --medida-padding-cabecera-tarjetas: 22px;
+    --color-texto-calendario: #422057;
 }
 
 /* Estilos globales */
@@ -127,9 +129,9 @@ button,
     background-color: var(--color-principal);
     border-radius: var(--medida-bordes-tarjetas) var(--medida-bordes-tarjetas) 0 0;
     color: black;
-    padding: 15px;
-    padding: 15px;
+    padding: var(--medida-padding-cabecera-tarjetas);
     margin: 0;
+    color: var(--color-texto-tarjetas);
 }
 
 .tarjeta-viajes {
@@ -150,8 +152,8 @@ button,
 
 .tarjeta-viajes h3 {
     background-color: var(--color-principal);
-    color: #2e2ece;
-    padding: 15px;
+    color: var(--color-texto-tarjetas);
+    padding: var(--medida-padding-cabecera-tarjetas);
     margin: 0;
     border-radius: var(--medida-bordes-tarjetas) var(--medida-bordes-tarjetas) 0 0;
 }
@@ -174,7 +176,8 @@ button,
     background-color: var(--color-principal);
     border-radius: var(--medida-bordes-tarjetas) var(--medida-bordes-tarjetas) 0 0;
     margin: 0;
-    padding: 15px;
+    padding: var(--medida-padding-cabecera-tarjetas);
+    color: var(--color-texto-tarjetas);
 }
 
 .tarjeta-viaje-grupo img {
@@ -360,7 +363,8 @@ button,
     border-radius: var(--medida-bordes-tarjetas) var(--medida-bordes-tarjetas) 0 0;
     background-color: var(--color-principal);
     margin: 0;
-    padding: 10px;
+    padding: var(--medida-padding-cabecera-tarjetas);
+    color: var(--color-texto-tarjetas);
 }
 
 .info-viaje ul {
@@ -406,21 +410,21 @@ button,
 
 .titulo {
     background-color: #c9e8fd;
-    color: #58346e;
+    color: var(--color-texto-calendario);
     padding: 10px;
     border-radius: var(--medida-bordes-tarjetas);
 }
 
 .mes {
     background-color: #e2d5f1;
-    color: #58346e;
+    color: var(--color-texto-calendario);
     padding: 10px;
     border-radius: var(--medida-bordes-tarjetas);
 }
 
 .dia-semana {
     background-color: #b8acd1;
-    color: #58346e;
+    color: var(--color-texto-calendario);
     padding: 10px;
     border-radius: var(--medida-bordes-tarjetas);
 }
@@ -449,7 +453,7 @@ button,
     justify-content: center;
     align-items: center;
     gap: 20px;
-    background-color: #ede5f6;
+    background-color: #e2d5f1;
     border-radius: var(--medida-bordes-tarjetas);
     padding: 10px;
 }
