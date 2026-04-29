@@ -7,6 +7,8 @@
     --medida-bordes-formulario: 20px;
     --medida-padding-cabecera-tarjetas: 22px;
     --color-texto-calendario: #422057;
+    --color-hover-tarjeta: #52527d;
+    --color-calendario-secundario: #e2d5f1;
 }
 
 /* Estilos globales */
@@ -18,10 +20,6 @@ body {
 }
 
 footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 25px;
     background-color: #c0dada;
     margin-top: auto;
@@ -61,8 +59,7 @@ h2 {
     height: auto;
 }
 
-.login,
-.login form {
+.login {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -77,6 +74,7 @@ h2 {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
@@ -93,7 +91,6 @@ h2 {
 }
 
 .enlaces-footer {
-    display: flex;
     flex-direction: row;
     gap: 20px;
 }
@@ -104,9 +101,9 @@ button,
     color: white;
     padding: 10px 25px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
+    border-radius: var(--medida-bordes-formulario);
 }
 
 .tarjetas {
@@ -119,26 +116,42 @@ button,
     gap: 10px;
 }
 
-.tarjeta {
+/* Borde y radio compartidos entre tarjetas y paneles */
+.tarjeta,
+.tarjeta-viajes,
+.tarjeta-viaje-grupo,
+.info-viaje,
+.destinos-relacionados,
+.paginacion-viajes {
     border: 3px solid var(--color-bordes-tarjetas);
     border-radius: var(--medida-bordes-tarjetas);
+}
+
+.tarjeta {
     width: 32%;
 }
 
-.tarjeta h3 {
+/* Cabeceras compartidas de tarjetas */
+.tarjeta h3,
+.tarjeta-viajes h3,
+.tarjeta-viaje-grupo h3,
+.info-viaje h3,
+.destinos-relacionados h3 {
     background-color: var(--color-principal);
     border-radius: var(--medida-bordes-tarjetas) var(--medida-bordes-tarjetas) 0 0;
-    color: black;
-    padding: var(--medida-padding-cabecera-tarjetas);
     margin: 0;
+    padding: var(--medida-padding-cabecera-tarjetas);
     color: var(--color-texto-tarjetas);
+}
+
+.info-viaje h3,
+.destinos-relacionados h3 {
+    text-align: center;
 }
 
 .tarjeta-viajes {
     display: block;
     width: 32%;
-    border: 3px solid var(--color-bordes-tarjetas);
-    border-radius: var(--medida-bordes-tarjetas);
     text-decoration: none;
     color: inherit; /* para que no cambie de color el enlace */
     cursor: pointer;
@@ -150,34 +163,16 @@ button,
     display: block;
 }
 
-.tarjeta-viajes h3 {
-    background-color: var(--color-principal);
-    color: var(--color-texto-tarjetas);
-    padding: var(--medida-padding-cabecera-tarjetas);
-    margin: 0;
-    border-radius: var(--medida-bordes-tarjetas) var(--medida-bordes-tarjetas) 0 0;
-}
-
 .tarjeta-viajes:hover,
 .tarjeta-viajes:focus-visible {
     transform: translateY(-4px);
-    border-color: #52527d;
-    box-shadow: 0 12px 20px #52527d;
+    border-color: var(--color-hover-tarjeta);
+    box-shadow: 0 12px 20px var(--color-hover-tarjeta);
 }
 
 .tarjeta-viaje-grupo {
     width: 50%;
-    border: 3px solid  var(--color-bordes-tarjetas);
-    border-radius: var(--medida-bordes-tarjetas);
     margin: 20px;
-}
-
-.tarjeta-viaje-grupo h3 {
-    background-color: var(--color-principal);
-    border-radius: var(--medida-bordes-tarjetas) var(--medida-bordes-tarjetas) 0 0;
-    margin: 0;
-    padding: var(--medida-padding-cabecera-tarjetas);
-    color: var(--color-texto-tarjetas);
 }
 
 .tarjeta-viaje-grupo img {
@@ -202,7 +197,6 @@ button,
 .tarjeta-viaje-grupo ul {
     margin: 0;
 }
-
 
 @media (max-width: 760px) {
     .cabecera {
@@ -316,8 +310,6 @@ button,
 .paginacion-viajes {
     margin-top: 20px;
     padding: 5px;
-    border: 3px solid var(--color-bordes-tarjetas);
-    border-radius: var(--medida-bordes-tarjetas);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -342,8 +334,6 @@ button,
 
 .info-viaje {
     width: 63%;
-    border: 3px solid var(--color-bordes-tarjetas);
-    border-radius: var(--medida-bordes-tarjetas);
     margin-top: 10px;
     text-align: left;
 }
@@ -352,19 +342,7 @@ button,
     display: flex;
     flex-direction: column;
     width: 33%;
-    border: 3px solid var(--color-bordes-tarjetas);
     margin-top: 10px;
-    border-radius: var(--medida-bordes-tarjetas);
-}
-
-.info-viaje h3,
-.destinos-relacionados h3 {
-    text-align: center;
-    border-radius: var(--medida-bordes-tarjetas) var(--medida-bordes-tarjetas) 0 0;
-    background-color: var(--color-principal);
-    margin: 0;
-    padding: var(--medida-padding-cabecera-tarjetas);
-    color: var(--color-texto-tarjetas);
 }
 
 .info-viaje ul {
@@ -386,7 +364,8 @@ button,
     justify-content: center;
 }
 
-.formulario-sugerencia fieldset {
+.formulario-sugerencia fieldset,
+.alta-usuarios fieldset {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -408,44 +387,32 @@ button,
     gap: 10px;
 }
 
-.titulo {
-    background-color: #c9e8fd;
-    color: var(--color-texto-calendario);
+/* Celdas del calendario: padding y radio compartidos */
+.titulo,
+.mes,
+.dia-semana,
+.tmp-alta,
+.tmp-media,
+.tmp-baja,
+.leyenda {
     padding: 10px;
     border-radius: var(--medida-bordes-tarjetas);
 }
 
-.mes {
-    background-color: #e2d5f1;
-    color: var(--color-texto-calendario);
-    padding: 10px;
-    border-radius: var(--medida-bordes-tarjetas);
-}
-
+/* Color de texto compartido entre cabeceras del calendario */
+.titulo,
+.mes,
 .dia-semana {
-    background-color: #b8acd1;
     color: var(--color-texto-calendario);
-    padding: 10px;
-    border-radius: var(--medida-bordes-tarjetas);
 }
 
-.tmp-alta {
-    background-color: #f88383;
-    padding: 10px;
-    border-radius: var(--medida-bordes-tarjetas);
-}
+.titulo { background-color: #c9e8fd; }
+.mes    { background-color: var(--color-calendario-secundario); }
 
-.tmp-media {
-    background-color: #fffbc8;
-    padding: 10px;
-    border-radius: var(--medida-bordes-tarjetas);
-}
-
-.tmp-baja {
-    background-color: #c8ffcf;
-    padding: 10px;
-    border-radius: var(--medida-bordes-tarjetas);
-}
+.dia-semana { background-color: #b8acd1; }
+.tmp-alta   { background-color: #f88383; }
+.tmp-media  { background-color: #fffbc8; }
+.tmp-baja   { background-color: #c8ffcf; }
 
 .leyenda {
     display: flex;
@@ -453,9 +420,7 @@ button,
     justify-content: center;
     align-items: center;
     gap: 20px;
-    background-color: #e2d5f1;
-    border-radius: var(--medida-bordes-tarjetas);
-    padding: 10px;
+    background-color: var(--color-calendario-secundario);
 }
 
 .ofertas section {
@@ -465,7 +430,6 @@ button,
 .w3-ul.w3-card-4 {
     border-radius: 0 0 var(--medida-bordes-tarjetas) var(--medida-bordes-tarjetas);
 }
-
 
 /* Estilos para la sección de VIAJES EN GRUPO */
 .viajes-grupo {
@@ -490,17 +454,8 @@ hr {
     margin-bottom: 20px;
 }
 
-.alta-usuarios fieldset{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.alta-usuarios fieldset {
     width: 550px;
-    gap: 10px;
-    border: 3px solid var(--color-bordes-tarjetas);
-    border-radius: var(--medida-bordes-formulario);
-    padding: 15px;
-    margin: 15px;
-    text-align: left;
 }
 
 .checkbox-radio,
