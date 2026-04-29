@@ -170,34 +170,6 @@ button,
     box-shadow: 0 12px 20px var(--color-hover-tarjeta);
 }
 
-.tarjeta-viaje-grupo {
-    width: 50%;
-    margin: 20px;
-}
-
-.tarjeta-viaje-grupo img {
-    width: 80%;
-    height: auto;
-    border-radius: 0  0 8px 8px;
-}
-
-.info-viaje-grupo {
-    margin-left: 10%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-}
-
-.texto-viajes-grupo {
-    padding: 5px;
-    margin: 0;
-}
-
-.tarjeta-viaje-grupo ul {
-    margin: 0;
-}
-
 @media (max-width: 760px) {
     .cabecera {
         flex-direction: column;
@@ -302,7 +274,12 @@ button,
     padding: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
+}
+
+.w3-button.activo {
+    background-color: #8d8de9;
+    color: white;
 }
 
 /* Estilos para la sección DE VIAJE INDIVIDUAL */
@@ -377,6 +354,10 @@ button,
     gap: 10px;
 }
 
+.separador {
+    padding: 10px;
+}
+
 /* Celdas del calendario: padding y radio compartidos */
 .titulo,
 .mes,
@@ -427,6 +408,34 @@ button,
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.tarjeta-viaje-grupo {
+    width: 50%;
+    margin: 20px;
+}
+
+.tarjeta-viaje-grupo img {
+    width: 80%;
+    height: auto;
+    border-radius: 0  0 8px 8px;
+}
+
+.info-viaje-grupo {
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.info-viaje-grupo ul {
+    margin: 0;
+}
+
+.texto-viajes-grupo {
+    padding: 5px;
+    margin: 0;
 }
 
 hr {
