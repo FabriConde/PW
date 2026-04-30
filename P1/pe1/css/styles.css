@@ -114,6 +114,7 @@ button,
     justify-content: space-around;
     align-items: stretch;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
 /* Borde y radio compartidos entre tarjetas y paneles */
@@ -159,7 +160,8 @@ button,
 
 .tarjeta-viajes img {
     width: 100%;
-    height: auto;
+    height: 300px;
+    object-fit: cover;
     display: block;
 }
 
@@ -204,12 +206,12 @@ button,
         gap: 10px;
     }
 
-    .viajes .tarjetas {
+    .tarjetas {
         flex-direction: column;
         justify-content: center;
     }
     
-    .viajes .tarjeta-viajes {
+    .tarjeta-viajes {
         width: 90%;
     }
 }
