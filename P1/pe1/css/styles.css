@@ -285,10 +285,9 @@ button,
 }
 
 /* Estilos para la sección DE VIAJE INDIVIDUAL */
-
 .banner-viaje {
-    width: 100%;
-    height: auto;
+    width: 90%;
+    height: 800px;
     border: 2px;
     border-radius: 8px;
 }
@@ -419,7 +418,7 @@ button,
 
 .tarjeta-viaje-grupo img {
     width: 80%;
-    height: auto;
+    height: 450px;
     border-radius: 0  0 8px 8px;
 }
 
