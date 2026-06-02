@@ -1,0 +1,471 @@
+/* VARIABLES GLOBALES*/
+:root {
+    --color-principal: #f2eff7;
+    --color-bordes-tarjetas: #a9a9ec;
+    --medida-bordes-tarjetas: 30px;
+    --color-texto-tarjetas: #5d448a;
+    --medida-bordes-formulario: 20px;
+    --medida-padding-cabecera-tarjetas: 22px;
+    --color-texto-calendario: #422057;
+    --color-hover-tarjeta: #52527d;
+    --color-calendario-secundario: #e2d5f1;
+}
+
+/* Estilos globales */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+footer {
+    padding: 25px;
+    background-color: #c0dada;
+    margin-top: auto;
+}
+
+input,
+select,
+textarea,
+button {
+    min-height: 42.5px;
+    box-sizing: border-box;
+    font: inherit;
+    border: 2px solid #d6cde6;
+    border-radius: var(--medida-bordes-formulario);
+}
+
+ul {
+    list-style-type: none;
+}
+
+h2 {
+    font-weight: bold;
+    color: #2e2ece;
+}
+
+.cabecera {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabecera img {
+    width: 250px;
+    height: auto;
+}
+
+.login {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.barra-navegacion {
+    padding: 20px;
+    background-color: #e98d8d;
+}
+    
+.barra-navegacion ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.barra-navegacion ul li a {
+    color: black;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.barra-navegacion ul li a:hover {
+  background-color: #efafaf;
+}
+
+.enlaces-footer {
+    flex-direction: row;
+    gap: 20px;
+}
+
+button,
+.boton-enlace {
+    background-color: #8d8de9;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: var(--medida-bordes-formulario);
+}
+
+.tarjetas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Borde y radio compartidos entre tarjetas y paneles */
+.tarjeta,
+.tarjeta-viajes,
+.tarjeta-viaje-grupo,
+.info-viaje,
+.destinos-relacionados,
+.paginacion-viajes {
+    border: 3px solid var(--color-bordes-tarjetas);
+    border-radius: var(--medida-bordes-tarjetas);
+}
+
+.tarjeta {
+    width: 32%;
+}
+
+/* Cabeceras compartidas de tarjetas */
+.tarjeta h3,
+.tarjeta-viajes h3,
+.tarjeta-viaje-grupo h3,
+.info-viaje h3,
+.destinos-relacionados h3 {
+    background-color: var(--color-principal);
+    border-radius: var(--medida-bordes-tarjetas) var(--medida-bordes-tarjetas) 0 0;
+    margin: 0;
+    padding: var(--medida-padding-cabecera-tarjetas);
+    color: var(--color-texto-tarjetas);
+}
+
+.info-viaje h3,
+.destinos-relacionados h3 {
+    text-align: center;
+}
+
+.tarjeta-viajes {
+    display: block;
+    width: 32%;
+    text-decoration: none;
+    color: inherit; /* para que no cambie de color el enlace */
+    cursor: pointer;
+}
+
+.tarjeta-viajes img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.tarjeta-viajes:hover,
+.tarjeta-viajes:focus-visible {
+    transform: translateY(-4px);
+    border-color: var(--color-hover-tarjeta);
+    box-shadow: 0 12px 20px var(--color-hover-tarjeta);
+}
+
+@media (max-width: 760px) {
+    .cabecera {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .login,
+    .login form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .barra-navegacion ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bienvenida {
+        gap: 20px;
+    }
+
+    .buscador {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .buscador form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .tarjetas {
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .tarjeta-viajes {
+        width: 90%;
+    }
+}
+
+/* Estilos para la sección de INICIO */
+
+.pagina-principal {
+    background-color: #e8e8fa;
+}
+
+.bienvenida img {
+    width: 90%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.buscador {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background-image: url(../imagenes/banner.jpg);
+    background-size: cover;
+    background-position: center;
+    margin-top: 30px;
+}
+
+.buscador form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Estilos para la sección de CONTACTO */
+.datos-contacto  {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.datos-contacto  ul {
+    background-color: #fafae8;
+}
+
+.datos-contacto  ul > li:first-child {
+    background: #62a3a3;
+    color: white;
+}
+
+/* Estilos para la sección de VIAJES */
+.w3-sidebar.w3-bar-block {
+    background-color: #f0f3e8;
+    border: 3px solid #c4d3a6;
+    border-radius: var(--medida-bordes-tarjetas);
+}
+
+
+.paginacion-viajes {
+    margin-top: 20px;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.w3-button.activo {
+    background-color: #8d8de9;
+    color: white;
+}
+
+/* Estilos para la sección DE VIAJE INDIVIDUAL */
+.banner-viaje {
+    width: 100%;
+    height: 900px;
+    border: 2px;
+    border-radius: 8px;
+}
+
+.viaje-contenido {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 20px;
+}
+
+.info-viaje {
+    width: 63%;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.destinos-relacionados {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    margin-top: 10px;
+}
+
+.info-viaje ul {
+    margin: 0;
+}
+
+.info-viaje p {
+    margin: 0 0 0 10px;
+    padding: 5px;
+}
+
+
+/* Estilos para la sección SOBRE NUESTRA AGENCIA */
+
+/* Estilos para la sección SUGERENCIAS */
+.formulario-sugerencia,
+.formulario-sugerencia form {
+    display: flex;
+    justify-content: center;
+}
+
+.formulario-sugerencia fieldset,
+.alta-usuarios fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    border: 3px solid var(--color-bordes-tarjetas);
+    border-radius: var(--medida-bordes-formulario);
+    padding: 15px;
+    margin: 15px;
+    text-align: left;
+}
+
+/* Estilos para la sección de OFERTAS */
+.calendario-ofertas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.separador {
+    padding: 10px;
+}
+
+/* Celdas del calendario: padding y radio compartidos */
+.titulo,
+.mes,
+.dia-semana,
+.tmp-alta,
+.tmp-media,
+.tmp-baja,
+.leyenda {
+    padding: 10px;
+    border-radius: var(--medida-bordes-tarjetas);
+}
+
+/* Color de texto compartido entre cabeceras del calendario */
+.titulo,
+.mes,
+.dia-semana {
+    color: var(--color-texto-calendario);
+}
+
+.titulo { background-color: #c9e8fd; }
+.mes    { background-color: var(--color-calendario-secundario); }
+
+.dia-semana { background-color: #b8acd1; }
+.tmp-alta   { background-color: #f88383; }
+.tmp-media  { background-color: #fffbc8; }
+.tmp-baja   { background-color: #c8ffcf; }
+
+.leyenda {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--color-calendario-secundario);
+}
+
+.ofertas section {
+    margin-bottom: 20px;
+}
+
+.w3-ul.w3-card-4 {
+    border-radius: 0 0 var(--medida-bordes-tarjetas) var(--medida-bordes-tarjetas);
+}
+
+/* Estilos para la sección de VIAJES EN GRUPO */
+.viajes-grupo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tarjeta-viaje-grupo {
+    width: 50%;
+    margin: 20px;
+}
+
+.tarjeta-viaje-grupo img {
+    width: 80%;
+    height: 450px;
+    border-radius: 0  0 8px 8px;
+}
+
+.info-viaje-grupo {
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.info-viaje-grupo ul {
+    margin: 0;
+}
+
+.texto-viajes-grupo {
+    padding: 5px;
+    margin: 0;
+}
+
+hr {
+    margin: 0;
+    border-top: 2px solid #7c4f7c;
+}
+
+/* Estilos para la sección de ALTA DE USUARIOS */
+
+.alta-usuarios-main form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.alta-usuarios fieldset {
+    width: 550px;
+}
+
+.checkbox-radio,
+.genero {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.alta-usuarios p {
+    margin: 0;
+}
