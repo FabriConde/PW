@@ -1,10 +1,8 @@
 <?php include 'includes/header.php';
 $errores = $_SESSION['errores'] ?? [];
-$erroresGenerales = $_SESSION['erroresGenerales'] ?? [];
 $mensaje = $_SESSION['mensaje'] ?? '';
 $datosUsuario = $_SESSION['datosUsuario'] ?? [];
 unset($_SESSION['errores']);
-unset($_SESSION['erroresGenerales']);
 unset($_SESSION['mensaje']);
 unset($_SESSION['datosUsuario']);
 ?>

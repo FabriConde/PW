@@ -34,13 +34,11 @@ $por_pagina = $_SESSION['por_pagina'] ?? 9;
         <h2>Catálogo de viajes</h2>
         <article class="tarjetas">
             <?php if (!empty($viajes)): ?>
-                <?php foreach ($viajes as $viaje): 
-                    ?>
-                    
+                <?php foreach ($viajes as $viaje): ?>
                     <a class="tarjeta-viajes" href="viaje1.html">
                         <h3><?php echo htmlspecialchars($viaje['destino']); ?></h3>
                         <?php if (!empty($viaje['imagen'])): ?>
-                            <img src="<?php echo htmlspecialchars($viaje['imagen']); ?>" alt="<?php echo htmlspecialchars($viaje['destino']); ?>">
+                            <img src="imagenes/<?php echo htmlspecialchars($viaje['imagen']); ?>" alt="<?php echo htmlspecialchars($viaje['destino']); ?>">
                         <?php endif; ?>
                         <p><strong>Fechas:</strong> <?php echo htmlspecialchars($viaje['fecha_inicio']); ?> - <?php echo htmlspecialchars($viaje['fecha_fin']); ?></p>
                         <p><?php echo htmlspecialchars($viaje['descripcion_corta']); ?></p>

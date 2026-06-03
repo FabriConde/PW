@@ -1,5 +1,4 @@
-<?php include 'includes/header.php'; ?>
-<?php
+<?php include 'includes/header.php';
 // Preparar lista de imágenes y países desde el directorio `imagenes/`
 $img_dir = __DIR__ . '/imagenes';
 $images = [];
@@ -10,9 +9,19 @@ if (is_dir($img_dir)) {
 }
 $countries = ['Francia', 'Italia', 'España', 'Canadá', 'Brasil', 'Estados Unidos', 'China', 'Japón', 'Tailandia', 'Marruecos'];
 $continentes = ['Europa', 'América', 'Asia', 'África'];
+$erroresViaje = $_SESSION['erroresViaje'] ?? [];
+$mensajeViaje = $_SESSION['mensajeViaje'] ?? '';
+$datosViaje = $_SESSION['datosViaje'] ?? [];
 ?>
 
 <main class="alta-viaje-main">
+    <?php if (!empty($mensajeViaje)): ?>
+        <h1 class="mensaje_exito"><?php echo htmlspecialchars($mensajeViaje); ?></h1>
+    <?php endif; ?>
+
+    <?php if (isset($erroresViaje['general'])): ?>
+        <p class="mensaje_error"><?php echo $erroresViaje['general']; ?></p>
+    <?php endif; ?>
     <h2>Alta de viajes</h2>
     <p>Completa todos los campos para registrarte un nuevo viaje.</p>
     <form  class="alta-viaje" accept=""action="controller/crear_viaje.php" method="post">
