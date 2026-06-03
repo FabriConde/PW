@@ -3,4 +3,5 @@
     define("DB_USUARIO", "root" );
     define("DB_CONTRASENIA", "" );
     define("USUARIOS", "usuarios" );
+    define("VIAJES", "viajes" );
 ?>

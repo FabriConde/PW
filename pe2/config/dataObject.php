@@ -1,5 +1,5 @@
 <?php
-require_once('configuracion.php');
+require_once __DIR__ . '/configuracion.php';
 abstract class DataObject {
     protected $datos = array();
     public function __construct( $datos ) {

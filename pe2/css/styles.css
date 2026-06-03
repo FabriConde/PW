@@ -4,7 +4,7 @@
     --color-bordes-tarjetas: #a9a9ec;
     --medida-bordes-tarjetas: 30px;
     --color-texto-tarjetas: #5d448a;
-    --medida-bordes-formulario: 20px;
+    --medida-bordes-formulario: 12px;
     --medida-padding-cabecera-tarjetas: 22px;
     --color-texto-calendario: #422057;
     --color-hover-tarjeta: #52527d;
@@ -283,7 +283,6 @@ button,
     border-radius: var(--medida-bordes-tarjetas);
 }
 
-
 .paginacion-viajes {
     margin-top: 20px;
     padding: 5px;
@@ -295,6 +294,13 @@ button,
 .w3-button.activo {
     background-color: #8d8de9;
     color: white;
+}
+
+.boton-add-viaje {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 20px;
 }
 
 /* Estilos para la sección DE VIAJE INDIVIDUAL */
@@ -346,7 +352,8 @@ button,
 }
 
 .formulario-sugerencia fieldset,
-.alta-usuarios fieldset {
+.alta-usuarios fieldset,
+.alta-viaje fieldset {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -490,4 +497,18 @@ hr {
 .mensaje_error {
     color: red;
     font-size: 0.9em;
+}
+
+/* Estilos para la sección de ALTA DE VIAJES */
+
+.alta-viaje-main form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.alta-viaje fieldset {
+    width: 550px;
 }

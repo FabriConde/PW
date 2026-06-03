@@ -1,9 +1,10 @@
 <?php
-session_start();
-require_once __DIR__ . '/../config/db_alta_usuario.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once __DIR__ . '/../config/db_usuarios.php';
 
 $errores = [];
-$mensaje = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $campos = ['nombre', 'apellidos', 'fecha-nacimiento', 'edad', 'dni', 'telefono', 'email', 'usuario', 'password',
     'genero', 'nacionalidad', 'destino', 'tipo-viaje', 'acompanantes',];
@@ -19,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } */
 
     if (!isset($_POST['condiciones'])) {
-        $errores['terminos'] = 'Debe aceptar los términos.';
+        $errores['condiciones'] = 'Debe aceptar los términos.';
     }
 
     $datosUsuario = array(
@@ -55,16 +56,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
         $resultado = Usuario::insertarUsuario($datosUsuario);
         if ($resultado) {
-            $mensaje = "Usuario registrado correctamente";
-            $_SESSION['mensaje'] = $mensaje;
+            $_SESSION['mensaje'] = "Usuario registrado correctamente";
+            header('Location: ../altausuarios.php');
+            exit;
+        } else {
+            $_SESSION['erroresGenerales']['general'] = 'Error al registrar el usuario.';
             header('Location: ../altausuarios.php');
             exit;
         }
     } catch (Exception $e) {
-        $_SESSION['errores'][] = $e->getMessage();
+        $_SESSION['erroresGenerales']['general'] = $e->getMessage();
         header('Location: ../altausuarios.php');
         exit;
-    }    
+    }
 }
 
     

@@ -1,22 +1,24 @@
-<?php include 'includes/header.php'; 
-session_start();
+<?php include 'includes/header.php';
 $errores = $_SESSION['errores'] ?? [];
+$erroresGenerales = $_SESSION['erroresGenerales'] ?? [];
 $mensaje = $_SESSION['mensaje'] ?? '';
 $datosUsuario = $_SESSION['datosUsuario'] ?? [];
 unset($_SESSION['errores']);
+unset($_SESSION['erroresGenerales']);
 unset($_SESSION['mensaje']);
 unset($_SESSION['datosUsuario']);
 ?>
 
 <main class="alta-usuarios-main">
+    <?php if (!empty($mensaje)): ?>
+        <h1 class="mensaje_exito"><?php echo htmlspecialchars($mensaje); ?></h1>
+    <?php endif; ?>
+
+    <?php if (isset($errores['general'])): ?>
+        <p class="mensaje_error"><?php echo $errores['general']; ?></p>
+    <?php endif; ?>
     <h2>Alta de usuarios</h2>
     <p>Completa todos los campos para registrarte en PW-TravelPro.</p>
-    CAMBIAR POR UN MENSAJE DE ÉXITO O ERROR DESPUÉS DE PROCESAR EL FORMULARIO
-    <?php if (!empty($mensaje)): ?>
-        <div>
-            <?php echo $mensaje; ?>
-        </div>
-    <?php endif; ?>
     <form class="alta-usuarios" action="controller/procesar_registro_usuario.php" method="post" novalidate>
         <fieldset>
             <legend>Datos personales</legend>
@@ -146,9 +148,7 @@ unset($_SESSION['datosUsuario']);
             <legend>Observaciones y confirmación</legend>
 
             <label for="comentarios">Comentarios o necesidades especiales</label>
-            <textarea id="comentarios" name="comentarios" rows="3" minlength="15" maxlength="400">
-                <?php echo isset($datosUsuario['comentarios']) ? htmlspecialchars($datosUsuario['comentarios']) : ''; ?>
-            </textarea>
+            <textarea id="comentarios" name="comentarios" rows="2"><?php echo isset($datosUsuario['comentarios']) ? htmlspecialchars(trim($datosUsuario['comentarios'])) : ''; ?></textarea>
         
             <label for="web">Sitio web similares que usas para buscar viajes</label>
             <input id="web" type="url" name="web" placeholder="https://miweb.com" 
@@ -156,8 +156,7 @@ unset($_SESSION['datosUsuario']);
            
             <label class="checkbox-radio">
                 <input id="condiciones" type="checkbox" name="condiciones" 
-                class="<?php echo isset($errores['condiciones']) ? 'is-invalid' : '' ?>" 
-                <?php echo isset($datosUsuario['condiciones']) && $datosUsuario['condiciones'] ? 'checked' : ''; ?>> Acepto las condiciones de uso y la política de privacidad.
+                class="<?php echo isset($errores['condiciones']) ? 'is-invalid' : '' ?>" <?php echo isset($datosUsuario['condiciones']) && $datosUsuario['condiciones'] ? 'checked' : ''; ?>> Acepto las condiciones de uso y la política de privacidad.
             </label>
             <?php if (isset($errores['condiciones'])): ?>
                 <p class="mensaje_error"><?php echo $errores['condiciones']; ?></p>

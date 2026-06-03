@@ -1,15 +1,15 @@
 <?php
 session_start();
-require_once __DIR__ . '/../config/db_alta_usuario.php';
+require_once __DIR__ . '/../config/db_usuarios.php';
 
-$errores = [];
+$erroresLogin = [];
 $mensaje = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {   
     $campos = ['email', 'password'];
 
     foreach ($campos as $campo) {
         if (!isset($_POST[$campo]) || trim($_POST[$campo]) === '') {
-            $errores[$campo] = 'Se tiene que rellenar el campo ' . $campo . '.';
+            $erroresLogin[$campo] = 'Se tiene que rellenar el campo ' . $campo . '.';
         }
     }
 
@@ -19,8 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $_SESSION['datosUsuario'] = $datosUsuario;
 
-    if (!empty($errores)) {
-        $_SESSION['errores'] = $errores;
+    if (!empty($erroresLogin)) {
+        $_SESSION['erroresLogin'] = $erroresLogin;
 
         header('Location: ../index.php');
         exit;
@@ -37,12 +37,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             session_regenerate_id(true);
             $_SESSION['logeado'] = true;
             $_SESSION['nombreUsuario'] = $resultado['usuario'];
+            $_SESSION['esAdmin'] = $resultado['admin'];
             
+            header('Location: ../index.php');
+            exit;
+        }   else {
+            $_SESSION['erroresLogin']['general'] = 'Usuario o contraseña incorrectos.';
             header('Location: ../index.php');
             exit;
         }
     } catch (Exception $e) {
-        $_SESSION['errores'][] = $e->getMessage();
+        $_SESSION['erroresLogin']['general'] = $e->getMessage();
         header('Location: ../index.php');
         exit;
     }    

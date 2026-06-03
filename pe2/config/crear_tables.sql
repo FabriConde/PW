@@ -23,3 +23,6 @@ CREATE TABLE IF NOT EXISTS  usuarios (
     condiciones BOOLEAN DEFAULT FALSE NOT NULL,
     admin BOOLEAN DEFAULT FALSE NOT NULL
 );
+
+INSERT INTO `usuarios` (`id`, `nombre`, `apellidos`, `fecha_nacimiento`, `edad`, `dni`, `telefono`, `email`, `usuario`, `password`, `foto`, `genero`, `nacionalidad`, `destino`, `tipo_viaje`, `acompanantes`, `comentarios`, `web`, `condiciones`, `admin`) VALUES
+(4, 'Admin', 'Admin Admin', '2026-05-01', 18, '26883334Z', '666888999', 'admin@correo.com', 'Administrador', '$2y$10$y11DfBiDGEZvQwbaZY1tyepSYyEmSKC28aFL3uB6oNknRJ2oqjS6K', 'testo.jpg', 'hombre', 'ca', 'Marsella', 'aventura', 4, 'Esto es un ejemplo', 'https://www.admin.com', 1, 1);

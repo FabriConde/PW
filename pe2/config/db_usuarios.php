@@ -1,5 +1,5 @@
 <?php
-require_once ('dataObject.php');
+require_once __DIR__ . '/dataObject.php';
 // Cada instancia de la clase Usuario se corresponde con una fila/registro de la tabla del mismo nombre
 class Usuario extends DataObject {
     protected $datosRegistro = array(
