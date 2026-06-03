@@ -469,3 +469,12 @@ hr {
 .alta-usuarios p {
     margin: 0;
 }
+
+.is-invalid {
+    border: 2px solid red;
+}
+
+.mensaje_error {
+    color: red;
+    font-size: 0.9em;
+}
