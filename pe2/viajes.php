@@ -1,6 +1,8 @@
 <?php include 'includes/header.php';
 include __DIR__ . '/controller/obtener_viajes.php';
-$esAdmin = $_SESSION['esAdmin'] ?? false; 
+$esAdmin = $_SESSION['esAdmin'] ?? false;
+$destino = $_SESSION['destino'] ?? '';
+unset($_SESSION['destino']);
 $viajes = $_SESSION['viajes'] ?? array();
 $total_viajes = $_SESSION['total_viajes'] ?? 0;
 $pagina = $_SESSION['pagina_actual'] ?? 1;
@@ -26,68 +28,18 @@ $por_pagina = $_SESSION['por_pagina'] ?? 9;
     </aside>
         
     <section class="viajes" style="margin-left:15%">    
-            <?php if ($esAdmin): ?>
-                <section class="boton-add-viaje">
-                    <a class="boton-enlace" href='alta_viaje.php'>Añadir viaje</a>
-                </section>
-            <?php endif; ?>
-        <h2>Catálogo de viajes</h2>
-        <article class="tarjetas">
-            <?php if (!empty($viajes)): ?>
-                <?php foreach ($viajes as $viaje): ?>
-                    <article class="tarjeta-viajes">
-                        <a class="tarjeta-viajes-enlace" href="viaje1.html">
-                            <h3><?php echo htmlspecialchars($viaje['destino']); ?></h3>
-                            <?php if (!empty($viaje['imagen'])): ?>
-                                <img src="imagenes/<?php echo htmlspecialchars($viaje['imagen']); ?>" alt="<?php echo htmlspecialchars($viaje['destino']); ?>">
-                            <?php endif; ?>
-                            <p><strong>Fechas:</strong> <?php echo htmlspecialchars($viaje['fecha_inicio']); ?> - <?php echo htmlspecialchars($viaje['fecha_fin']); ?></p>
-                            <p><?php echo htmlspecialchars($viaje['descripcion_corta']); ?></p>
-                        </a>
-                        <?php if ($esAdmin): ?>
-                            <article class="opciones-admin">
-                                <a class="boton-enlace" href="alta_viaje.php?id=<?php echo $viaje['id']; ?>">Editar</a>
-                                <a class="boton-enlace" href="controller/eliminar_viaje.php?id=<?php echo $viaje['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este viaje?');">Eliminar</a>
-                            </article>
-                        <?php endif; ?>
-                    </article>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p>No hay viajes disponibles.</p>
-            <?php endif; ?>
-        </article>
+        <?php if ($esAdmin): ?>
+            <section class="boton-add-viaje">
+                <a class="boton-enlace" href='alta_viaje.php'>Añadir viaje</a>
+            </section>
+        <?php endif; ?>
 
-        <?php $total_paginas = ($por_pagina > 0) ? (int)ceil($total_viajes / $por_pagina) : 1; ?>
-        <nav class="paginacion-viajes">
-            <?php
-                $queryBase = array();
-                if (!empty($_GET['continente'])) $queryBase['continente'] = $_GET['continente'];
-                if (!empty($_GET['pais'])) $queryBase['pais'] = $_GET['pais'];
-                if (!empty($_GET['por_pagina'])) $queryBase['por_pagina'] = $_GET['por_pagina'];
-            ?>
-            <?php if ($pagina > 1): ?>
-                    <?php $queryBase['pagina'] = $pagina - 1; ?>
-                    <a href="?<?php echo http_build_query($queryBase); ?>" class="w3-button">&#10094; Anterior</a>
-            <?php else: ?>
-                <span class="w3-button disabled">&#10094; Anterior</span>
-            <?php endif; ?>
-
-            <?php for ($p = 1; $p <= $total_paginas; $p++): ?>
-                <?php $queryBase['pagina'] = $p; ?>
-                <?php if ($p == $pagina): ?>
-                    <a href="?<?php echo http_build_query($queryBase); ?>" class="w3-button activo"><?php echo $p; ?></a>
-                <?php else: ?>
-                    <a href="?<?php echo http_build_query($queryBase); ?>" class="w3-button"><?php echo $p; ?></a>
-                <?php endif; ?>
-            <?php endfor; ?>
-
-            <?php if ($pagina < $total_paginas): ?>
-                <?php $queryBase['pagina'] = $pagina + 1; ?>
-                <a href="?<?php echo http_build_query($queryBase); ?>" class="w3-button w3-right">Siguiente &#10095;</a>
-            <?php else: ?>
-                <span class="w3-button w3-right disabled">Siguiente &#10095;</span>
-            <?php endif; ?>
-        </nav>
+        <?php if ($destino): ?>
+           <h2>Catálogo de viajes para: <?php echo htmlspecialchars(ucfirst($destino)); ?></h2>
+        <?php else: ?>
+           <h2>Catálogo de viajes</h2>
+        <?php endif; ?>
+        <?php include 'includes/ventana_viajes.php'; ?>
     </section>            
 </main>
 <?php include 'includes/footer.php'; ?>
