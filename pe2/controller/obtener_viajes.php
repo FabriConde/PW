@@ -53,7 +53,6 @@ try {
 
 	if ($continente && $pais) {
 		list($viajes, $total_viajes) = Viajes::obtenerViajesPorContinenteYPais($continente, $pais, $filaInicio, $por_pagina);
-		$_SESSION['destino'] = $pais;
 	} else {
 		list($viajes, $total_viajes) = Viajes::obtenerViajes($filaInicio, $por_pagina);
 	}
@@ -61,10 +60,5 @@ try {
 	$viajes = array();
 	$total_viajes = 0;
 }
-
-$_SESSION['viajes'] = $viajes;
-$_SESSION['total_viajes'] = $total_viajes;
-$_SESSION['pagina_actual'] = $pagina;
-$_SESSION['por_pagina'] = $por_pagina;
 ?>
 

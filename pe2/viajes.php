@@ -1,12 +1,8 @@
 <?php include 'includes/header.php';
 include __DIR__ . '/controller/obtener_viajes.php';
 $esAdmin = $_SESSION['esAdmin'] ?? false;
-$destino = $_SESSION['destino'] ?? '';
+$destino = $pais ?? '';
 unset($_SESSION['destino']);
-$viajes = $_SESSION['viajes'] ?? array();
-$total_viajes = $_SESSION['total_viajes'] ?? 0;
-$pagina = $_SESSION['pagina_actual'] ?? 1;
-$por_pagina = $_SESSION['por_pagina'] ?? 9;
 ?>
 <main>
     <aside class="w3-sidebar w3-bar-block" style="width:15%;">

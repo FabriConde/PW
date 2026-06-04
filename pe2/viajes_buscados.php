@@ -18,12 +18,6 @@ $total_viajes = 0;
 if ($destino !== '' && $fecha_inicio !== '' && $fecha_fin !== '') {
     list($viajes, $total_viajes) = Viajes::obtenerViajesDestinoYFechas($destino, $fecha_inicio, $fecha_fin, $filaInicio, $por_pagina);
 }
-
-// Guardar en sesión para que `ventana_viajes.php` funcione sin cambios
-$_SESSION['viajes'] = $viajes;
-$_SESSION['total_viajes'] = $total_viajes;
-$_SESSION['pagina_actual'] = $pagina;
-$_SESSION['por_pagina'] = $por_pagina;
 ?>
 <main>  
     <section class="viajes">    

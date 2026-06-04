@@ -1,9 +1,9 @@
-<?php
-$esAdmin = $_SESSION['esAdmin'] ?? false; 
-$viajes = $_SESSION['viajes'] ?? array();
-$total_viajes = $_SESSION['total_viajes'] ?? 0;
-$pagina = $_SESSION['pagina_actual'] ?? 1;
-$por_pagina = $_SESSION['por_pagina'] ?? 9;
+<?php 
+$esAdmin = $_SESSION['esAdmin'] ?? false;
+$viajes = $viajes ?? [];
+$total_viajes = $total_viajes ?? 0;
+$pagina = $pagina ?? 1;
+$por_pagina = $por_pagina ?? 9; 
 ?>
 <article class="tarjetas">
     <?php if (!empty($viajes)): ?>
@@ -30,7 +30,9 @@ $por_pagina = $_SESSION['por_pagina'] ?? 9;
     <?php endif; ?>
 </article>
 
+
 <?php $total_paginas = ($por_pagina > 0) ? (int)ceil($total_viajes / $por_pagina) : 1; ?>
+
 <nav class="paginacion-viajes">
     <?php
         $queryBase = array();
