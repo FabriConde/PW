@@ -138,5 +138,50 @@ class Viajes extends DataObject {
             throw new Exception( "Error al eliminar el viaje: " . $e->getMessage() );
         }
     }
+    
+    public static function obtenerViajesPorContinenteYPais( $continente, $pais, $filaInicio, $por_pagina ) {
+        $conexion = parent::conectar();
+        try {
+            // La búsqueda por continente y país siempre se pagina
+            $sql = "SELECT SQL_CALC_FOUND_ROWS id, destino, fecha_inicio, fecha_fin, descripcion_corta, descripcion_larga, precio, incluye, alojamientos, continente, pais, imagen FROM " . VIAJES . " WHERE LOWER(continente) = :continente AND LOWER(pais) = :pais ORDER BY fecha_inicio DESC LIMIT :filaInicio, :por_pagina";
+            $st = $conexion->prepare( $sql );
+            $st->bindValue(":continente", mb_strtolower($continente, 'UTF-8'), PDO::PARAM_STR);
+            $st->bindValue(":pais", mb_strtolower($pais, 'UTF-8'), PDO::PARAM_STR);
+            $st->bindValue(":filaInicio", (int)$filaInicio, PDO::PARAM_INT);
+            $st->bindValue(":por_pagina", (int)$por_pagina, PDO::PARAM_INT);
+            $st->execute();
+            $filas = $st->fetchAll( PDO::FETCH_ASSOC );
+
+            // Obtener total con FOUND_ROWS
+            $st2 = $conexion->query( "SELECT FOUND_ROWS() AS total" );
+            $resultado = $st2->fetch( PDO::FETCH_ASSOC );
+            $total = isset( $resultado['total'] ) ? (int)$resultado['total'] : 0;
+            parent::desconectar( $conexion );
+            /* if ( $resultado ) {
+                return array(
+                    'id' => $resultado['id'],
+                    'destino' => $resultado['destino'],
+                    'fecha-inicio' => $resultado['fecha_inicio'],
+                    'fecha-fin' => $resultado['fecha_fin'],
+                    'descripcion_corta' => $resultado['descripcion_corta'],
+                    'descripcion_larga' => $resultado['descripcion_larga'],
+                    'precio' => $resultado['precio'],
+                    'incluye' => $resultado['incluye'],
+                    'alojamientos' => $resultado['alojamientos'],
+                    'continente' => $resultado['continente'],
+                    'pais' => $resultado['pais'],
+                    'imagen' => $resultado['imagen']
+                );
+            } */
+            // Siempre devolver array(filas, total)
+            if ( $filas ) {
+                return array( $filas, $total );
+            }
+            return array( array(), 0 );
+        } catch ( PDOException $e ) {
+            parent::desconectar( $conexion );
+            throw new Exception( "Error al obtener el viaje: " . $e->getMessage() );
+        }
+    }
 }
 ?>
