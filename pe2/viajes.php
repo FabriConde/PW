@@ -26,23 +26,31 @@ $por_pagina = $_SESSION['por_pagina'] ?? 9;
     </aside>
         
     <section class="viajes" style="margin-left:15%">    
-        <?php if ($esAdmin): ?>
-            <section class="boton-add-viaje">
-                <a class="boton-enlace" href='alta_viaje.php'>Añadir viaje</a>
-            </section>
-        <?php endif; ?>
+            <?php if ($esAdmin): ?>
+                <section class="boton-add-viaje">
+                    <a class="boton-enlace" href='alta_viaje.php'>Añadir viaje</a>
+                </section>
+            <?php endif; ?>
         <h2>Catálogo de viajes</h2>
         <article class="tarjetas">
             <?php if (!empty($viajes)): ?>
                 <?php foreach ($viajes as $viaje): ?>
-                    <a class="tarjeta-viajes" href="viaje1.html">
-                        <h3><?php echo htmlspecialchars($viaje['destino']); ?></h3>
-                        <?php if (!empty($viaje['imagen'])): ?>
-                            <img src="imagenes/<?php echo htmlspecialchars($viaje['imagen']); ?>" alt="<?php echo htmlspecialchars($viaje['destino']); ?>">
+                    <article class="tarjeta-viajes">
+                        <a class="tarjeta-viajes-enlace" href="viaje1.html">
+                            <h3><?php echo htmlspecialchars($viaje['destino']); ?></h3>
+                            <?php if (!empty($viaje['imagen'])): ?>
+                                <img src="imagenes/<?php echo htmlspecialchars($viaje['imagen']); ?>" alt="<?php echo htmlspecialchars($viaje['destino']); ?>">
+                            <?php endif; ?>
+                            <p><strong>Fechas:</strong> <?php echo htmlspecialchars($viaje['fecha_inicio']); ?> - <?php echo htmlspecialchars($viaje['fecha_fin']); ?></p>
+                            <p><?php echo htmlspecialchars($viaje['descripcion_corta']); ?></p>
+                        </a>
+                        <?php if ($esAdmin): ?>
+                            <article class="opciones-admin">
+                                <a class="boton-enlace" href="alta_viaje.php?id=<?php echo $viaje['id']; ?>">Editar</a>
+                                <a class="boton-enlace" href="controller/eliminar_viaje.php?id=<?php echo $viaje['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este viaje?');">Eliminar</a>
+                            </article>
                         <?php endif; ?>
-                        <p><strong>Fechas:</strong> <?php echo htmlspecialchars($viaje['fecha_inicio']); ?> - <?php echo htmlspecialchars($viaje['fecha_fin']); ?></p>
-                        <p><?php echo htmlspecialchars($viaje['descripcion_corta']); ?></p>
-                    </a>
+                    </article>
                 <?php endforeach; ?>
             <?php else: ?>
                 <p>No hay viajes disponibles.</p>

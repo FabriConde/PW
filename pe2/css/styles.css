@@ -303,6 +303,19 @@ button,
     padding: 20px;
 }
 
+.tarjeta-viajes-enlace {
+    text-decoration: none;
+    color: inherit; /* para que no cambie de color el enlace */
+}
+
+.opciones-admin {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 10px;
+}
+
 /* Estilos para la sección DE VIAJE INDIVIDUAL */
 .banner-viaje {
     width: 100%;

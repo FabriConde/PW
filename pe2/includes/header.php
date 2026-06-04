@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once __DIR__ . '/../config/session.php';
 $erroresLogin = $_SESSION['erroresLogin'] ?? [];
 $logeado = $_SESSION['logeado'] ?? false;
 $nombreUsuario = $_SESSION['nombreUsuario'] ?? '';

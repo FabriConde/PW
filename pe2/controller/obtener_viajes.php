@@ -1,10 +1,6 @@
-
-
 <?php
+require_once __DIR__ . '/../config/session.php';
 require_once __DIR__ . '/../config/db_viajes.php';
-
-// Asegurar que la sesión está activa
-if (session_status() !== PHP_SESSION_ACTIVE) session_start();
 
 // Leer parámetros GET
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;

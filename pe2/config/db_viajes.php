@@ -6,7 +6,7 @@ class Viajes extends DataObject {
     "destino" => "",
     "fecha-inicio" => "",
     "fecha-fin" => "",
-    "descripcion" => "",
+    "descripcion_corta" => "",
     "descripcion_larga" => "",
     "precio" => "",
     "incluye" => "",
@@ -23,7 +23,7 @@ class Viajes extends DataObject {
             $st->bindValue( ":destino", $datosViaje['destino'], PDO::PARAM_STR );
             $st->bindValue( ":fecha_inicio", $datosViaje['fecha-inicio'], PDO::PARAM_STR );
             $st->bindValue( ":fecha_fin", $datosViaje['fecha-fin'], PDO::PARAM_STR );
-            $st->bindValue( ":descripcion_corta", $datosViaje['descripcion'], PDO::PARAM_STR );
+            $st->bindValue( ":descripcion_corta", $datosViaje['descripcion_corta'], PDO::PARAM_STR );
             $st->bindValue( ":descripcion_larga", $datosViaje['descripcion_larga'], PDO::PARAM_STR );
             $st->bindValue( ":precio", $datosViaje['precio'], PDO::PARAM_STR );
             $st->bindValue( ":incluye", $datosViaje['incluye'], PDO::PARAM_STR );
@@ -63,5 +63,80 @@ class Viajes extends DataObject {
         }
     }
 
+    public static function obtenerViajePorId( $idViaje ) {
+        $conexion = parent::conectar();
+        try {
+            $sql = "SELECT id, destino, fecha_inicio, fecha_fin, descripcion_corta, descripcion_larga, precio, incluye, alojamientos, continente, pais, imagen FROM " . VIAJES . " WHERE id = :id LIMIT 1";
+            $st = $conexion->prepare( $sql );
+            $st->bindValue( ":id", (int)$idViaje, PDO::PARAM_INT );
+            $st->execute();
+            $resultado = $st->fetch( PDO::FETCH_ASSOC );
+            parent::desconectar( $conexion );
+            /* if ( $resultado ) {
+                return array(
+                    'id' => $resultado['id'],
+                    'destino' => $resultado['destino'],
+                    'fecha-inicio' => $resultado['fecha_inicio'],
+                    'fecha-fin' => $resultado['fecha_fin'],
+                    'descripcion_corta' => $resultado['descripcion_corta'],
+                    'descripcion_larga' => $resultado['descripcion_larga'],
+                    'precio' => $resultado['precio'],
+                    'incluye' => $resultado['incluye'],
+                    'alojamientos' => $resultado['alojamientos'],
+                    'continente' => $resultado['continente'],
+                    'pais' => $resultado['pais'],
+                    'imagen' => $resultado['imagen']
+                );
+            } */
+            if ( $resultado ) {
+                return $resultado;
+            }
+            return null;
+        } catch ( PDOException $e ) {
+            parent::desconectar( $conexion );
+            throw new Exception( "Error al obtener el viaje: " . $e->getMessage() );
+        }
+    }
+
+    public static function actualizarViaje( $idViaje, $datosViaje ) {
+        $conexion = parent::conectar();
+        $sql = "UPDATE " . VIAJES . " SET destino = :destino, fecha_inicio = :fecha_inicio, fecha_fin = :fecha_fin, descripcion_corta = :descripcion_corta, descripcion_larga = :descripcion_larga, precio = :precio, incluye = :incluye, alojamientos = :alojamientos, continente = :continente, pais = :pais, imagen = :imagen WHERE id = :id";
+        try {
+            $st = $conexion->prepare( $sql );
+            $st->bindValue( ":destino", $datosViaje['destino'], PDO::PARAM_STR );
+            $st->bindValue( ":fecha_inicio", $datosViaje['fecha_inicio'], PDO::PARAM_STR );
+            $st->bindValue( ":fecha_fin", $datosViaje['fecha_fin'], PDO::PARAM_STR );
+            $st->bindValue( ":descripcion_corta", $datosViaje['descripcion_corta'], PDO::PARAM_STR );
+            $st->bindValue( ":descripcion_larga", $datosViaje['descripcion_larga'], PDO::PARAM_STR );
+            $st->bindValue( ":precio", $datosViaje['precio'], PDO::PARAM_STR );
+            $st->bindValue( ":incluye", $datosViaje['incluye'], PDO::PARAM_STR );
+            $st->bindValue( ":alojamientos", $datosViaje['alojamientos'], PDO::PARAM_STR );
+            $st->bindValue( ":continente", $datosViaje['continente'], PDO::PARAM_STR );
+            $st->bindValue( ":pais", $datosViaje['pais'], PDO::PARAM_STR );
+            $st->bindValue( ":imagen", $datosViaje['imagen'], PDO::PARAM_STR );
+            $st->bindValue( ":id", $idViaje, PDO::PARAM_INT );
+            $resultado = $st->execute();
+            parent::desconectar( $conexion );
+            return $resultado;
+        } catch ( PDOException $e ) {
+            parent::desconectar( $conexion );
+            throw new Exception( "Error al actualizar el viaje: " . $e->getMessage() );
+        }
+    }
+
+    public static function delete( $idViaje ) {
+        $conexion = parent::conectar();
+        $sql = "DELETE FROM " . VIAJES . " WHERE id = :id";
+        try {
+            $st = $conexion->prepare( $sql );
+            $st->bindValue( ":id", $idViaje, PDO::PARAM_INT );
+            $st->execute();
+            parent::desconectar( $conexion );
+            return true;
+        } catch ( PDOException $e ) {
+            parent::desconectar( $conexion );
+            throw new Exception( "Error al eliminar el viaje: " . $e->getMessage() );
+        }
+    }
 }
 ?>

@@ -1,5 +1,6 @@
 <?php include 'includes/header.php';
 // Preparar lista de imágenes y países desde el directorio `imagenes/`
+include __DIR__ . '/controller/crear_viaje.php';
 $img_dir = __DIR__ . '/imagenes';
 $images = [];
 if (is_dir($img_dir)) {
@@ -51,12 +52,12 @@ $datosViaje = $_SESSION['datosViaje'] ?? [];
                 <p class="mensaje_error"><?php echo $erroresViaje['fecha-fin']; ?></p>
             <?php endif; ?>
 
-            <label for="descripcion">Breve descripción</label>
-            <input id="descripcion" type="text" name="descripcion" 
-            class="<?php echo isset($erroresViaje['descripcion']) ? 'is-invalid' : '' ?>"
-            value="<?php echo isset($datosViaje['descripcion']) ? htmlspecialchars($datosViaje['descripcion']) : ''; ?>">
-            <?php if (isset($erroresViaje['descripcion'])): ?>
-                <p class="mensaje_error"><?php echo $erroresViaje['descripcion']; ?></p>
+            <label for="descripcion_corta">Breve descripción</label>
+            <input id="descripcion_corta" type="text" name="descripcion_corta" 
+            class="<?php echo isset($erroresViaje['descripcion_corta']) ? 'is-invalid' : '' ?>"
+            value="<?php echo isset($datosViaje['descripcion_corta']) ? htmlspecialchars($datosViaje['descripcion_corta']) : ''; ?>">
+            <?php if (isset($erroresViaje['descripcion_corta'])): ?>
+                <p class="mensaje_error"><?php echo $erroresViaje['descripcion_corta']; ?></p>
             <?php endif; ?>
 
             <label for="descripcion_larga">Descripción completa</label>
