@@ -9,7 +9,7 @@ $por_pagina = $por_pagina ?? 9;
     <?php if (!empty($viajes)): ?>
         <?php foreach ($viajes as $viaje): ?>
             <article class="tarjeta-viajes">
-                <a class="tarjeta-viajes-enlace" href="viaje1.html">
+                <a class="tarjeta-viajes-enlace" href="viaje.php?id=<?php echo $viaje['id']; ?>">
                     <h3><?php echo htmlspecialchars($viaje['destino']); ?></h3>
                     <?php if (!empty($viaje['imagen'])): ?>
                         <img src="imagenes/<?php echo htmlspecialchars($viaje['imagen']); ?>" alt="<?php echo htmlspecialchars($viaje['destino']); ?>">
@@ -29,7 +29,6 @@ $por_pagina = $por_pagina ?? 9;
         <p>No hay viajes disponibles.</p>
     <?php endif; ?>
 </article>
-
 
 <?php $total_paginas = ($por_pagina > 0) ? (int)ceil($total_viajes / $por_pagina) : 1; ?>
 

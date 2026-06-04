@@ -2,7 +2,6 @@
 require_once __DIR__ . '/config/session.php';
 require_once __DIR__ . '/config/db_viajes.php';
 
-
 $destino = isset($_GET['destino']) ? trim($_GET['destino']) : '';
 $fecha_inicio = isset($_GET['fecha_inicio']) ? trim($_GET['fecha_inicio']) : '';
 $fecha_fin = isset($_GET['fecha_fin']) ? trim($_GET['fecha_fin']) : '';

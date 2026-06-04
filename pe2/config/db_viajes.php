@@ -175,5 +175,28 @@ class Viajes extends DataObject {
             throw new Exception( "Error al obtener el viaje: " . $e->getMessage() );
         }
     }
+
+    public static function obtenerViajesAleatorios( $idViajeActual = null, $numViajeRelacionados = 6) {
+        $conexion = parent::conectar();
+        try {
+            $sql = "SELECT id, destino, fecha_inicio, fecha_fin, descripcion_corta, precio, imagen FROM " . VIAJES;
+            if ( !is_null( $idViajeActual ) ) {
+                $sql .= " WHERE id != :idViajeActual";
+            }
+            $sql .= " ORDER BY RAND() LIMIT :numViajeRelacionados";
+            $st = $conexion->prepare( $sql );
+            if ( !is_null( $idViajeActual ) ) {
+                $st->bindValue( ":idViajeActual", (int)$idViajeActual, PDO::PARAM_INT );
+            }
+            $st->bindValue( ":numViajeRelacionados", (int)$numViajeRelacionados, PDO::PARAM_INT );
+            $st->execute();
+            $filas = $st->fetchAll( PDO::FETCH_ASSOC );
+            parent::desconectar( $conexion );
+            return $filas ? $filas : array();
+        } catch ( PDOException $e ) {
+            parent::desconectar( $conexion );
+            throw new Exception( "Error al obtener viajes aleatorios: " . $e->getMessage() );
+        }
+    }
 }
 ?>
