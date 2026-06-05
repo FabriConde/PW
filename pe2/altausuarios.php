@@ -26,32 +26,32 @@ unset($_SESSION['datosUsuario']);
             <label for="nombre">*Nombre</label>
             <input id="nombre" type="text" name="nombre" 
             value="<?php echo isset($datosUsuario['nombre']) ? htmlspecialchars($datosUsuario['nombre']) : ''; ?>">
-            <span id="error-nombre" class="mensaje-error"></span>
+            <output id="error-nombre" class="mensaje-error"></output>
 
             <label for="apellidos">*Apellidos</label> 
             <input id="apellidos" type="text" name="apellidos" 
             value="<?php echo isset($datosUsuario['apellidos']) ? htmlspecialchars($datosUsuario['apellidos']) : ''; ?>">
-            <span id="error-apellidos" class="mensaje-error"></span>
+            <output id="error-apellidos" class="mensaje-error"></output>
             
             <label for="fecha-nacimiento">*Fecha de nacimiento</label>
             <input id="fecha-nacimiento" type="date" name="fecha-nacimiento" 
             value="<?php echo isset($datosUsuario['fecha-nacimiento']) ? htmlspecialchars($datosUsuario['fecha-nacimiento']) : ''; ?>">
-            <span id="error-fecha-nacimiento" class="mensaje-error"></span>
+            <output id="error-fecha-nacimiento" class="mensaje-error"></output>
 
             <label for="edad">*Edad</label>
             <input id="edad" type="text" name="edad"
             value="<?php echo isset($datosUsuario['edad']) ? htmlspecialchars($datosUsuario['edad']) : ''; ?>">
-            <span id="error-edad" class="mensaje-error"></span>
+            <output id="error-edad" class="mensaje-error"></output>
 
             <label for="dni">*DNI</label>
             <input id="dni" type="text" name="dni"
             value="<?php echo isset($datosUsuario['dni']) ? htmlspecialchars($datosUsuario['dni']) : ''; ?>">
-            <span id="error-dni" class="mensaje-error"></span>
+            <output id="error-dni" class="mensaje-error"></output>
 
             <label for="telefono">*Teléfono</label>
-            <input id="telefono" type="tel" name="telefono"
+            <input id="telefono" type="text" name="telefono"
             value="<?php echo isset($datosUsuario['telefono']) ? htmlspecialchars($datosUsuario['telefono']) : ''; ?>">
-            <span id="error-telefono" class="mensaje-error"></span>
+            <output id="error-telefono" class="mensaje-error"></output>
            
         </fieldset>
 
@@ -59,19 +59,19 @@ unset($_SESSION['datosUsuario']);
             <legend>Datos de acceso</legend>
 
             <label for="email">*Correo electrónico</label>
-            <input id="email" type="email" name="email" placeholder="usuario@correo.com" 
+            <input id="email" type="text" name="email" placeholder="usuario@correo.com" 
             value="<?php echo isset($datosUsuario['email']) ? htmlspecialchars($datosUsuario['email']) : ''; ?>">
-            <span id="error-email" class="mensaje-error"></span>
+            <output id="error-email" class="mensaje-error"></output>
 
             <label for="usuario">*Nombre de usuario</label>
             <input id="usuario" type="text" name="usuario"
             value="<?php echo isset($datosUsuario['usuario']) ? htmlspecialchars($datosUsuario['usuario']) : ''; ?>">
-            <span id="error-usuario" class="mensaje-error"></span>
+            <output id="error-usuario" class="mensaje-error"></output>
            
             <label for="password">*Contraseña</label>
             <input id="password" type="password" name="password" placeholder="Mínimo 8 caracteres y 1 número" 
             class="<?php echo isset($errores['password']) ? 'is-invalid' : '' ?>">
-            <span id="error-password" class="mensaje-error"></span>
+            <output id="error-password" class="mensaje-error"></output>
             
             <label for="foto">Foto de perfil</label>
             <input id="foto" type="file" name="foto" accept="image/*" >
@@ -86,7 +86,7 @@ unset($_SESSION['datosUsuario']);
                 <label class="checkbox-radio"><input type="radio" name="genero" value="hombre" > Hombre</label>
                 <label class="checkbox-radio"><input type="radio" name="genero" value="otro" > Otro</label>
             </article>
-            <span id="error-genero" class="mensaje-error"></span>
+            <output id="error-genero" class="mensaje-error"></output>
 
             <label for="nacionalidad">*Nacionalidad</label>
             <select id="nacionalidad" name="nacionalidad" >
@@ -97,7 +97,7 @@ unset($_SESSION['datosUsuario']);
                 <option value="ca">Canadiense</option>
                 <option value="otra">Otra</option>
             </select>
-            <span id="error-nacionalidad" class="mensaje-error"></span>
+            <output id="error-nacionalidad" class="mensaje-error"></output>
 
             <label for="destino">*Destino preferido</label>
             <input id="destino" list="destinos" name="destino" 
@@ -111,7 +111,7 @@ unset($_SESSION['datosUsuario']);
                 <option value="Marsella">
                 <option value="Nueva York">
             </datalist>
-            <span id="error-destino" class="mensaje-error"></span>
+            <output id="error-destino" class="mensaje-error"></output>
 
             <label for="tipo-viaje">*Tipo de viaje</label>
             <select id="tipo-viaje" name="tipo-viaje" >
@@ -122,12 +122,12 @@ unset($_SESSION['datosUsuario']);
                 <option value="gastronomico" <?php echo isset($datosUsuario['tipo-viaje']) && $datosUsuario['tipo-viaje'] === 'gastronomico' ? 'selected' : ''; ?>>Gastronómico</option>
                 <option value="otro" <?php echo isset($datosUsuario['tipo-viaje']) && $datosUsuario['tipo-viaje'] === 'otro' ? 'selected' : ''; ?>>Otro</option>
             </select>
-            <span id="error-tipo-viaje" class="mensaje-error"></span>
+            <output id="error-tipo-viaje" class="mensaje-error"></output>
 
             <label for="acompanantes">*Número de acompañantes:</label>
             <input id="acompanantes" type="range" name="acompanantes" value="<?php echo isset($datosUsuario['acompanantes']) ? htmlspecialchars($datosUsuario['acompanantes']) : '2'; ?>" >
-            <span id="valor-acompanantes" class="mensaje-info"><?php echo isset($datosUsuario['acompanantes']) ? htmlspecialchars($datosUsuario['acompanantes']) : '2'; ?></span>
-            <span id="error-acompanantes" class="mensaje-error"></span>
+            <output id="valor-acompanantes" class="mensaje-info"><?php echo isset($datosUsuario['acompanantes']) ? htmlspecialchars($datosUsuario['acompanantes']) : '2'; ?></output>
+            <output id="error-acompanantes" class="mensaje-error"></output>
         </fieldset>
 
         <fieldset>
@@ -144,7 +144,7 @@ unset($_SESSION['datosUsuario']);
                 <input id="condiciones" type="checkbox" name="condiciones" 
                 class="<?php echo isset($errores['condiciones']) ? 'is-invalid' : '' ?>" <?php echo isset($datosUsuario['condiciones']) && $datosUsuario['condiciones'] ? 'checked' : ''; ?>> *Acepto las condiciones de uso y la política de privacidad.
             </label>
-           <span id="error-condiciones" class="mensaje-error"></span>
+           <output id="error-condiciones" class="mensaje-error"></output>
         </fieldset>
 
         <nav class="acciones-formulario">
@@ -179,12 +179,12 @@ unset($_SESSION['datosUsuario']);
 
             // Función auxiliar para mostrar u ocultar errores fácilmente en el DOM
             function manejarError(idCampo, idError, condicion, mensaje) {
-                const spanError = document.getElementById(idError);
-                if (condicion) {
-                    spanError.textContent = mensaje;
+                const outputError = document.getElementById(idError);
+                if (condicion){
+                    outputError.textContent = mensaje;
                     hayErrores = true;
                 } else {
-                    spanError.textContent = '';
+                    outputError.textContent = '';
                 }
             }
 
@@ -212,7 +212,7 @@ unset($_SESSION['datosUsuario']);
 
             // 6. Validar Teléfono (9 números)
             const telefono = document.getElementById('telefono').value.trim();
-            const regexTel = /^[0-9]{9}$/;
+           const regexTel = /^[67][0-9]{8}$/;
             manejarError('telefono', 'error-telefono', !regexTel.test(telefono), 'El teléfono debe contener exactamente 9 números.');
 
             // 7. Validar Email

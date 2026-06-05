@@ -60,6 +60,18 @@ h2 {
     height: auto;
 }
 
+.logear-usuario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 10px 0 10px 0;
+}
+
+.logear-usuario p {
+    margin: 0;
+}
+
 .login {
     display: flex;
     flex-direction: row;

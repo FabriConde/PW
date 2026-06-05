@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/../config/session.php';
-$erroresLogin = $_SESSION['erroresLogin'] ?? [];
+$error = $_SESSION['errorLogin'] ?? [];
 $logeado = $_SESSION['logeado'] ?? false;
 $nombreUsuario = $_SESSION['nombreUsuario'] ?? '';
-unset($_SESSION['erroresLogin']);
+unset($_SESSION['errorLogin']);
 ?>
 <!doctype html>
 <html lang="es-ES">
@@ -21,27 +21,23 @@ unset($_SESSION['erroresLogin']);
                 <?php if ($logeado): ?>
                     <article class="usuario-logeado">
                         <h1>Bienvenido, <?php echo htmlspecialchars($nombreUsuario); ?>!</h1>
-                        <a class="boton-enlace" href='controller/procesar_logout_usuario.php'>Cerrar Sesión</a>
+                        <a class="boton-enlace" href='controller/logout_usuario.php'>Cerrar Sesión</a>
                     </article>
                 <?php else: ?>
-                    <article class="login">
-                        <form action="controller/procesar_login_usuario.php" method="post" novalidate>
-                            <input type="email" name="email" placeholder="Email del usuario"
-                            class="<?php echo isset($erroresLogin['email']) ? 'is-invalid' : '' ?>">
-                            <?php if (isset($erroresLogin['email'])): ?>
-                                <p class="mensaje_error"><?php echo $erroresLogin['email']; ?></p>
-                            <?php endif; ?>
-                            <input type="password" name="password" placeholder="Contraseña"
-                            class="<?php echo isset($erroresLogin['password']) ? 'is-invalid' : '' ?>">
-                            <?php if (isset($erroresLogin['password'])): ?>
-                                <p class="mensaje_error"><?php echo $erroresLogin['password']; ?></p>
-                            <?php endif; ?>
-                            <button type="submit">Iniciar Sesión</button>
-                        </form>
-                        <a class="boton-enlace" href='altausuarios.php'>Registrarse</a>
-                        <?php if (isset($erroresLogin['general'])): ?>
-                            <p class="mensaje_error"><?php echo $erroresLogin['general']; ?></p>
+                    <article class="logear-usuario">
+                        <article class="login">
+                            <form id="form-login" action="controller/login_usuario.php" method="post" novalidate>
+                                <input id="email" type="text" name="email" placeholder="Email del usuario">
+                                <input id="password" type="password" name="password" placeholder="Contraseña">
+                                <button type="submit">Iniciar Sesión</button>
+                            </form>
+                            <a class="boton-enlace" href='altausuarios.php'>Registrarse</a>
+                        </article>
+                        <?php if (!empty($error)): ?>
+                            <p class="mensaje-error"><?php echo $error; ?></p>
                         <?php endif; ?>
+                        <p id="error-email" class="mensaje-error"></p>
+                        <p id="error-password" class="mensaje-error" for="password"></p>
                     </article>
                 <?php endif; ?>
             </article>
@@ -56,3 +52,34 @@ unset($_SESSION['erroresLogin']);
                 </ul>
             </nav>
         </header>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const formularioLogin = document.getElementById('form-login');
+        
+        formularioLogin.addEventListener('submit', function(evento) {
+            let hayErrores = false;
+
+            function manejarError(idCampo, idError, condicion, mensaje){
+                const outputError = document.getElementById(idError);
+                if (condicion){
+                    outputError.textContent = mensaje;
+                    hayErrores = true;
+                } else {
+                    outputError.textContent = '';
+                }
+            }
+
+            const email = document.getElementById('email').value.trim();
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            manejarError('email', 'error-email', !regexEmail.test(email), 'Introduce un correo electrónico válido.');
+
+            const password = document.getElementById('password').value.trim();
+            const regexPass = /(?=.*[0-9]).{8,}/;
+            manejarError('password', 'error-password', !regexPass.test(password), 'La contraseña debe tener al menos 8 caracteres e incluir un número.');
+
+            if (hayErrores) {
+                evento.preventDefault();
+            }
+        });
+    });
+</script>
