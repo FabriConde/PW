@@ -2,23 +2,25 @@
 require_once __DIR__ . '/../config/session.php';
 require_once __DIR__ . '/../config/db_usuarios.php';
 
-$errores = [];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $campos = ['nombre', 'apellidos', 'fecha-nacimiento', 'edad', 'dni', 'telefono', 'email', 'usuario', 'password',
+
+    $campos_obligatorios = ['nombre', 'apellidos', 'fecha-nacimiento', 'edad', 'dni', 'telefono', 'email', 'usuario', 'password',
     'genero', 'nacionalidad', 'destino', 'tipo-viaje', 'acompanantes',];
 
-    foreach ($campos as $campo) {
+    foreach ($campos_obligatorios as $campo) {
         if (!isset($_POST[$campo]) || trim($_POST[$campo]) === '') {
-            $errores[$campo] = 'Se tiene que rellenar el campo ' . $campo . '.';
+            $_SESSION['error'] = 'Por favor, completa todos los campos obligatorios.';
+            $_SESSION['datosUsuario'] = $_POST;
+            header('Location: ../altausuarios.php');
+            exit;
         }
     }
-
-    /* if (!isset($_FILES['foto']) || $_FILES['foto']['error'] != 0) {
-        $errores['foto'] = 'Debe seleccionar una foto.';
-    } */
-
+    
     if (!isset($_POST['condiciones'])) {
-        $errores['condiciones'] = 'Debe aceptar los términos.';
+        $_SESSION['error'] = 'Debes aceptar las condiciones de uso.';
+        $_SESSION['datosUsuario'] = $_POST;
+        header('Location: ../altausuarios.php');
+        exit;
     }
 
     $datosUsuario = array(
@@ -31,7 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'email' => $_POST['email'],
         'usuario' => $_POST['usuario'],
         'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-        'foto' => 'testo.jpg', // Aquí deberías manejar la subida de la foto y obtener su nombre o ruta
+        //Comprobar si se ha subido una foto, si no se ha subido, asignar un valor por defecto: default.jpg
+        'foto' => (isset($_FILES['foto']['name']) && trim($_FILES['foto']['name']) !== '') ? $_FILES['foto']['name'] : 'default.jpg',
         'genero' => $_POST['genero'],
         'nacionalidad' => $_POST['nacionalidad'],
         'destino' => $_POST['destino'],
@@ -42,14 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'condiciones' => isset($_POST['condiciones']) ? true : false,
         "admin" => false
     );
-    $_SESSION['datosUsuario'] = $datosUsuario;
-
-    if (!empty($errores)) {
-        $_SESSION['errores'] = $errores;
-
-        header('Location: ../altausuarios.php');
-        exit;
-    }
 
     try {
         $resultado = Usuario::insertarUsuario($datosUsuario);
@@ -58,16 +53,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header('Location: ../altausuarios.php');
             exit;
         } else {
-            $_SESSION['erroresGenerales']['general'] = 'Error al registrar el usuario.';
+            $_SESSION['error'] = 'Error al registrar el usuario.';
+            $_SESSION['datosUsuario'] = $_POST;
             header('Location: ../altausuarios.php');
             exit;
         }
     } catch (Exception $e) {
-        $_SESSION['erroresGenerales']['general'] = $e->getMessage();
+        $_SESSION['error'] = $e->getMessage();
+        $_SESSION['datosUsuario'] = $_POST;
         header('Location: ../altausuarios.php');
         exit;
     }
 }
-
-    
-    

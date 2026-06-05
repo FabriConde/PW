@@ -186,6 +186,23 @@ button,
     box-shadow: 0 12px 20px var(--color-hover-tarjeta);
 }
 
+.mensaje-exito {
+    color: #b1d593;
+}
+
+.mensaje-error {
+    color: #c0605c ;
+}
+
+.is-invalid {
+    border: 2px solid #c0605c;
+}
+
+.mensaje-info {
+   color: #60959f  ;
+   font-size: 1.2em;
+}
+
 @media (max-width: 760px) {
     .cabecera {
         flex-direction: column;
@@ -525,14 +542,7 @@ hr {
     margin: 0;
 }
 
-.is-invalid {
-    border: 2px solid red;
-}
 
-.mensaje_error {
-    color: red;
-    font-size: 0.9em;
-}
 
 /* Estilos para la sección de ALTA DE VIAJES */
 
