@@ -176,7 +176,7 @@ class Viajes extends DataObject {
         }
     }
 
-    public static function obtenerViajesAleatorios( $idViajeActual = null, $numViajeRelacionados = 6) {
+    public static function obtenerViajesAleatorios( $idViajeActual = null, $numViajeRelacionados = 5) {
         $conexion = parent::conectar();
         try {
             $sql = "SELECT id, destino, fecha_inicio, fecha_fin, descripcion_corta, precio, imagen FROM " . VIAJES;

@@ -2,15 +2,19 @@
 require_once __DIR__ . '/config/session.php';
 require_once __DIR__ . '/config/db_viajes.php';
 
+$datosViaje = null;
+
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    
     $idEdicion = (int)$_GET['id'];
     try {
         $resultado = Viajes::obtenerViajePorId($idEdicion);
-        if ($resultado) {
+        if ($resultado !== null && is_array($resultado)) {
             $datosViaje = $resultado;
         } else {
-            $mensajeErrorViaje = "Viaje no encontrado para edición.";
+            // manejar viaje no encontrado (mensaje o redirección)
+            header('HTTP/1.1 404 Not Found');
+            echo 'Viaje no encontrado.';
+            exit;
         }
     } catch (Exception $e) {
         $erroresViaje['general'] = $e->getMessage();
@@ -18,7 +22,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 }
 ?>
 <main>
-    <img src="imagenes/<?php echo htmlspecialchars($datosViaje['imagen']); ?>" alt="<?php echo htmlspecialchars($datosViaje['destino']); ?>">
+    <img class="banner-viaje" src="imagenes/<?php echo htmlspecialchars($datosViaje['imagen']); ?>" alt="<?php echo htmlspecialchars($datosViaje['destino']); ?>">
     <article class="viaje-contenido">
         <section class="info-viaje">
             <h3>Bienvenido a <?php echo htmlspecialchars($datosViaje['destino']); ?></h3>
