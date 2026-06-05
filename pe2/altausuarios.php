@@ -2,9 +2,7 @@
 $error = $_SESSION['error'] ?? '';
 $mensaje = $_SESSION['mensaje'] ?? '';
 $datosUsuario = $_SESSION['datosUsuario'] ?? [];
-unset($_SESSION['error']);
-unset($_SESSION['mensaje']);
-unset($_SESSION['datosUsuario']);
+unset($_SESSION['error'], $_SESSION['mensaje'], $_SESSION['datosUsuario']);
 ?>
 
 <main class="alta-usuarios-main">
@@ -34,7 +32,7 @@ unset($_SESSION['datosUsuario']);
             <output id="error-apellidos" class="mensaje-error"></output>
             
             <label for="fecha-nacimiento">*Fecha de nacimiento</label>
-            <input id="fecha-nacimiento" type="date" name="fecha-nacimiento" 
+            <input id="fecha-nacimiento" type="text" name="fecha-nacimiento" placeholder="yyyy/mm/dd" 
             value="<?php echo isset($datosUsuario['fecha-nacimiento']) ? htmlspecialchars($datosUsuario['fecha-nacimiento']) : ''; ?>">
             <output id="error-fecha-nacimiento" class="mensaje-error"></output>
 
@@ -148,15 +146,15 @@ unset($_SESSION['datosUsuario']);
         </fieldset>
 
         <nav class="acciones-formulario">
-            <button type="submit">Enviar registro</button>
-            <button type="reset">Borrar formulario</button>
+            <button type="submit">Registrar</button>
+            <button type="reset">Limpiar</button>
         </nav>
     </form>
 </main>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const formulario = document.getElementById('form-registro');
+        const formularioAltaUsuario = document.getElementById('form-registro');
 
         const acompanantesInput = document.getElementById('acompanantes');
         const valorAcompanantes = document.getElementById('valor-acompanantes');
@@ -174,7 +172,7 @@ unset($_SESSION['datosUsuario']);
             });
         }
 
-        formulario.addEventListener('submit', function(evento) {
+        formularioAltaUsuario.addEventListener('submit', function(evento) {
             let hayErrores = false;
 
             // Función auxiliar para mostrar u ocultar errores fácilmente en el DOM
@@ -260,6 +258,13 @@ unset($_SESSION['datosUsuario']);
                 evento.preventDefault(); 
             }
             // Si hayErrores es false, el código sigue su curso natural y se envía hacia procesar_registro_usuario.php
+        });
+
+        formularioAltaUsuario.addEventListener('reset', function() {
+            const outputError = document.querySelectorAll('.mensaje-error');
+            outputError.forEach(function(error) {
+                error.textContent = '';
+            });
         });
     });
 </script>

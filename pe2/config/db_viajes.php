@@ -82,11 +82,12 @@ class Viajes extends DataObject {
         }
     }
 
-    public static function actualizarViaje( $idViaje, $datosViaje ) {
+    public static function actualizarViaje( $datosViaje ) {
         $conexion = parent::conectar();
         $sql = "UPDATE " . VIAJES . " SET destino = :destino, fecha_inicio = :fecha_inicio, fecha_fin = :fecha_fin, descripcion_corta = :descripcion_corta, descripcion_larga = :descripcion_larga, precio = :precio, incluye = :incluye, alojamientos = :alojamientos, continente = :continente, pais = :pais, imagen = :imagen WHERE id = :id";
         try {
             $st = $conexion->prepare( $sql );
+            $st->bindValue( ":id", $datosViaje['id'], PDO::PARAM_INT );
             $st->bindValue( ":destino", $datosViaje['destino'], PDO::PARAM_STR );
             $st->bindValue( ":fecha_inicio", $datosViaje['fecha_inicio'], PDO::PARAM_STR );
             $st->bindValue( ":fecha_fin", $datosViaje['fecha_fin'], PDO::PARAM_STR );
@@ -98,7 +99,6 @@ class Viajes extends DataObject {
             $st->bindValue( ":continente", $datosViaje['continente'], PDO::PARAM_STR );
             $st->bindValue( ":pais", $datosViaje['pais'], PDO::PARAM_STR );
             $st->bindValue( ":imagen", $datosViaje['imagen'], PDO::PARAM_STR );
-            $st->bindValue( ":id", $idViaje, PDO::PARAM_INT );
             $resultado = $st->execute();
             parent::desconectar( $conexion );
             return $resultado;
