@@ -1,6 +1,4 @@
 -- Base de datos: dbfabriconde_pw2526
-
--- Crear la tabla usuarios si no existe
 CREATE TABLE IF NOT EXISTS  usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(40) NOT NULL,

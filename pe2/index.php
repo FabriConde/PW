@@ -28,22 +28,25 @@ try {
         <p>Tu agencia de viajes confiable para explorar el mundo. Ofrecemos una amplia gama de destinos, paquetes personalizados y ofertas exclusivas para hacer de tu viaje una experiencia inolvidable.</p>
         <h3>¡Descubre el mundo con nosotros!</h3>
     </article>
-    <?php if (!empty($datosCarrusel)) : ?>
-        <article class="tarjeta-viajes">
-            <a class="tarjeta-viajes-enlace">
-                <img id="carrusel-imagen" src="" alt="Imagen del viaje">
-                <h2 id="carrusel-titulo"></h2>
-                <p id="carrusel-descripcion"></p>
-            </a>
-            <button id="btn-anterior" class="boton-enlace">&#10094;</button>
-            <button id="btn-siguiente" class="boton-enlace">&#10095;</button>
-        </article>
+
+    <article class="carrusel">
+        <?php if (!empty($datosCarrusel)) : ?>
+            <article class="tarjeta-viajes">
+                <a class="tarjeta-viajes-enlace">
+                    <img class="imagen-carrusel" id="carrusel-imagen" src="" alt="Imagen del viaje">
+                    <h2 id="carrusel-titulo"></h2>
+                    <p id="carrusel-descripcion"></p>
+                </a>
+                <article class="botones-carrusel">
+                    <button id="btn-anterior" class="boton-enlace">&#10094;</button>
+                    <button id="btn-siguiente" class="boton-enlace">&#10095;</button>
+                </article>
+            </article>
+        <?php elseif ($errorCarrusel !== null) : ?>
+            <p class="mensaje_error"><?php echo $errorCarrusel; ?></p>
+        <?php endif; ?>
+    </article>
     
-    <?php elseif ($errorCarrusel !== null) : ?>
-        <p class="mensaje_error"><?php echo $errorCarrusel; ?></p>
-    <?php endif; ?>
-
-
     <article class="buscador">
         <form action="controller/obtener_viajes.php" method="post">
             <input type="text" name="destino" placeholder="Buscar viajes..." value="<?php echo $destino_busqueda; ?>">

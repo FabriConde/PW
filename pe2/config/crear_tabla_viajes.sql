@@ -1,4 +1,4 @@
--- Script para crear la tabla `viajes` en MySQL
+-- Base de datos: dbfabriconde_pw2526
 CREATE TABLE IF NOT EXISTS viajes (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   destino VARCHAR(255) NOT NULL,
