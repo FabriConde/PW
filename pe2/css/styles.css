@@ -327,6 +327,18 @@ button,
     color: white;
 }
 
+.errores-busqueda {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 10px 0;
+}
+
+.errores-busqueda p {
+    margin: 0;
+}
+
 /* Estilos para la sección de VIAJES */
 .w3-sidebar.w3-bar-block {
     background-color: #f0f3e8;

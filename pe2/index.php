@@ -47,25 +47,30 @@ try {
         <?php endif; ?>
     </article>
     
+    <h2>Busca tu próximo destino</h2>
+    <p>Introduce un destino y unas fechas para encontrar el viaje perfecto para ti.</p>
+    <article class="errores-busqueda">
+        <?php if (!empty($error)): ?>
+            <p class="mensaje-error"><?php echo $error; ?></p>
+        <?php endif; ?>
+        <p id="error-destino" class="mensaje-error"></p>
+        <p id="error-fecha-inicio" class="mensaje-error"></p>
+        <p id="error-fecha-fin" class="mensaje-error"></p>
+    </article>
+    
     <article class="buscador">
-        <form action="controller/obtener_viajes.php" method="post">
-            <input type="text" name="destino" placeholder="Buscar viajes..." value="<?php echo $destino_busqueda; ?>">
-            <?php if (isset($erroresBusqueda['destino'])): ?>
-                <p class="mensaje_error"><?php echo $erroresBusqueda['destino']; ?></p>
-            <?php endif; ?>
-            <input type="date" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>">
-            <?php if (isset($erroresBusqueda['fecha_inicio'])): ?>
-                <p class="mensaje_error"><?php echo $erroresBusqueda['fecha_inicio']; ?></p>
-            <?php endif; ?>
-            <input type="date" name="fecha_fin" value="<?php echo $fecha_fin; ?>">
-            <?php if (isset($erroresBusqueda['fecha_fin'])): ?>
-                <p class="mensaje_error"><?php echo $erroresBusqueda['fecha_fin']; ?></p>
-            <?php endif; ?>
+        <form id="form-busqueda" action="controller/obtener_viajes.php" method="post">
+            <input id="destino" type="text" name="destino" placeholder="España" value="<?php echo $destino_busqueda; ?>">
+            <input id="fecha-inicio" type="text" name="fecha-inicio" placeholder="yyyy/mm/dd"  value="<?php echo $fecha_inicio; ?>">
+            <input id="fecha-fin" type="text" name="fecha-fin" placeholder="yyyy/mm/dd"  value="<?php echo $fecha_fin; ?>">
             <button type="submit">Buscar</button>
+            <button type="reset">Limpiar</button>
         </form>
     </article>
+
+   
     <?php if (!empty($datosCarrusel)): ?>
-        <script type="text/javascript">
+        <script>
             const listaViajes = <?php echo json_encode($datosCarrusel); ?>;
             
             let posicionActual = 0;
@@ -114,4 +119,51 @@ try {
         </script>
     <?php endif; ?>
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const formBusqueda = document.getElementById('form-busqueda');
+
+        formBusqueda.addEventListener('submit', function(event) {
+            let hayErrores = false;
+
+            function mostrarError(idCampo, idError, condicion, mensaje){
+                const outputError = document.getElementById(idError);
+                if (condicion){
+                    outputError.textContent = mensaje;
+                        hayErrores = true;
+                    } else {
+                    outputError.textContent = '';
+                }
+            }
+
+            const destino = document.getElementById('destino').value.trim();
+            mostrarError('destino', 'error-destino', destino === '', 'Introduce un destino para la búsqueda.');
+
+            const regexFecha = /^\d{4}-\d{2}-\d{2}$/;
+            const fechaInicio = document.getElementById('fecha-inicio').value.trim();
+            const fechaFin = document.getElementById('fecha-fin').value.trim();
+            mostrarError('fecha-inicio', 'error-fecha-inicio', !regexFecha.test(fechaInicio), 'La fecha de inicio no es válida.');
+            mostrarError('fecha-fin', 'error-fecha-fin', !regexFecha.test(fechaFin), 'La fecha de fin no es válida.');
+            if (regexFecha.test(fechaInicio) && regexFecha.test(fechaFin)) {
+                const fi = new Date(fechaInicio);
+                const ff = new Date(fechaFin);
+                mostrarError('fecha-fin', 'error-fecha-fin', ff < fi, 'La fecha de fin debe ser igual o posterior a la fecha de inicio.');
+            }
+            if (hayErrores) {
+                event.preventDefault();
+            }
+        });
+
+        formBusqueda.addEventListener('reset', function() {
+            const errores = document.querySelectorAll('.mensaje-error');
+            errores.forEach(function(error) {
+                error.textContent = '';
+            });
+        });
+
+    });
+</script>
+
+
 <?php include 'includes/footer.php'; ?>

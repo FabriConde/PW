@@ -37,7 +37,7 @@ unset($_SESSION['errorLogin']);
                             <p class="mensaje-error"><?php echo $error; ?></p>
                         <?php endif; ?>
                         <p id="error-email" class="mensaje-error"></p>
-                        <p id="error-password" class="mensaje-error" for="password"></p>
+                        <p id="error-password" class="mensaje-error"></p>
                     </article>
                 <?php endif; ?>
             </article>

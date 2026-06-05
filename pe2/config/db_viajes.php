@@ -126,7 +126,6 @@ class Viajes extends DataObject {
     public static function obtenerViajesPorContinenteYPais( $continente, $pais, $filaInicio, $por_pagina ) {
         $conexion = parent::conectar();
         try {
-            // La búsqueda por continente y país siempre se pagina
             $sql = "SELECT SQL_CALC_FOUND_ROWS id, destino, fecha_inicio, fecha_fin, descripcion_corta, descripcion_larga, precio, incluye, alojamientos, continente, pais, imagen FROM " . VIAJES . " WHERE LOWER(continente) = :continente AND LOWER(pais) = :pais ORDER BY fecha_inicio DESC LIMIT :filaInicio, :por_pagina";
             $st = $conexion->prepare( $sql );
             $st->bindValue(":continente", mb_strtolower($continente, 'UTF-8'), PDO::PARAM_STR);
@@ -152,7 +151,6 @@ class Viajes extends DataObject {
     public static function obtenerViajesDestinoYFechas( $destino, $fechaInicio, $fechaFin, $filaInicio, $por_pagina ) {
         $conexion = parent::conectar();
         try {
-            // La búsqueda por destino y fechas siempre se pagina
             $sql = "SELECT SQL_CALC_FOUND_ROWS id, destino, fecha_inicio, fecha_fin, descripcion_corta, descripcion_larga, precio, incluye, alojamientos, continente, pais, imagen FROM " . VIAJES . " WHERE LOWER(destino) = :destino AND fecha_inicio >= :fechaInicio AND fecha_fin <= :fechaFin ORDER BY fecha_inicio DESC LIMIT :filaInicio, :por_pagina";
             $st = $conexion->prepare( $sql );
             $st->bindValue(":destino", mb_strtolower($destino, 'UTF-8'), PDO::PARAM_STR);
