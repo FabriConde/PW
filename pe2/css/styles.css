@@ -96,13 +96,15 @@ h2 {
 }
     
 .barra-navegacion ul {
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.menu-toggle {
+    display: none;
 }
 
 .barra-navegacion ul li a {
@@ -257,6 +259,31 @@ button,
     .tarjeta-viajes {
         width: 90%;
     }
+
+    .barra-navegacion ul li a {
+        padding: 10px;
+    }
+
+    .barra-navegacion ul {
+        display:none
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 2rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+    }
+
+    .menu.activo {
+        display: flex;
+    }
 }
 
 /* Estilos para la sección de INICIO */
@@ -340,6 +367,23 @@ button,
 }
 
 /* Estilos para la sección de VIAJES */
+.barra-contienentes {
+    display: none;
+}
+
+.ventana-viajes {
+    display: flex;
+    flex-direction: row;
+}
+
+.ventana-viajes > aside {
+    width: 15%;
+}
+
+.ventana-viajes > section {
+    margin-left: 15%;
+}
+
 .w3-sidebar.w3-bar-block {
     background-color: #f0f3e8;
     border: 3px solid #c4d3a6;

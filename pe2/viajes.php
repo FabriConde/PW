@@ -4,8 +4,8 @@ $esAdmin = $_SESSION['esAdmin'] ?? false;
 $destino = $pais ?? '';
 unset($_SESSION['destino']);
 ?>
-<main>
-    <aside class="w3-sidebar w3-bar-block" style="width:15%;">
+<main class="ventana-viajes">
+    <aside class="w3-sidebar w3-bar-block">
         <h5><strong>Continentes</strong></h5>
         <p>Europa</p>
         <a href="viajes.php?continente=europa&pais=francia" class="w3-bar-item w3-button w3-border-bottom">Francia</a>
@@ -23,7 +23,7 @@ unset($_SESSION['destino']);
         <a href="viajes.php?continente=africa&pais=marruecos" class="w3-bar-item w3-button w3-border-bottom">Marruecos</a>
     </aside>
         
-    <section class="viajes" style="margin-left:15%">    
+    <section class="viajes">    
         <?php if ($esAdmin): ?>
             <section class="boton-add-viaje">
                 <a class="boton-enlace" href='alta_viaje.php'>Añadir viaje</a>
@@ -38,4 +38,12 @@ unset($_SESSION['destino']);
         <?php include 'includes/ventana_viajes.php'; ?>
     </section>            
 </main>
+<script>
+    const boton = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    boton.addEventListener('click', () => {
+        menu.classList.toggle('activo');
+    });
+</script>
 <?php include 'includes/footer.php'; ?>

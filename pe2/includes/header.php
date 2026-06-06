@@ -42,7 +42,8 @@ unset($_SESSION['errorLogin']);
                 <?php endif; ?>
             </article>
             <nav class="barra-navegacion">
-                <ul>
+                <button class="menu-toggle">☰</button>
+                <ul class="menu">
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="viajes.php">Viajes</a></li>
                     <li><a href="viajes_grupo.php">Viajes en Grupo</a></li>
@@ -81,5 +82,13 @@ unset($_SESSION['errorLogin']);
                 evento.preventDefault();
             }
         });
+    });
+</script>
+<script>
+    const boton = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+
+    boton.addEventListener('click', () => {
+        menu.classList.toggle('activo');
     });
 </script>

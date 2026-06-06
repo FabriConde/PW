@@ -11,7 +11,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         if ($resultado !== null && is_array($resultado)) {
             $datosViaje = $resultado;
         } else {
-            // manejar viaje no encontrado
             header('HTTP/1.1 404 Not Found');
             echo 'Viaje no encontrado.';
             exit;
@@ -31,8 +30,22 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             <p><strong>Precio:</strong> <?php echo htmlspecialchars($datosViaje['precio']); ?>€ por persona</p>
             <p><strong>Incluye:</strong> <?php echo htmlspecialchars($datosViaje['incluye']); ?></p>
             
-            //REVISAR
-            $alojamientos = isset($datosViaje['alojamientos']) ? $datosViaje['alojamientos'] : null;
+            <?php
+                $alojamientos =  $datosViaje['alojamientos'] ?? '';
+
+                if (!empty($alojamientos)) {
+                    $listaAlojamientos = explode(',', $alojamientos);
+
+                    echo '<ul>';
+                    foreach ($listaAlojamientos as $alojamiento) {
+                        echo '<li>' . htmlspecialchars(trim($alojamiento)) . '</li>';
+                    }
+                    echo '</ul>';
+                } else {
+                    echo '<p>No se han especificado alojamientos para este viaje.</p>';
+                }   
+            ?>
+            
            
         </section>
         <aside class="destinos-relacionados">

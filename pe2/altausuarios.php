@@ -67,8 +67,7 @@ unset($_SESSION['error'], $_SESSION['mensaje'], $_SESSION['datosUsuario']);
             <output id="error-usuario" class="mensaje-error"></output>
            
             <label for="password">*Contraseña</label>
-            <input id="password" type="password" name="password" placeholder="Mínimo 8 caracteres y 1 número" 
-            class="<?php echo isset($errores['password']) ? 'is-invalid' : '' ?>">
+            <input id="password" type="password" name="password" placeholder="Mínimo 8 caracteres y 1 número">
             <output id="error-password" class="mensaje-error"></output>
             
             <label for="foto">Foto de perfil</label>
