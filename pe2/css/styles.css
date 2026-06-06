@@ -64,7 +64,6 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
     margin: 10px 0 10px 0;
 }
 
@@ -74,7 +73,7 @@ h2 {
 
 .login {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 10px;
 }
 
@@ -284,6 +283,30 @@ button,
     .menu.activo {
         display: flex;
     }
+    
+    main.ventana-viajes {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ventana-viajes > aside {
+        display: none;
+    }
+
+    .ventana-viajes > nav {
+        display: block;
+    }
+
+    .ventana-viajes > nav {
+        background-color: #f0f3e8;
+        border: 3px solid #c4d3a6;
+        border-radius: var(--medida-bordes-tarjetas);
+    }
+
+    .ventana-viajes > section {
+        width: 100%;
+    }
+
 }
 
 /* Estilos para la sección de INICIO */
@@ -367,7 +390,7 @@ button,
 }
 
 /* Estilos para la sección de VIAJES */
-.barra-contienentes {
+.menu-continentes {
     display: none;
 }
 

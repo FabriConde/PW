@@ -5,6 +5,24 @@ $destino = $pais ?? '';
 unset($_SESSION['destino']);
 ?>
 <main class="ventana-viajes">
+    <nav class="menu-continentes">
+        <h5><strong>Continentes</strong></h5>
+        <p>Europa</p>
+        <a href="viajes.php?continente=europa&pais=francia" class="w3-bar-item w3-button w3-border-bottom">Francia</a>
+        <a href="viajes.php?continente=europa&pais=italia" class="w3-bar-item w3-button w3-border-bottom">Italia</a>
+        <a href="viajes.php?continente=europa&pais=españa" class="w3-bar-item w3-button w3-border-bottom">España</a>
+        <p>América</p>
+        <a href="viajes.php?continente=america&pais=canadá" class="w3-bar-item w3-button w3-border-bottom">Canadá</a>
+        <a href="viajes.php?continente=america&pais=brasil" class="w3-bar-item w3-button w3-border-bottom">Brasil</a>
+        <a href="viajes.php?continente=america&pais=estados unidos" class="w3-bar-item w3-button w3-border-bottom">Estados Unidos</a>
+        <p>Asia</p>
+        <a href="viajes.php?continente=asia&pais=china" class="w3-bar-item w3-button w3-border-bottom">China</a>
+        <a href="viajes.php?continente=asia&pais=japón" class="w3-bar-item w3-button w3-border-bottom">Japón</a>
+        <a href="viajes.php?continente=asia&pais=tailandia" class="w3-bar-item w3-button w3-border-bottom">Tailandia</a>
+        <p>África</p>
+        <a href="viajes.php?continente=africa&pais=marruecos" class="w3-bar-item w3-button w3-border-bottom">Marruecos</a>
+    </nav>
+
     <aside class="w3-sidebar w3-bar-block">
         <h5><strong>Continentes</strong></h5>
         <p>Europa</p>
@@ -39,11 +57,11 @@ unset($_SESSION['destino']);
     </section>            
 </main>
 <script>
-    const boton = document.querySelector('.menu-toggle');
-    const menu = document.querySelector('.menu');
+    const botonContinentes = document.getElementById('toggleContinentes');
+    const menuContinentes = document.getElementById('menuContinentes');
 
-    boton.addEventListener('click', () => {
-        menu.classList.toggle('activo');
+    botonContinentes.addEventListener('click', () => {
+        menuContinentes.classList.toggle('activo');
     });
 </script>
 <?php include 'includes/footer.php'; ?>
