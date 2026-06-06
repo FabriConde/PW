@@ -10,7 +10,7 @@ $por_pagina = $por_pagina ?? 9;
         <?php foreach ($viajes as $viaje): ?>
             <article class="tarjeta-viajes">
                 <a class="tarjeta-viajes-enlace" href="viaje.php?id=<?php echo $viaje['id']; ?>">
-                    <h3><?php echo htmlspecialchars($viaje['destino']); ?></h3>
+                    <h3><?php echo htmlspecialchars($viaje['destino']);?></h3>
                     <?php if (!empty($viaje['imagen'])): ?>
                         <img src="imagenes/<?php echo htmlspecialchars($viaje['imagen']); ?>" alt="<?php echo htmlspecialchars($viaje['destino']); ?>">
                     <?php endif; ?>

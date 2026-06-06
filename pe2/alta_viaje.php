@@ -7,7 +7,7 @@ if (is_dir($img_dir)) {
         $images[] = substr($img, strlen($img_dir . '/'));
     }
 }
-$countries = ['Francia', 'Italia', 'España', 'Canadá', 'Brasil', 'Estados Unidos', 'China', 'Japón', 'Tailandia', 'Marruecos'];
+$paises = ['Francia', 'Italia', 'España', 'Canadá', 'Brasil', 'Estados Unidos', 'China', 'Japón', 'Tailandia', 'Marruecos'];
 $continentes = ['Europa', 'América', 'Asia', 'África'];
 $error = $_SESSION['errorViaje'] ?? [];
 $mensaje= $_SESSION['mensajeViaje'] ?? '';
@@ -24,7 +24,7 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
     <p>Completa todos los campos para registrarte un nuevo viaje.</p>
 
     <?php if (!empty($error)): ?>
-        <p class="mensaje-error"><?php echo $error; ?></p>
+        <p class="mensaje-error"><?php echo htmlspecialchars($error); ?></p>
     <?php endif; ?>
 
     <form  id="form-viaje" class="alta-viaje" accept=""action="controller/crear_viaje.php" method="post">
@@ -33,38 +33,38 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
 
             <label for="destino">Nombre del destino</label>
             <input id="destino" type="text" name="destino" 
-            value="<?php echo isset($datosViaje['destino']) ? htmlspecialchars($datosViaje['destino']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosViaje['destino'] ?? ''); ?>">
             <output id="error-destino" class="mensaje-error" for="destino"></output>
 
             <label for="fecha-inicio">Fecha de inicio</label>
             <input id="fecha-inicio" type="text" name="fecha-inicio" placeholder="yyyy/mm/dd" 
-            value="<?php echo isset($datosViaje['fecha-inicio']) ? htmlspecialchars($datosViaje['fecha-inicio']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosViaje['fecha-inicio'] ?? ''); ?>">
             <output id="error-fecha-inicio" class="mensaje-error" for="fecha-inicio"></output>
 
             <label for="fecha-fin">Fecha de fin</label>
             <input id="fecha-fin" type="text" name="fecha-fin" placeholder="yyyy/mm/dd" 
-            value="<?php echo isset($datosViaje['fecha-fin']) ? htmlspecialchars($datosViaje['fecha-fin']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosViaje['fecha-fin'] ?? ''); ?>">
             <output id="error-fecha-fin" class="mensaje-error" for="fecha-fin"></output>
 
             <label for="descripcion-corta">Breve descripción</label>
             <input id="descripcion-corta" type="text" name="descripcion-corta" 
-            value="<?php echo isset($datosViaje['descripcion-corta']) ? htmlspecialchars($datosViaje['descripcion-corta']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosViaje['descripcion-corta'] ?? ''); ?>">
             <output id="error-descripcion-corta" class="mensaje-error" for="descripcion-corta"></output>
 
             <label for="descripcion-larga">Descripción completa</label>
-            <textarea id="descripcion-larga" name="descripcion-larga"><?php echo isset($datosViaje['descripcion-larga']) ? htmlspecialchars($datosViaje['descripcion-larga']) : ''; ?></textarea>
+            <textarea id="descripcion-larga" name="descripcion-larga"><?php echo htmlspecialchars($datosViaje['descripcion-larga'] ?? ''); ?></textarea>
             <output id="error-descripcion-larga" class="mensaje-error" for="descripcion-larga"></output>
 
             <label for="precio">Precio (EUR)</label>
-            <input id="precio" type="text" name="precio" value="<?php echo isset($datosViaje['precio']) ? htmlspecialchars($datosViaje['precio']) : ''; ?>">
+            <input id="precio" type="text" name="precio" value="<?php echo htmlspecialchars($datosViaje['precio'] ?? ''); ?>">
             <output id="error-precio" class="mensaje-error" for="precio"></output>
 
             <label for="incluye">Incluye</label>
-            <input id="incluye" type="text" name="incluye" value="<?php echo isset($datosViaje['incluye']) ? htmlspecialchars($datosViaje['incluye']) : ''; ?>">
+            <input id="incluye" type="text" name="incluye" value="<?php echo htmlspecialchars($datosViaje['incluye'] ?? ''); ?>">
             <output id="error-incluye" class="mensaje-error" for="incluye"></output>
 
             <label for="alojamientos">Alojamientos (separados por comas)</label>
-            <textarea id="alojamientos" name="alojamientos" placeholder="Ej: Hotel Palace, Hotel Ritz"><?php echo isset($datosViaje['alojamientos']) ? htmlspecialchars($datosViaje['alojamientos']) : ''; ?></textarea>
+            <textarea id="alojamientos" name="alojamientos" placeholder="Ej: Hotel Palace, Hotel Ritz"><?php echo htmlspecialchars($datosViaje['alojamientos'] ?? ''); ?></textarea>
             <output id="error-alojamientos" class="mensaje-error" for="alojamientos"></output>
 
             <label for="continente">Continente</label>
@@ -79,8 +79,8 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
             <label for="pais">País</label>
             <select id="pais" name="pais">
                 <option value="">--Selecciona país--</option>
-                <?php foreach ($countries as $c): ?>
-                    <option value="<?php echo htmlspecialchars($c); ?>" <?php echo (isset($datosViaje['pais']) && $datosViaje['pais']==$c)?'selected':''; ?>><?php echo htmlspecialchars($c); ?></option>
+                <?php foreach ($paises as $pais): ?>
+                    <option value="<?php echo htmlspecialchars($pais); ?>" <?php echo (isset($datosViaje['pais']) && $datosViaje['pais']==$pais)?'selected':''; ?>><?php echo htmlspecialchars($pais); ?></option>
                 <?php endforeach; ?>
             </select>
             <output id="error-pais" class="mensaje-error" for="pais"></output>
@@ -99,7 +99,6 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
             <button type="submit">Nuevo viaje</button>
             <button type="reset">Limpiar</button>
         </fieldset>
-        
     </form>
 </main>
 

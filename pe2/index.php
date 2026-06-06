@@ -1,12 +1,9 @@
 <?php 
 include 'includes/header.php';
 require_once __DIR__ . '/config/db_viajes.php';
-$erroresBusqueda = $_SESSION['erroresBusqueda'] ?? [];
-$destino_busqueda = $_SESSION['destino_busqueda'] ?? '';
-$fecha_inicio = $_SESSION['fecha_inicio'] ?? '';
-$fecha_fin = $_SESSION['fecha_fin'] ?? '';
-unset($_SESSION['erroresBusqueda'], $_SESSION['destino_busqueda'], $_SESSION['fecha_inicio'], $_SESSION['fecha_fin']);
-
+$error = $_SESSION['error'] ?? '';
+$datosBusqueda = $_SESSION['datosBusqueda'] ?? [];
+unset($_SESSION['error'], $_SESSION['datosBusqueda']);
 try {
     $datosCarrusel = null;
     $errorCarrusel = null;
@@ -43,7 +40,7 @@ try {
                 </article>
             </article>
         <?php elseif ($errorCarrusel !== null) : ?>
-            <p class="mensaje_error"><?php echo $errorCarrusel; ?></p>
+            <p class="mensaje_error"><?php echo htmlspecialchars($errorCarrusel); ?></p>
         <?php endif; ?>
     </article>
     
@@ -51,7 +48,7 @@ try {
     <p>Introduce un destino y unas fechas para encontrar el viaje perfecto para ti.</p>
     <article class="errores-busqueda">
         <?php if (!empty($error)): ?>
-            <p class="mensaje-error"><?php echo $error; ?></p>
+            <p class="mensaje-error"><?php echo htmlspecialchars($error); ?></p>
         <?php endif; ?>
         <p id="error-destino" class="mensaje-error"></p>
         <p id="error-fecha-inicio" class="mensaje-error"></p>
@@ -60,9 +57,9 @@ try {
     
     <article class="buscador">
         <form id="form-busqueda" action="controller/obtener_viajes.php" method="post">
-            <input id="destino" type="text" name="destino" placeholder="España" value="<?php echo $destino_busqueda; ?>">
-            <input id="fecha-inicio" type="text" name="fecha-inicio" placeholder="yyyy/mm/dd"  value="<?php echo $fecha_inicio; ?>">
-            <input id="fecha-fin" type="text" name="fecha-fin" placeholder="yyyy/mm/dd"  value="<?php echo $fecha_fin; ?>">
+            <input id="destino" type="text" name="destino" placeholder="España" value="<?php echo htmlspecialchars($datosBusqueda['destino'] ?? ''); ?>">
+            <input id="fecha-inicio" type="text" name="fecha-inicio" placeholder="yyyy/mm/dd"  value="<?php echo htmlspecialchars($datosBusqueda['fecha_inicio'] ?? ''); ?>">
+            <input id="fecha-fin" type="text" name="fecha-fin" placeholder="yyyy/mm/dd"  value="<?php echo htmlspecialchars($datosBusqueda['fecha_fin'] ?? ''); ?>">
             <button type="submit">Buscar</button>
             <button type="reset">Limpiar</button>
         </form>

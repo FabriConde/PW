@@ -23,32 +23,32 @@ unset($_SESSION['error'], $_SESSION['mensaje'], $_SESSION['datosUsuario']);
             
             <label for="nombre">*Nombre</label>
             <input id="nombre" type="text" name="nombre" 
-            value="<?php echo isset($datosUsuario['nombre']) ? htmlspecialchars($datosUsuario['nombre']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosUsuario['nombre'] ?? ''); ?>">
             <output id="error-nombre" class="mensaje-error"></output>
 
             <label for="apellidos">*Apellidos</label> 
             <input id="apellidos" type="text" name="apellidos" 
-            value="<?php echo isset($datosUsuario['apellidos']) ? htmlspecialchars($datosUsuario['apellidos']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosUsuario['apellidos'] ?? ''); ?>">
             <output id="error-apellidos" class="mensaje-error"></output>
             
             <label for="fecha-nacimiento">*Fecha de nacimiento</label>
             <input id="fecha-nacimiento" type="text" name="fecha-nacimiento" placeholder="yyyy/mm/dd" 
-            value="<?php echo isset($datosUsuario['fecha-nacimiento']) ? htmlspecialchars($datosUsuario['fecha-nacimiento']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosUsuario['fecha-nacimiento'] ?? ''); ?>">
             <output id="error-fecha-nacimiento" class="mensaje-error"></output>
 
             <label for="edad">*Edad</label>
             <input id="edad" type="text" name="edad"
-            value="<?php echo isset($datosUsuario['edad']) ? htmlspecialchars($datosUsuario['edad']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosUsuario['edad'] ?? ''); ?>">
             <output id="error-edad" class="mensaje-error"></output>
 
             <label for="dni">*DNI</label>
             <input id="dni" type="text" name="dni"
-            value="<?php echo isset($datosUsuario['dni']) ? htmlspecialchars($datosUsuario['dni']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosUsuario['dni'] ?? ''); ?>">
             <output id="error-dni" class="mensaje-error"></output>
 
             <label for="telefono">*Teléfono</label>
             <input id="telefono" type="text" name="telefono"
-            value="<?php echo isset($datosUsuario['telefono']) ? htmlspecialchars($datosUsuario['telefono']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosUsuario['telefono'] ?? ''); ?>">
             <output id="error-telefono" class="mensaje-error"></output>
            
         </fieldset>
@@ -58,12 +58,12 @@ unset($_SESSION['error'], $_SESSION['mensaje'], $_SESSION['datosUsuario']);
 
             <label for="email">*Correo electrónico</label>
             <input id="email" type="text" name="email" placeholder="usuario@correo.com" 
-            value="<?php echo isset($datosUsuario['email']) ? htmlspecialchars($datosUsuario['email']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosUsuario['email'] ?? ''); ?>">
             <output id="error-email" class="mensaje-error"></output>
 
             <label for="usuario">*Nombre de usuario</label>
             <input id="usuario" type="text" name="usuario"
-            value="<?php echo isset($datosUsuario['usuario']) ? htmlspecialchars($datosUsuario['usuario']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosUsuario['usuario'] ?? ''); ?>">
             <output id="error-usuario" class="mensaje-error"></output>
            
             <label for="password">*Contraseña</label>
@@ -99,7 +99,7 @@ unset($_SESSION['error'], $_SESSION['mensaje'], $_SESSION['datosUsuario']);
 
             <label for="destino">*Destino preferido</label>
             <input id="destino" list="destinos" name="destino" 
-            value="<?php echo isset($datosUsuario['destino']) ? htmlspecialchars($datosUsuario['destino']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosUsuario['destino'] ?? ''); ?>">
             <datalist id="destinos">
                 <option value="París">
                 <option value="Tokio">
@@ -114,17 +114,17 @@ unset($_SESSION['error'], $_SESSION['mensaje'], $_SESSION['datosUsuario']);
             <label for="tipo-viaje">*Tipo de viaje</label>
             <select id="tipo-viaje" name="tipo-viaje" >
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option value="aventura" <?php echo isset($datosUsuario['tipo-viaje']) && $datosUsuario['tipo-viaje'] === 'aventura' ? 'selected' : ''; ?>>Aventura</option>
-                <option value="relax" <?php echo isset($datosUsuario['tipo-viaje']) && $datosUsuario['tipo-viaje'] === 'relax' ? 'selected' : ''; ?>>Relax</option>
-                <option value="cultural" <?php echo isset($datosUsuario['tipo-viaje']) && $datosUsuario['tipo-viaje'] === 'cultural' ? 'selected' : ''; ?>>Cultural</option>
-                <option value="gastronomico" <?php echo isset($datosUsuario['tipo-viaje']) && $datosUsuario['tipo-viaje'] === 'gastronomico' ? 'selected' : ''; ?>>Gastronómico</option>
-                <option value="otro" <?php echo isset($datosUsuario['tipo-viaje']) && $datosUsuario['tipo-viaje'] === 'otro' ? 'selected' : ''; ?>>Otro</option>
+                <option value="aventura" <?php echo $datosUsuario['tipo-viaje'] === 'aventura' ? 'selected' : ''; ?>>Aventura</option>
+                <option value="relax" <?php echo $datosUsuario['tipo-viaje'] === 'relax' ? 'selected' : ''; ?>>Relax</option>
+                <option value="cultural" <?php echo $datosUsuario['tipo-viaje'] === 'cultural' ? 'selected' : ''; ?>>Cultural</option>
+                <option value="gastronomico" <?php echo $datosUsuario['tipo-viaje'] === 'gastronomico' ? 'selected' : ''; ?>>Gastronómico</option>
+                <option value="otro" <?php echo $datosUsuario['tipo-viaje'] === 'otro' ? 'selected' : ''; ?>>Otro</option>
             </select>
             <output id="error-tipo-viaje" class="mensaje-error"></output>
 
             <label for="acompanantes">*Número de acompañantes:</label>
-            <input id="acompanantes" type="range" name="acompanantes" value="<?php echo isset($datosUsuario['acompanantes']) ? htmlspecialchars($datosUsuario['acompanantes']) : '2'; ?>" >
-            <output id="valor-acompanantes" class="mensaje-info"><?php echo isset($datosUsuario['acompanantes']) ? htmlspecialchars($datosUsuario['acompanantes']) : '2'; ?></output>
+            <input id="acompanantes" type="range" name="acompanantes" value="<?php echo htmlspecialchars($datosUsuario['acompanantes'] ?? '2'); ?>" >
+            <output id="valor-acompanantes" class="mensaje-info"><?php echo htmlspecialchars($datosUsuario['acompanantes'] ?? '2'); ?></output>
             <output id="error-acompanantes" class="mensaje-error"></output>
         </fieldset>
 
@@ -132,15 +132,15 @@ unset($_SESSION['error'], $_SESSION['mensaje'], $_SESSION['datosUsuario']);
             <legend>Observaciones y confirmación</legend>
 
             <label for="comentarios">Comentarios o necesidades especiales</label>
-            <textarea id="comentarios" name="comentarios" rows="2"><?php echo isset($datosUsuario['comentarios']) ? htmlspecialchars(trim($datosUsuario['comentarios'])) : ''; ?></textarea>
+            <textarea id="comentarios" name="comentarios" rows="2"><?php echo htmlspecialchars($datosUsuario['comentarios'] ?? ''); ?></textarea>
         
             <label for="web">Sitio web similares que usas para buscar viajes</label>
             <input id="web" type="url" name="web" placeholder="https://miweb.com" 
-            value="<?php echo isset($datosUsuario['web']) ? htmlspecialchars($datosUsuario['web']) : ''; ?>">
+            value="<?php echo htmlspecialchars($datosUsuario['web'] ?? ''); ?>">
            
             <label class="checkbox-radio">
                 <input id="condiciones" type="checkbox" name="condiciones" 
-                class="<?php echo isset($errores['condiciones']) ? 'is-invalid' : '' ?>" <?php echo isset($datosUsuario['condiciones']) && $datosUsuario['condiciones'] ? 'checked' : ''; ?>> *Acepto las condiciones de uso y la política de privacidad.
+                <?php echo !empty($datosUsuario['condiciones']) ? 'checked' : ''; ?>> *Acepto las condiciones de uso y la política de privacidad.
             </label>
            <output id="error-condiciones" class="mensaje-error"></output>
         </fieldset>
