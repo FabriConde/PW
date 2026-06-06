@@ -135,7 +135,7 @@ try {
             }
 
             const destino = document.getElementById('destino').value.trim();
-            mostrarError('destino', 'error-destino', destino === '', 'Introduce un destino para la búsqueda.');
+            mostrarError('destino', 'error-destino', destino.length < 4, 'El nombre del destino debe tener al menos 4 caracteres.');
 
             const regexFecha = /^\d{4}-\d{2}-\d{2}$/;
             const fechaInicio = document.getElementById('fecha-inicio').value.trim();

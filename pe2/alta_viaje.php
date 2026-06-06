@@ -122,7 +122,7 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
             // Validaciones
             // 1. Destino (mínimo 2 caracteres)
             const destino = document.getElementById('destino').value.trim();
-            mostrarError('destino', 'error-destino', destino.length < 2, 'El nombre del destino debe tener al menos 2 caracteres.');
+            mostrarError('destino', 'error-destino', destino.length < 4, 'El nombre del destino debe tener al menos 4 caracteres.');
 
             // 2. Fechas (formato básico YYYY-MM-DD) y coherencia
             const regexFecha = /^\d{4}-\d{2}-\d{2}$/;

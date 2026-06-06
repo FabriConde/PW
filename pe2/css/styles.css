@@ -238,9 +238,10 @@ button,
         gap: 20px;
     }
 
-    .buscador {
+    article.buscador {
         display: flex;
         flex-direction: column;
+        height: 300px;
     }
 
     .buscador form {
@@ -344,7 +345,7 @@ button,
     height: 400px;
     object-fit: cover;
     object-position: center;
-    border-radius: var(--medida-padding-cabecera-tarjetas);
+    border-radius: 26px
 }
 
 .botones-carrusel {
