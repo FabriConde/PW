@@ -3,20 +3,15 @@ require_once __DIR__ . '/../config/session.php';
 require_once __DIR__ . '/../config/db_viajes.php';
 
 //Obtener viaje
-if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+if (isset($_GET['id']) && is_numeric($_GET['id']) && $_SERVER['REQUEST_METHOD'] !== 'POST') {
     $idEdicion = (int)$_GET['id'];
     try {
         $resultado = Viajes::obtenerViajePorId($idEdicion);
         if ($resultado) {
             $_SESSION['datosViaje'] = $resultado;
             $_SESSION['esEditar'] = true;
-            
-            header('Location: ../alta_viaje.php?id=' . $idEdicion);
-            exit;
         } else {
             $_SESSION['errorViaje'] = "Viaje no encontrado para edición.";
-            header('Location: ../alta_viaje.php');
-            exit;
         }
     } catch (Exception $e) {
         $_SESSION['errorViaje'] = $e->getMessage();
