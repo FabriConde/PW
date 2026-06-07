@@ -10,17 +10,17 @@ CREATE TABLE IF NOT EXISTS  usuarios (
     email VARCHAR(100) NOT NULL UNIQUE,
     usuario VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    foto VARCHAR(255) NOT NULL,
+    foto VARCHAR(255) NULL,
     genero VARCHAR(20) NOT NULL,
     nacionalidad VARCHAR(50) NOT NULL,
     destino VARCHAR(100) NOT NULL,
     tipo_viaje VARCHAR(50) NOT NULL,
     acompanantes INT NOT NULL,
     comentarios TEXT,
-    web VARCHAR(255) NOT NULL,
+    web VARCHAR(255) NULL,
     condiciones BOOLEAN DEFAULT FALSE NOT NULL,
     admin BOOLEAN DEFAULT FALSE NOT NULL
 );
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellidos`, `fecha_nacimiento`, `edad`, `dni`, `telefono`, `email`, `usuario`, `password`, `foto`, `genero`, `nacionalidad`, `destino`, `tipo_viaje`, `acompanantes`, `comentarios`, `web`, `condiciones`, `admin`) VALUES
-(4, 'Admin', 'Admin Admin', '2026-05-01', 18, '26883334Z', '666888999', 'admin@correo.com', 'Administrador', '$2y$10$y11DfBiDGEZvQwbaZY1tyepSYyEmSKC28aFL3uB6oNknRJ2oqjS6K', 'testo.jpg', 'hombre', 'ca', 'Marsella', 'aventura', 4, 'Esto es un ejemplo', 'https://www.admin.com', 1, 1);
+(1, 'Fabri Admin', 'Conde Rojas', '2026-05-01', 18, '26883334Z', '666888999', 'admin@correo.com', 'Administrador', '$2y$10$y11DfBiDGEZvQwbaZY1tyepSYyEmSKC28aFL3uB6oNknRJ2oqjS6K', 'testo.jpg', 'hombre', 'ca', 'Marsella', 'aventura', 4, 'Cuenta administradora', 'https://www.admin.com', 1, 1);
