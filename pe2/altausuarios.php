@@ -113,11 +113,11 @@ unset($_SESSION['error'], $_SESSION['mensaje'], $_SESSION['datosUsuario']);
             <label for="tipo-viaje">*Tipo de viaje</label>
             <select id="tipo-viaje" name="tipo-viaje" >
                 <option value="" selected disabled>Selecciona una opción</option>
-                <option value="aventura" <?php echo $datosUsuario['tipo-viaje'] === 'aventura' ? 'selected' : ''; ?>>Aventura</option>
-                <option value="relax" <?php echo $datosUsuario['tipo-viaje'] === 'relax' ? 'selected' : ''; ?>>Relax</option>
-                <option value="cultural" <?php echo $datosUsuario['tipo-viaje'] === 'cultural' ? 'selected' : ''; ?>>Cultural</option>
-                <option value="gastronomico" <?php echo $datosUsuario['tipo-viaje'] === 'gastronomico' ? 'selected' : ''; ?>>Gastronómico</option>
-                <option value="otro" <?php echo $datosUsuario['tipo-viaje'] === 'otro' ? 'selected' : ''; ?>>Otro</option>
+                    <option value="aventura" <?php echo (($datosUsuario['tipo-viaje'] ?? '') === 'aventura') ? 'selected' : ''; ?>>Aventura</option>
+                    <option value="relax" <?php echo (($datosUsuario['tipo-viaje'] ?? '') === 'relax') ? 'selected' : ''; ?>>Relax</option>
+                    <option value="cultural" <?php echo (($datosUsuario['tipo-viaje'] ?? '') === 'cultural') ? 'selected' : ''; ?>>Cultural</option>
+                    <option value="gastronomico" <?php echo (($datosUsuario['tipo-viaje'] ?? '') === 'gastronomico') ? 'selected' : ''; ?>>Gastronómico</option>
+                    <option value="otro" <?php echo (($datosUsuario['tipo-viaje'] ?? '') === 'otro') ? 'selected' : ''; ?>>Otro</option>
             </select>
             <output id="error-tipo-viaje" class="mensaje-error"></output>
 
