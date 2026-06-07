@@ -21,16 +21,16 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
         <h1 class="mensaje-exito"><?php echo htmlspecialchars($mensaje); ?></h1>
     <?php endif; ?>
 
-    <h2>Alta de viajes</h2>
-    <p>Completa todos los campos para registrarte un nuevo viaje.</p>
+    <h2><?php echo $esEditar ? 'Actualizar viaje' : 'Nuevo viaje'; ?></h2>
+    <p>Completa todos los campos para <?php echo $esEditar ? 'actualizar' : 'registrar'; ?> un viaje.</p>
 
     <?php if (!empty($error)): ?>
         <p class="mensaje-error"><?php echo htmlspecialchars($error); ?></p>
     <?php endif; ?>
 
-    <form  id="form-viaje" class="alta-viaje" accept=""action="controller/crear_viaje.php" method="post">
+    <form  id="form-viaje" class="alta-viaje" accept=""action="controller/crear_viaje.php<?php echo $esEditar ? '?id=' . $datosViaje['id'] : ''; ?>" method="post">
         <fieldset>
-            <legend>Nuevo viaje</legend>
+            <legend><?php echo $esEditar ? 'Actualizar viaje' : 'Nuevo viaje'; ?></legend>
 
             <label for="destino">Nombre del destino</label>
             <input id="destino" type="text" name="destino" 
