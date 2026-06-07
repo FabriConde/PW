@@ -2,7 +2,9 @@
 include __DIR__ . '/controller/obtener_viajes.php';
 $esAdmin = $_SESSION['esAdmin'] ?? false;
 $destino = $pais ?? '';
-unset($_SESSION['destino']);
+$viajeEliminado = $_SESSION['viajeEliminado'] ?? false;
+$mensajeErrorEliminado = $_SESSION['errorEliminado'] ?? '';
+unset($_SESSION['destino'], $_SESSION['viajeEliminado'], $_SESSION['errorEliminado']);
 ?>
 <main class="ventana-viajes">
     <!--  Menu de navegación para filtrar por continente y pais cuando la ventana es menor a 760px -->
@@ -48,6 +50,14 @@ unset($_SESSION['destino']);
             <section class="boton-add-viaje">
                 <a class="boton-enlace" href='alta_viaje.php'>Añadir viaje</a>
             </section>
+        <?php endif; ?>
+
+        <?php if ($viajeEliminado): ?>
+            <p class="mensaje-exito"><?php echo "Viaje eliminado correctamente."; ?></p>
+        <?php endif; ?>
+
+        <?php if (!empty($mensajeErrorEliminado)): ?>
+            <p class="mensaje-error"><?php echo htmlspecialchars($mensajeErrorEliminado); ?></p>
         <?php endif; ?>
 
         <?php if ($destino): ?>

@@ -65,32 +65,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 header('Location: ../alta_viaje.php?id=' . $idEdicion);
                 exit;
             }
-        }
-
-        // Si no es actualización se insertar nuevo
-        $datosViaje = array(
-            'destino' => $_POST['destino'],
-            'fecha-inicio' => $_POST['fecha-inicio'],
-            'fecha-fin' => $_POST['fecha-fin'],
-            'descripcion-corta' => $_POST['descripcion-corta'],
-            'descripcion-larga' => $_POST['descripcion-larga'],
-            'precio' => $_POST['precio'],
-            'incluye' => $_POST['incluye'],
-            'alojamientos' => $_POST['alojamientos'],
-            'continente' => $_POST['continente'],
-            'pais' => $_POST['pais'],
-            'imagen' => $_POST['imagen'],
-        );
-        $resultado = Viajes::insertarViaje($datosViaje);
-        if ($resultado) {
-            $_SESSION['mensajeViaje'] = "Viaje creado correctamente";    
-            header('Location: ../alta_viaje.php');
-            exit;
-        }   else {
-            $_SESSION['errorViaje'] = 'Error al crear el viaje.';
-            header('Location: ../alta_viaje.php');
-            exit;
-        }
+        } else {
+            // Si no es actualización se insertar nuevo
+            $datosViaje = array(
+                'destino' => $_POST['destino'],
+                'fecha-inicio' => $_POST['fecha-inicio'],
+                'fecha-fin' => $_POST['fecha-fin'],
+                'descripcion-corta' => $_POST['descripcion-corta'],
+                'descripcion-larga' => $_POST['descripcion-larga'],
+                'precio' => $_POST['precio'],
+                'incluye' => $_POST['incluye'],
+                'alojamientos' => $_POST['alojamientos'],
+                'continente' => $_POST['continente'],
+                'pais' => $_POST['pais'],
+                'imagen' => $_POST['imagen'],
+            );
+            $resultado = Viajes::insertarViaje($datosViaje);
+            if ($resultado) {
+                $_SESSION['mensajeViaje'] = "Viaje creado correctamente";    
+                header('Location: ../alta_viaje.php');
+                exit;
+            }   else {
+                $_SESSION['errorViaje'] = 'Error al crear el viaje.';
+                header('Location: ../alta_viaje.php');
+                exit;
+            }
+        }        
     } catch (Exception $e) {
         $_SESSION['errorViaje'] = $e->getMessage();
         header('Location: ../alta_viaje.php');

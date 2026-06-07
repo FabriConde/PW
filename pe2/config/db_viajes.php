@@ -121,7 +121,7 @@ class Viajes extends DataObject {
         }
     }
 
-    public static function delete( $idViaje ) {
+    public static function eliminarViaje( $idViaje ) {
         $conexion = parent::conectar();
         $sql = "DELETE FROM " . VIAJES . " WHERE id = :id";
         try {
