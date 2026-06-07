@@ -32,7 +32,7 @@ unset($_SESSION['error'], $_SESSION['mensaje'], $_SESSION['datosUsuario']);
             <output id="error-apellidos" class="mensaje-error"></output>
             
             <label for="fecha-nacimiento">*Fecha de nacimiento</label>
-            <input id="fecha-nacimiento" type="text" name="fecha-nacimiento" placeholder="yyyy/mm/dd" 
+            <input id="fecha-nacimiento" type="text" name="fecha-nacimiento" placeholder="yyyy-mm-dd" 
             value="<?php echo htmlspecialchars($datosUsuario['fecha-nacimiento'] ?? ''); ?>">
             <output id="error-fecha-nacimiento" class="mensaje-error"></output>
 

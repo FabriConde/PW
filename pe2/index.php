@@ -1,18 +1,21 @@
 <?php 
 include 'includes/header.php';
 require_once __DIR__ . '/config/db_viajes.php';
+
 $error = $_SESSION['error'] ?? '';
 $datosBusqueda = $_SESSION['datosBusqueda'] ?? [];
 unset($_SESSION['error'], $_SESSION['datosBusqueda']);
+
 try {
     $datosCarrusel = null;
     $errorCarrusel = null;
     $numViajeCarrusel = 5;
-    $resultado = Viajes::obtenerViajesAleatorios(null, $numViajeCarrusel );
+    $resultado = Viajes::obtenerViajesAleatorios(null, $numViajeCarrusel);
+    
     if ($resultado !== null && is_array($resultado)) {
         $datosCarrusel = $resultado;
     } else {
-        $errorCarrusel = "No se encontraron viajes.";
+        $errorCarrusel = "No se han obtenido viajes.";
     }
 } catch ( Exception $e ) {
     $errorCarrusel = $e->getMessage();
@@ -28,12 +31,18 @@ try {
 
     <article class="carrusel">
         <?php if (!empty($datosCarrusel)) : ?>
-            <article class="tarjeta-viajes">
-                <a class="tarjeta-viajes-enlace">
-                    <img class="imagen-carrusel" id="carrusel-imagen" src="" alt="Imagen del viaje">
-                    <h2 id="carrusel-titulo"></h2>
-                    <p id="carrusel-descripcion"></p>
-                </a>
+            <article class="tarjeta-viajes" id="contenedor-carrusel">
+                
+                <?php foreach ($datosCarrusel as $index => $viaje): ?>
+                    <a href="viaje.php?id=<?php echo htmlspecialchars($viaje['id'] ?? ''); ?>" 
+                       class="tarjeta-viajes-enlace slide-viaje" 
+                       style="display: <?php echo $index === 0 ? 'block' : 'none'; ?>;">
+                        <img class="imagen-carrusel" src="imagenes/<?php echo htmlspecialchars($viaje['imagen'] ?? ''); ?>" alt="Imagen de <?php echo htmlspecialchars($viaje['destino'] ?? ''); ?>">
+                        <h2><?php echo htmlspecialchars($viaje['destino'] ?? ''); ?></h2>
+                        <p><?php echo htmlspecialchars($viaje['descripcion_corta'] ?? ''); ?></p>
+                    </a>
+                <?php endforeach; ?>
+
                 <article class="botones-carrusel">
                     <button id="btn-anterior" class="boton-enlace">&#10094;</button>
                     <button id="btn-siguiente" class="boton-enlace">&#10095;</button>
@@ -58,110 +67,88 @@ try {
     <article class="buscador">
         <form id="form-busqueda" action="controller/obtener_viajes.php" method="post">
             <input id="destino" type="text" name="destino" placeholder="España" value="<?php echo htmlspecialchars($datosBusqueda['destino'] ?? ''); ?>">
-            <input id="fecha-inicio" type="text" name="fecha-inicio" placeholder="yyyy/mm/dd"  value="<?php echo htmlspecialchars($datosBusqueda['fecha_inicio'] ?? ''); ?>">
-            <input id="fecha-fin" type="text" name="fecha-fin" placeholder="yyyy/mm/dd"  value="<?php echo htmlspecialchars($datosBusqueda['fecha_fin'] ?? ''); ?>">
+            <input id="fecha-inicio" type="text" name="fecha-inicio" placeholder="yyyy-mm-dd"  value="<?php echo htmlspecialchars($datosBusqueda['fecha_inicio'] ?? ''); ?>">
+            <input id="fecha-fin" type="text" name="fecha-fin" placeholder="yyyy-mm-dd"  value="<?php echo htmlspecialchars($datosBusqueda['fecha_fin'] ?? ''); ?>">
             <button type="submit">Buscar</button>
             <button type="reset">Limpiar</button>
         </form>
     </article>
-
-   
-    <?php if (!empty($datosCarrusel)): ?>
-        <script>
-            const listaViajes = <?php echo json_encode($datosCarrusel ?? []); ?>;
-            console.log('diagnostico: listaViajes', listaViajes);
-            
-            let posicionActual = 0;
-
-            const enlaceElement = document.querySelector('.tarjeta-viajes-enlace');
-            const imgElement = document.getElementById('carrusel-imagen');
-            const tituloElement = document.getElementById('carrusel-titulo');
-            const descElement = document.getElementById('carrusel-descripcion');
-            
-            const btnAnterior = document.getElementById('btn-anterior');
-            const btnSiguiente = document.getElementById('btn-siguiente');
-
-            function actualizarCarrusel() {
-                if (!Array.isArray(listaViajes) || listaViajes.length === 0) {
-                    // Si no hay datos, mostrar mensaje en consola y ocultar tarjeta
-                    console.warn('El carrusel no tiene viajes para mostrar');
-                    document.querySelector('.tarjeta-viajes').style.display = 'none';
-                    return;
-                }
-                const viajeActivo = listaViajes[posicionActual];
-
-                imgElement.src = "imagenes/" + viajeActivo.imagen;
-                imgElement.alt = "Imagen de " + viajeActivo.destino;
-                tituloElement.textContent = viajeActivo.destino;
-                descElement.textContent = viajeActivo.descripcion_corta;
-                enlaceElement.href = "viaje.php?id=" + viajeActivo.id;
-            }
-
-            btnSiguiente.addEventListener('click', function() {
-                posicionActual++;
-                if (posicionActual >= listaViajes.length) {
-                    posicionActual = 0;
-                }
-                actualizarCarrusel();
-            });
-
-            btnAnterior.addEventListener('click', function() {
-                posicionActual--;
-                if (posicionActual < 0) {
-                    posicionActual = listaViajes.length - 1;
-                }
-                actualizarCarrusel();
-            });
-
-            actualizarCarrusel();
-        </script>
-    <?php endif; ?>
 </main>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const carrusel = document.querySelectorAll('.slide-viaje');
+        
+        if (carrusel.length > 0) {
+            let posicionActual = 0;
+            const btnAnterior = document.getElementById('btn-anterior');
+            const btnSiguiente = document.getElementById('btn-siguiente');
+
+            btnSiguiente.addEventListener('click', function() {
+                carrusel[posicionActual].style.display = 'none'; 
+                
+                posicionActual++;
+                if (posicionActual >= carrusel.length) {
+                    posicionActual = 0; 
+                }
+                
+                carrusel[posicionActual].style.display = 'block'; 
+            });
+
+            btnAnterior.addEventListener('click', function() {
+                carrusel[posicionActual].style.display = 'none'; 
+                
+                posicionActual--;
+                if (posicionActual < 0) {
+                    posicionActual = carrusel.length - 1;
+                }
+                
+                carrusel[posicionActual].style.display = 'block'; 
+            });
+        }
+        
         const formBusqueda = document.getElementById('form-busqueda');
 
-        formBusqueda.addEventListener('submit', function(event) {
-            let hayErrores = false;
+        if (formBusqueda) {
+            formBusqueda.addEventListener('submit', function(event) {
+                let hayErrores = false;
 
-            function mostrarError(idCampo, idError, condicion, mensaje){
-                const outputError = document.getElementById(idError);
-                if (condicion){
-                    outputError.textContent = mensaje;
+                function mostrarError(idCampo, idError, condicion, mensaje){
+                    const outputError = document.getElementById(idError);
+                    if (condicion){
+                        outputError.textContent = mensaje;
                         hayErrores = true;
                     } else {
-                    outputError.textContent = '';
+                        outputError.textContent = '';
+                    }
                 }
-            }
 
-            const destino = document.getElementById('destino').value.trim();
-            mostrarError('destino', 'error-destino', destino.length < 4, 'El nombre del destino debe tener al menos 4 caracteres.');
+                const destino = document.getElementById('destino').value.trim();
+                mostrarError('destino', 'error-destino', destino.length < 4, 'El nombre del destino debe tener al menos 4 caracteres.');
 
-            const regexFecha = /^\d{4}-\d{2}-\d{2}$/;
-            const fechaInicio = document.getElementById('fecha-inicio').value.trim();
-            const fechaFin = document.getElementById('fecha-fin').value.trim();
-            mostrarError('fecha-inicio', 'error-fecha-inicio', !regexFecha.test(fechaInicio), 'La fecha de inicio no es válida.');
-            mostrarError('fecha-fin', 'error-fecha-fin', !regexFecha.test(fechaFin), 'La fecha de fin no es válida.');
-            if (regexFecha.test(fechaInicio) && regexFecha.test(fechaFin)) {
-                const fi = new Date(fechaInicio);
-                const ff = new Date(fechaFin);
-                mostrarError('fecha-fin', 'error-fecha-fin', ff < fi, 'La fecha de fin debe ser igual o posterior a la fecha de inicio.');
-            }
-            if (hayErrores) {
-                event.preventDefault();
-            }
-        });
-
-        formBusqueda.addEventListener('reset', function() {
-            const errores = document.querySelectorAll('.mensaje-error');
-            errores.forEach(function(error) {
-                error.textContent = '';
+                const regexFecha = /^\d{4}-\d{2}-\d{2}$/;
+                const fechaInicio = document.getElementById('fecha-inicio').value.trim();
+                const fechaFin = document.getElementById('fecha-fin').value.trim();
+                mostrarError('fecha-inicio', 'error-fecha-inicio', !regexFecha.test(fechaInicio), 'La fecha de inicio no es válida.');
+                mostrarError('fecha-fin', 'error-fecha-fin', !regexFecha.test(fechaFin), 'La fecha de fin no es válida.');
+                if (regexFecha.test(fechaInicio) && regexFecha.test(fechaFin)) {
+                    const fi = new Date(fechaInicio);
+                    const ff = new Date(fechaFin);
+                    mostrarError('fecha-fin', 'error-fecha-fin', ff < fi, 'La fecha de fin debe ser igual o posterior a la fecha de inicio.');
+                }
+                if (hayErrores) {
+                    event.preventDefault();
+                }
             });
-        });
 
+            formBusqueda.addEventListener('reset', function() {
+                const errores = document.querySelectorAll('.mensaje-error');
+                errores.forEach(function(error) {
+                    error.textContent = '';
+                });
+            });
+        }
     });
 </script>
-
 
 <?php include 'includes/footer.php'; ?>

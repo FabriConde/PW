@@ -37,12 +37,12 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
             <output id="error-destino" class="mensaje-error" for="destino"></output>
 
             <label for="fecha-inicio">Fecha de inicio</label>
-            <input id="fecha-inicio" type="text" name="fecha-inicio" placeholder="yyyy/mm/dd" 
+            <input id="fecha-inicio" type="text" name="fecha-inicio" placeholder="yyyy-mm-dd" 
             value="<?php echo htmlspecialchars($datosViaje['fecha-inicio'] ?? ''); ?>">
             <output id="error-fecha-inicio" class="mensaje-error" for="fecha-inicio"></output>
 
             <label for="fecha-fin">Fecha de fin</label>
-            <input id="fecha-fin" type="text" name="fecha-fin" placeholder="yyyy/mm/dd" 
+            <input id="fecha-fin" type="text" name="fecha-fin" placeholder="yyyy-mm-dd" 
             value="<?php echo htmlspecialchars($datosViaje['fecha-fin'] ?? ''); ?>">
             <output id="error-fecha-fin" class="mensaje-error" for="fecha-fin"></output>
 
