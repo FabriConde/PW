@@ -10,6 +10,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $resultado = Viajes::obtenerViajePorId($idEdicion);
         if ($resultado) {
             $_SESSION['datosViaje'] = $resultado;
+            $_SESSION['esEditar'] = true;
             header('Location: ' . strtok($_SERVER['REQUEST_URI'], '?'));
             exit;
         } else {
@@ -24,7 +25,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 //Alta/edición viaje
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {   
-    $campos_oblogatorios = ['destino', 'fecha-inicio', 'fecha-fin', 'descripcion_corta', 'descripcion_larga', 
+    $campos_oblogatorios = ['destino', 'fecha-inicio', 'fecha-fin', 'descripcion-corta', 'descripcion-larga', 
     'precio', 'incluye', 'alojamientos', 'continente', 'pais', 'imagen'];
 
     foreach ($campos_oblogatorios as $campo) {

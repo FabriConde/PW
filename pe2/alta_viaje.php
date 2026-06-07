@@ -12,6 +12,7 @@ $continentes = ['Europa', 'América', 'Asia', 'África'];
 $error = $_SESSION['errorViaje'] ?? [];
 $mensaje= $_SESSION['mensajeViaje'] ?? '';
 $datosViaje = $_SESSION['datosViaje'] ?? [];
+$esEditar = $_SESSION['esEditar'] ?? false;
 unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje']);
 ?>
 
@@ -94,9 +95,9 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
             </select>
             <output id="error-imagen" class="mensaje-error" for="imagen"></output>
             
-            <img id="preview" src="" alt="Previsualización" style="max-width:200px;margin-top:8px">
-            
-            <button type="submit">Nuevo viaje</button>
+            <img id="preview" src="/<?php echo htmlspecialchars($datosViaje['imagen'] ?? ''); ?>" alt="Previsualización" style="max-width:200px;margin-top:8px">
+                    
+            <button type="submit"><?php echo $esEditar ? 'Actualizar viaje' : 'Nuevo viaje'; ?></button>
             <button type="reset">Limpiar</button>
         </fieldset>
     </form>

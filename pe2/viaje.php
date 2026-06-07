@@ -25,8 +25,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <article class="viaje-contenido">
         <section class="info-viaje">
             <h3>Bienvenido a <?php echo htmlspecialchars($datosViaje['destino']); ?></h3>
-            <p><?php echo htmlspecialchars($datosViaje['descripcion_larga']); ?></p>
-            <p><strong>Fechas:</strong> <?php echo htmlspecialchars($datosViaje['fecha_inicio']); ?> - <?php echo htmlspecialchars($datosViaje['fecha_fin']); ?></p>
+            <p><?php echo htmlspecialchars($datosViaje['descripcion-larga']); ?></p>
+            <p><strong>Fechas:</strong> <?php echo htmlspecialchars($datosViaje['fecha-inicio']); ?> - <?php echo htmlspecialchars($datosViaje['fecha-fin']); ?></p>
             <p><strong>Precio:</strong> <?php echo htmlspecialchars($datosViaje['precio']); ?>€ por persona</p>
             <p><strong>Incluye:</strong> <?php echo htmlspecialchars($datosViaje['incluye']); ?></p>
             
