@@ -19,7 +19,7 @@ $por_pagina = $por_pagina ?? 9;
                 </a>
                 <?php if ($esAdmin): ?>
                     <article class="opciones-admin">
-                        <a class="boton-enlace" href="crear_viaje.php?id=<?php echo $viaje['id']; ?>">Editar</a>
+                        <a class="boton-enlace" href="alta_viaje.php?id=<?php echo $viaje['id']; ?>">Editar</a>
                         <a class="boton-enlace" href="controller/eliminar_viaje.php?id=<?php echo $viaje['id']; ?>" onclick="return confirm('¿Estás seguro de que quieres eliminar este viaje?');">Eliminar</a>
                     </article>
                 <?php endif; ?>
