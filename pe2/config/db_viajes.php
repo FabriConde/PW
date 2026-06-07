@@ -40,13 +40,13 @@ class Viajes extends DataObject {
         }
     }
 
-    public static function obtenerViajes( $filaInicio, $por_pagina ) {
+    public static function obtenerViajes( $filaInicio, $porPagina ) {
         $conexion = parent::conectar();
         try {
-            $sql = "SELECT SQL_CALC_FOUND_ROWS id, destino, fecha_inicio, fecha_fin, descripcion_corta, precio, imagen FROM " . VIAJES . " ORDER BY fecha_inicio DESC LIMIT :filaInicio, :por_pagina";
+            $sql = "SELECT SQL_CALC_FOUND_ROWS id, destino, fecha_inicio, fecha_fin, descripcion_corta, precio, imagen FROM " . VIAJES . " ORDER BY fecha_inicio DESC LIMIT :filaInicio, :porPagina";
             $st = $conexion->prepare( $sql );
             $st->bindValue( ":filaInicio", (int)$filaInicio, PDO::PARAM_INT );
-            $st->bindValue( ":por_pagina", (int)$por_pagina, PDO::PARAM_INT );
+            $st->bindValue( ":porPagina", (int)$porPagina, PDO::PARAM_INT );
             $st->execute();
             $filas = $st->fetchAll( PDO::FETCH_ASSOC );
 
@@ -123,15 +123,15 @@ class Viajes extends DataObject {
         }
     }
     
-    public static function obtenerViajesPorContinenteYPais( $continente, $pais, $filaInicio, $por_pagina ) {
+    public static function obtenerViajesPorContinenteYPais( $continente, $pais, $filaInicio, $porPagina ) {
         $conexion = parent::conectar();
         try {
-            $sql = "SELECT SQL_CALC_FOUND_ROWS id, destino, fecha_inicio, fecha_fin, descripcion_corta, descripcion_larga, precio, incluye, alojamientos, continente, pais, imagen FROM " . VIAJES . " WHERE LOWER(continente) = :continente AND LOWER(pais) = :pais ORDER BY fecha_inicio DESC LIMIT :filaInicio, :por_pagina";
+            $sql = "SELECT SQL_CALC_FOUND_ROWS id, destino, fecha_inicio, fecha_fin, descripcion_corta, descripcion_larga, precio, incluye, alojamientos, continente, pais, imagen FROM " . VIAJES . " WHERE LOWER(continente) = :continente AND LOWER(pais) = :pais ORDER BY fecha_inicio DESC LIMIT :filaInicio, :porPagina";
             $st = $conexion->prepare( $sql );
             $st->bindValue(":continente", mb_strtolower($continente, 'UTF-8'), PDO::PARAM_STR);
             $st->bindValue(":pais", mb_strtolower($pais, 'UTF-8'), PDO::PARAM_STR);
             $st->bindValue(":filaInicio", (int)$filaInicio, PDO::PARAM_INT);
-            $st->bindValue(":por_pagina", (int)$por_pagina, PDO::PARAM_INT);
+            $st->bindValue(":porPagina", (int)$porPagina, PDO::PARAM_INT);
             $st->execute();
             $filas = $st->fetchAll( PDO::FETCH_ASSOC );
             $st2 = $conexion->query( "SELECT FOUND_ROWS() AS total" );
@@ -148,16 +148,16 @@ class Viajes extends DataObject {
         }
     }
 
-    public static function obtenerViajesDestinoYFechas( $destino, $fechaInicio, $fechaFin, $filaInicio, $por_pagina ) {
+    public static function obtenerViajesDestinoYFechas( $destino, $fechaInicio, $fechaFin, $filaInicio, $porPagina ) {
         $conexion = parent::conectar();
         try {
-            $sql = "SELECT SQL_CALC_FOUND_ROWS id, destino, fecha_inicio, fecha_fin, descripcion_corta, descripcion_larga, precio, incluye, alojamientos, continente, pais, imagen FROM " . VIAJES . " WHERE LOWER(destino) = :destino AND fecha_inicio >= :fechaInicio AND fecha_fin <= :fechaFin ORDER BY fecha_inicio DESC LIMIT :filaInicio, :por_pagina";
+            $sql = "SELECT SQL_CALC_FOUND_ROWS id, destino, fecha_inicio, fecha_fin, descripcion_corta, descripcion_larga, precio, incluye, alojamientos, continente, pais, imagen FROM " . VIAJES . " WHERE LOWER(destino) = :destino AND fecha_inicio >= :fechaInicio AND fecha_fin <= :fechaFin ORDER BY fecha_inicio DESC LIMIT :filaInicio, :porPagina";
             $st = $conexion->prepare( $sql );
             $st->bindValue(":destino", mb_strtolower($destino, 'UTF-8'), PDO::PARAM_STR);
             $st->bindValue(":fechaInicio", $fechaInicio, PDO::PARAM_STR);
             $st->bindValue(":fechaFin", $fechaFin, PDO::PARAM_STR);
             $st->bindValue(":filaInicio", (int)$filaInicio, PDO::PARAM_INT);
-            $st->bindValue(":por_pagina", (int)$por_pagina, PDO::PARAM_INT);
+            $st->bindValue(":porPagina", (int)$porPagina, PDO::PARAM_INT);
             $st->execute();
             $filas = $st->fetchAll( PDO::FETCH_ASSOC );
             $st2 = $conexion->query( "SELECT FOUND_ROWS() AS total" );
