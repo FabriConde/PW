@@ -40,7 +40,7 @@ try {
                 </article>
             </article>
         <?php elseif ($errorCarrusel !== null) : ?>
-            <p class="mensaje_error"><?php echo htmlspecialchars($errorCarrusel); ?></p>
+            <p class="mensaje-error"><?php echo htmlspecialchars($errorCarrusel); ?></p>
         <?php endif; ?>
     </article>
     
