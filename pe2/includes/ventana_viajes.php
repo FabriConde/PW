@@ -35,10 +35,8 @@ $por_pagina = $por_pagina ?? 9;
 <nav class="paginacion-viajes">
     <?php
         $queryBase = array();
-        // Preservar filtros de continente/pais si existen
         if (!empty($_GET['continente'])) $queryBase['continente'] = $_GET['continente'];
         if (!empty($_GET['pais'])) $queryBase['pais'] = $_GET['pais'];
-        // Preservar filtros de búsqueda por destino/fechas si existen
         if (!empty($_GET['destino'])) $queryBase['destino'] = $_GET['destino'];
         if (!empty($_GET['fecha_inicio'])) $queryBase['fecha_inicio'] = $_GET['fecha_inicio'];
         if (!empty($_GET['fecha_fin'])) $queryBase['fecha_fin'] = $_GET['fecha_fin'];

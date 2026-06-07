@@ -5,6 +5,7 @@ $destino = $pais ?? '';
 unset($_SESSION['destino']);
 ?>
 <main class="ventana-viajes">
+    <!--  Menu de navegación para filtrar por continente y pais cuando la ventana es menor a 760px -->
     <nav class="menu-continentes">
         <h5><strong>Continentes</strong></h5>
         <p>Europa</p>
@@ -23,6 +24,7 @@ unset($_SESSION['destino']);
         <a href="viajes.php?continente=africa&pais=marruecos" class="w3-bar-item w3-button w3-border-bottom">Marruecos</a>
     </nav>
 
+    <!-- Menu lateral de navegación para filtrar por continente y pais cuando la ventana es mayor a 760px -->
     <aside class="w3-sidebar w3-bar-block">
         <h5><strong>Continentes</strong></h5>
         <p>Europa</p>

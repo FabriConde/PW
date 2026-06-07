@@ -174,7 +174,6 @@ unset($_SESSION['error'], $_SESSION['mensaje'], $_SESSION['datosUsuario']);
         formularioAltaUsuario.addEventListener('submit', function(evento) {
             let hayErrores = false;
 
-            // Función auxiliar para mostrar u ocultar errores fácilmente en el DOM
             function manejarError(idCampo, idError, condicion, mensaje) {
                 const outputError = document.getElementById(idError);
                 if (condicion){
@@ -185,78 +184,61 @@ unset($_SESSION['error'], $_SESSION['mensaje'], $_SESSION['datosUsuario']);
                 }
             }
 
-            // 1. Validar Nombre
             const nombre = document.getElementById('nombre').value.trim();
             manejarError('nombre', 'error-nombre', nombre.length < 2, 'El nombre debe tener al menos 2 caracteres.');
 
-            // 2. Validar Apellidos
             const apellidos = document.getElementById('apellidos').value.trim();
             manejarError('apellidos', 'error-apellidos', apellidos.length < 2, 'Los apellidos deben tener al menos 2 caracteres.');
 
-            // 3. Validar Fecha (Básica para formato de texto)
             const fecha = document.getElementById('fecha-nacimiento').value.trim();
             const regexFecha = /^\d{4}-\d{2}-\d{2}$/; 
             manejarError('fecha-nacimiento', 'error-fecha-nacimiento', !regexFecha.test(fecha), 'La fecha debe tener el formato YYYY-MM-DD.');
 
-            // 4. Validar Edad (Debe ser un número >= 18)
             const edad = document.getElementById('edad').value.trim();
             manejarError('edad', 'error-edad', edad === "" || isNaN(edad) || parseInt(edad) < 18, 'Debes ser mayor de 18 años y usar un formato numérico.');
 
-            // 5. Validar DNI (8 números y 1 letra)
             const dni = document.getElementById('dni').value.trim();
             const regexDni = /^[0-9]{8}[A-Za-z]$/;
             manejarError('dni', 'error-dni', !regexDni.test(dni), 'El DNI debe tener 8 números seguidos de 1 letra.');
 
-            // 6. Validar Teléfono (9 números)
             const telefono = document.getElementById('telefono').value.trim();
            const regexTel = /^[67][0-9]{8}$/;
             manejarError('telefono', 'error-telefono', !regexTel.test(telefono), 'El teléfono debe contener exactamente 9 números.');
 
-            // 7. Validar Email
             const email = document.getElementById('email').value.trim();
             const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             manejarError('email', 'error-email', !regexEmail.test(email), 'Introduce un correo electrónico válido.');
 
-            // 8. Validar Usuario
             const usuario = document.getElementById('usuario').value.trim();
             manejarError('usuario', 'error-usuario', usuario.length < 4, 'El nombre de usuario debe tener al menos 4 caracteres.');
 
-            // 9. Validar Contraseña (Mínimo 8 caracteres y 1 número)
             const password = document.getElementById('password').value.trim();
             const regexPass = /(?=.*[0-9]).{8,}/;
             manejarError('password', 'error-password', !regexPass.test(password), 'La contraseña debe tener al menos 8 caracteres e incluir un número.');
 
-            // 10. Validar Género (Radio buttons)
             const generoOpciones = document.querySelectorAll('input[name="genero"]');
             let generoSeleccionado = false;
             generoOpciones.forEach(opcion => { if (opcion.checked) generoSeleccionado = true; });
             manejarError('genero', 'error-genero', !generoSeleccionado, 'Debes seleccionar un género.');
 
-            // 11. Validar Nacionalidad (Select)
             const nacionalidad = document.getElementById('nacionalidad').value;
             manejarError('nacionalidad', 'error-nacionalidad', nacionalidad === "", 'Debes seleccionar tu nacionalidad.');
             
-            //12. Validar Destino (Input con datalist)
             const destino = document.getElementById('destino').value;
             manejarError('destino', 'error-destino', destino === "", 'Debes seleccionar un destino.');
 
-            // 13. Validar Tipo de Viaje (CORREGIDO EL ID A 'error-tipo-viaje')
             const tipoViaje = document.getElementById('tipo-viaje').value;
             manejarError('tipo-viaje', 'error-tipo-viaje', tipoViaje === "", 'Debes seleccionar un tipo de viaje.');
 
-            // 14. Validar Acompañantes (Input tipo range)
             const acompanantesVal = parseInt(document.getElementById('acompanantes').value, 10);
             manejarError('acompanantes', 'error-acompanantes', isNaN(acompanantesVal) || acompanantesVal < 1 || acompanantesVal > 10, 'Debes seleccionar entre 1 y 10 acompañantes.');
 
-            // 15. Validar Condiciones (Checkbox)
             const condiciones = document.getElementById('condiciones').checked;
             manejarError('condiciones', 'error-condiciones', !condiciones, 'Debes aceptar las condiciones de uso.');
 
-            // Si hay algún error, paramos el envío del formulario al servidor
             if (hayErrores) {
                 evento.preventDefault(); 
             }
-            // Si hayErrores es false, el código sigue su curso natural y se envía hacia procesar_registro_usuario.php
         });
 
         formularioAltaUsuario.addEventListener('reset', function() {

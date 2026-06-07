@@ -72,7 +72,6 @@ try {
             
             let posicionActual = 0;
 
-            // Capturar los elementos del DOM que vamos a modificar dinámicamente
             const enlaceElement = document.querySelector('.tarjeta-viajes-enlace');
             const imgElement = document.getElementById('carrusel-imagen');
             const tituloElement = document.getElementById('carrusel-titulo');
@@ -81,37 +80,32 @@ try {
             const btnAnterior = document.getElementById('btn-anterior');
             const btnSiguiente = document.getElementById('btn-siguiente');
 
-            // Función encargada de actualizar los elementos visuales del HTML
             function actualizarCarrusel() {
                 const viajeActivo = listaViajes[posicionActual];
-                
-                // Modificamos las propiedades del DOM correspondientes
-                imgElement.src = "imagenes/" + viajeActivo.imagen; // Asegura la ruta correcta a tu carpeta de imágenes
+            
+                imgElement.src = "imagenes/" + viajeActivo.imagen;
                 imgElement.alt = "Imagen de " + viajeActivo.destino;
                 tituloElement.textContent = viajeActivo.destino;
                 descElement.textContent = viajeActivo.descripcion_corta;
                 enlaceElement.href = "viaje.php?id=" + viajeActivo.id;
             }
 
-            // Evento para avanzar en el carrusel (Infinito)
             btnSiguiente.addEventListener('click', function() {
                 posicionActual++;
                 if (posicionActual >= listaViajes.length) {
-                    posicionActual = 0; // Regresa al principio si excede el tamaño
+                    posicionActual = 0;
                 }
                 actualizarCarrusel();
             });
 
-            // Evento para retroceder en el carrusel (Infinito)
             btnAnterior.addEventListener('click', function() {
                 posicionActual--;
                 if (posicionActual < 0) {
-                    posicionActual = listaViajes.length - 1; // Va al último elemento si baja de cero
+                    posicionActual = listaViajes.length - 1;
                 }
                 actualizarCarrusel();
             });
 
-            // Inicialización: Renderizar el primer viaje al cargar la página index
             actualizarCarrusel();
         </script>
     <?php endif; ?>

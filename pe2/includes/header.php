@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../config/session.php';
 $error = $_SESSION['errorLogin'] ?? [];
 $logeado = $_SESSION['logeado'] ?? false;
+$esAdmin = $_SESSION['esAdmin'] ?? false;
 $nombreUsuario = $_SESSION['nombreUsuario'] ?? '';
 unset($_SESSION['errorLogin']);
 ?>
@@ -20,8 +21,15 @@ unset($_SESSION['errorLogin']);
                 <img src="imagenes/logo.png" alt="Logo de la agencia">
                 <?php if ($logeado): ?>
                     <article class="usuario-logeado">
-                        <h1>Bienvenido, <?php echo htmlspecialchars($nombreUsuario); ?>!</h1>
-                        <a class="boton-enlace" href='controller/logout_usuario.php'>Cerrar Sesión</a>
+                        <?php if ($esAdmin): ?>
+                            <p>Tipo de usuario: Administrador</p>
+                        <?php else: ?>
+                            <p>Tipo de usuario: Normal</p>
+                        <?php endif; ?>
+                        <article class="opciones-usuario">
+                            <h1>Bienvenido, <?php echo htmlspecialchars($nombreUsuario); ?>!</h1>
+                            <a class="boton-enlace" href='controller/logout_usuario.php'>Cerrar Sesión</a>
+                        </article>
                     </article>
                 <?php else: ?>
                     <article class="logear-usuario">

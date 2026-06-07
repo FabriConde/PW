@@ -119,12 +119,9 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
                 }
             }
 
-            // Validaciones
-            // 1. Destino (mínimo 2 caracteres)
             const destino = document.getElementById('destino').value.trim();
             mostrarError('destino', 'error-destino', destino.length < 4, 'El nombre del destino debe tener al menos 4 caracteres.');
 
-            // 2. Fechas (formato básico YYYY-MM-DD) y coherencia
             const regexFecha = /^\d{4}-\d{2}-\d{2}$/;
             const fechaInicio = document.getElementById('fecha-inicio').value.trim();
             const fechaFin = document.getElementById('fecha-fin').value.trim();
@@ -136,14 +133,12 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
                 mostrarError('fecha-fin', 'error-fecha-fin', ff < fi, 'La fecha de fin debe ser igual o posterior a la fecha de inicio.');
             }
 
-            // 3. Descripciones
             const descCorta = document.getElementById('descripcion-corta').value.trim();
             mostrarError('descripcion-corta', 'error-descripcion-corta', descCorta.length < 10, 'La breve descripción debe tener al menos 10 caracteres.');
 
             const descLarga = document.getElementById('descripcion-larga').value.trim();
             mostrarError('descripcion-larga', 'error-descripcion-larga', descLarga.length < 20, 'La descripción completa debe tener al menos 20 caracteres.');
 
-            // 4. Precio (numérico y > 0)
             const precioVal = document.getElementById('precio').value.trim();
             const precioNum = parseFloat(precioVal);
             mostrarError('precio', 'error-precio', precioVal === '' || isNaN(precioNum) || precioNum <= 0, 'Introduce un precio válido mayor que 0.');
@@ -155,18 +150,15 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
             const alojamientosList = alojamientos.length > 0 ? alojamientos.split(',').map(s => s.trim()).filter(s => s.length > 0) : [];
             mostrarError('alojamientos', 'error-alojamientos', alojamientosList.length < 2, 'Debes indicar al menos 2 alojamientos separados por comas. Ej: Hotel Palace, Hotel Ritz');
 
-            // 5. Continente y país
             const continente = document.getElementById('continente').value;
             mostrarError('continente', 'error-continente', continente === '', 'Debes seleccionar un continente.');
 
             const pais = document.getElementById('pais').value;
             mostrarError('pais', 'error-pais', pais === '', 'Debes seleccionar un país.');
 
-            // 6. Imagen (selección)
             const imagen = document.getElementById('imagen').value;
             mostrarError('imagen', 'error-imagen', imagen === '', 'Debes seleccionar una imagen.');
 
-            // Si hay errores, prevenir envío
             if (hayErrores) {
                 evento.preventDefault();
             }
