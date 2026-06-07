@@ -13,7 +13,7 @@ $error = $_SESSION['errorViaje'] ?? [];
 $mensaje= $_SESSION['mensajeViaje'] ?? '';
 $datosViaje = $_SESSION['datosViaje'] ?? [];
 $esEditar = $_SESSION['esEditar'] ?? false;
-unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje']);
+unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'], $_SESSION['esEditar']);
 ?>
 
 <main class="alta-viaje-main">
@@ -28,7 +28,7 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
         <p class="mensaje-error"><?php echo htmlspecialchars($error); ?></p>
     <?php endif; ?>
 
-    <form  id="form-viaje" class="alta-viaje" accept=""action="controller/crear_viaje.php<?php echo $esEditar ? '?id=' . $datosViaje['id'] : ''; ?>" method="post">
+    <form  id="form-viaje" class="alta-viaje" accept="" action="controller/crear_viaje.php<?php echo ($esEditar && isset($datosViaje['id'])) ? '?id=' . (int)$datosViaje['id'] : ''; ?>" method="post">
         <fieldset>
             <legend><?php echo $esEditar ? 'Actualizar viaje' : 'Nuevo viaje'; ?></legend>
 
