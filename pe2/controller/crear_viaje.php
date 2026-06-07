@@ -4,18 +4,18 @@ require_once __DIR__ . '/../config/db_viajes.php';
 
 //Obtener viaje
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    
     $idEdicion = (int)$_GET['id'];
     try {
         $resultado = Viajes::obtenerViajePorId($idEdicion);
         if ($resultado) {
             $_SESSION['datosViaje'] = $resultado;
             $_SESSION['esEditar'] = true;
-            header('Location: ' . strtok($_SERVER['REQUEST_URI'], '?'));
+            
+            header('Location: ../alta_viaje.php?id=' . $idEdicion);
             exit;
         } else {
-             $_SESSION['errorViaje'] = "Viaje no encontrado para edición.";
-            header('Location: ' . strtok($_SERVER['REQUEST_URI'], '?'));
+            $_SESSION['errorViaje'] = "Viaje no encontrado para edición.";
+            header('Location: ../alta_viaje.php');
             exit;
         }
     } catch (Exception $e) {
@@ -38,9 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     try {
-        // Si viene un id en el POST actualizamos
-        if (isset($_POST['id']) && is_numeric($_POST['id'])) {
-            $idEdicion = (int)$_POST['id'];
+        // Si viene un id en la url actualizamos
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            $idEdicion = (int)$_GET['id'];
             $datosUpdate = array(
                 'id' => $idEdicion,
                 'destino' => $_POST['destino'],

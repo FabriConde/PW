@@ -57,7 +57,7 @@ unset($_SESSION['destino'], $_SESSION['viajeEliminado'], $_SESSION['errorElimina
         <?php endif; ?>
 
         <?php if (!empty($mensajeErrorEliminado)): ?>
-            <p class="mensaje-error"><?php echo htmlspecialchars($mensajeErrorEliminado); ?></p>
+            <h2 class="mensaje-error"><?php echo htmlspecialchars($mensajeErrorEliminado); ?></h2>
         <?php endif; ?>
 
         <?php if ($destino): ?>

@@ -28,7 +28,7 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
         <p class="mensaje-error"><?php echo htmlspecialchars($error); ?></p>
     <?php endif; ?>
 
-    <form  id="form-viaje" class="alta-viaje" action="controller/crear_viaje.php" method="post" novalidate>
+    <form id="form-viaje" class="alta-viaje" action="controller/crear_viaje.php<?php echo isset($_GET['id']) ? '?id=' . (int)$_GET['id'] : ''; ?>" method="post" novalidate>
         <fieldset>
             <legend><?php echo $esEditar ? 'Actualizar viaje' : 'Nuevo viaje'; ?></legend>
 
@@ -96,10 +96,7 @@ unset($_SESSION['errorViaje'], $_SESSION['mensajeViaje'], $_SESSION['datosViaje'
             <output id="error-imagen" class="mensaje-error" for="imagen"></output>
             
             <img id="preview" src="/<?php echo htmlspecialchars($datosViaje['imagen'] ?? ''); ?>" alt="Previsualización" style="max-width:200px;margin-top:8px">
-                    
-            <?php if ($esEditar && isset($datosViaje['id'])): ?>
-                <input type="hidden" name="id" value="<?php echo (int)$datosViaje['id']; ?>">
-            <?php endif; ?>
+                
             <button type="submit"><?php echo $esEditar ? 'Actualizar viaje' : 'Nuevo viaje'; ?></button>
             <button type="reset">Limpiar</button>
         </fieldset>
