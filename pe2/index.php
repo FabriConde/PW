@@ -12,7 +12,7 @@ try {
     if ($resultado !== null && is_array($resultado)) {
         $datosCarrusel = $resultado;
     } else {
-        $errorCarrusel = "Error al obtener viajes para el carrusel.";
+        $errorCarrusel = "No se encontraron viajes.";
     }
 } catch ( Exception $e ) {
     $errorCarrusel = $e->getMessage();
@@ -68,7 +68,8 @@ try {
    
     <?php if (!empty($datosCarrusel)): ?>
         <script>
-            const listaViajes = <?php echo json_encode($datosCarrusel); ?>;
+            const listaViajes = <?php echo json_encode($datosCarrusel ?? []); ?>;
+            console.log('diagnostico: listaViajes', listaViajes);
             
             let posicionActual = 0;
 
@@ -81,8 +82,14 @@ try {
             const btnSiguiente = document.getElementById('btn-siguiente');
 
             function actualizarCarrusel() {
+                if (!Array.isArray(listaViajes) || listaViajes.length === 0) {
+                    // Si no hay datos, mostrar mensaje en consola y ocultar tarjeta
+                    console.warn('El carrusel no tiene viajes para mostrar');
+                    document.querySelector('.tarjeta-viajes').style.display = 'none';
+                    return;
+                }
                 const viajeActivo = listaViajes[posicionActual];
-            
+
                 imgElement.src = "imagenes/" + viajeActivo.imagen;
                 imgElement.alt = "Imagen de " + viajeActivo.destino;
                 tituloElement.textContent = viajeActivo.destino;

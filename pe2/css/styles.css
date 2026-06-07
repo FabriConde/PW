@@ -301,10 +301,10 @@ button,
         flex-direction: column;
     }
 
-    .ventana-viajes > aside {
+    main.ventana-viajes > aside {
         display: none;
     }
-
+    
     .ventana-viajes > nav {
         display: block;
     }
