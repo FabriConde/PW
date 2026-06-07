@@ -35,17 +35,17 @@ unset($_SESSION['errorLogin']);
                     <article class="logear-usuario">
                         <article class="login">
                             <form id="form-login" action="controller/login_usuario.php" method="post" novalidate>
-                                <input id="email" type="text" name="email" placeholder="Email del usuario">
-                                <input id="password" type="password" name="password" placeholder="Contraseña">
+                                <input id="email-login" type="text" name="email" placeholder="Email del usuario">
+                                <input id="password-login" type="password" name="password" placeholder="Contraseña">
                                 <button type="submit">Iniciar Sesión</button>
                             </form>
                             <a class="boton-enlace" href='altausuarios.php'>Registrarse</a>
                         </article>
                         <?php if (!empty($error)): ?>
-                            <p class="mensaje-error"><?php echo $error; ?></p>
+                            <p class="mensaje-error"><?php echo htmlspecialchars($error); ?></p>
                         <?php endif; ?>
-                        <p id="error-email" class="mensaje-error"></p>
-                        <p id="error-password" class="mensaje-error"></p>
+                        <p id="error-email-login" class="mensaje-error"></p>
+                        <p id="error-password-login" class="mensaje-error"></p>
                     </article>
                 <?php endif; ?>
             </article>
@@ -78,13 +78,13 @@ unset($_SESSION['errorLogin']);
                 }
             }
 
-            const email = document.getElementById('email').value.trim();
+            const email = document.getElementById('email-login').value.trim();
             const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            manejarError('email', 'error-email', !regexEmail.test(email), 'Introduce un correo electrónico válido.');
+            manejarError('email-login', 'error-email-login', !regexEmail.test(email), 'Introduce un correo electrónico válido.');
 
-            const password = document.getElementById('password').value.trim();
+            const password = document.getElementById('password-login').value.trim();
             const regexPass = /(?=.*[0-9]).{8,}/;
-            manejarError('password', 'error-password', !regexPass.test(password), 'La contraseña debe tener al menos 8 caracteres e incluir un número.');
+            manejarError('password-login', 'error-password-login', !regexPass.test(password), 'La contraseña debe tener al menos 8 caracteres e incluir un número.');
 
             if (hayErrores) {
                 evento.preventDefault();

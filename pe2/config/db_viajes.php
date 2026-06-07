@@ -23,8 +23,8 @@ class Viajes extends DataObject {
             $st->bindValue( ":destino", $datosViaje['destino'], PDO::PARAM_STR );
             $st->bindValue( ":fecha_inicio", $datosViaje['fecha-inicio'], PDO::PARAM_STR );
             $st->bindValue( ":fecha_fin", $datosViaje['fecha-fin'], PDO::PARAM_STR );
-            $st->bindValue( ":descripcion_corta", $datosViaje['descripcion_corta'], PDO::PARAM_STR );
-            $st->bindValue( ":descripcion_larga", $datosViaje['descripcion_larga'], PDO::PARAM_STR );
+            $st->bindValue( ":descripcion_corta", $datosViaje['descripcion-corta'], PDO::PARAM_STR );
+            $st->bindValue( ":descripcion_larga", $datosViaje['descripcion-larga'], PDO::PARAM_STR );
             $st->bindValue( ":precio", $datosViaje['precio'], PDO::PARAM_STR );
             $st->bindValue( ":incluye", $datosViaje['incluye'], PDO::PARAM_STR );
             $st->bindValue( ":alojamientos", $datosViaje['alojamientos'], PDO::PARAM_STR );
@@ -71,9 +71,22 @@ class Viajes extends DataObject {
             $st->bindValue( ":id", (int)$idViaje, PDO::PARAM_INT );
             $st->execute();
             $resultado = $st->fetch( PDO::FETCH_ASSOC );
+            
             parent::desconectar( $conexion );
             if ( $resultado ) {
-                return $resultado;
+                $datosViaje = array(
+                    "destino" => $resultado['destino'],
+                    "fecha-inicio" => $resultado['fecha_inicio'],
+                    "fecha-fin" => $resultado['fecha_fin'],
+                    "descripcion-corta" => $resultado['descripcion_corta'],
+                    "descripcion-larga" => $resultado['descripcion_larga'],
+                    "precio" => $resultado['precio'],
+                    "incluye" => $resultado['incluye'],
+                    "alojamientos" => $resultado['alojamientos'],
+                    "continente" => $resultado['continente'],
+                    "pais" => $resultado['pais'],
+                    "imagen" => $resultado['imagen']);
+                return $datosViaje;
             }
             return null;
         } catch ( PDOException $e ) {
@@ -89,10 +102,10 @@ class Viajes extends DataObject {
             $st = $conexion->prepare( $sql );
             $st->bindValue( ":id", $datosViaje['id'], PDO::PARAM_INT );
             $st->bindValue( ":destino", $datosViaje['destino'], PDO::PARAM_STR );
-            $st->bindValue( ":fecha_inicio", $datosViaje['fecha_inicio'], PDO::PARAM_STR );
-            $st->bindValue( ":fecha_fin", $datosViaje['fecha_fin'], PDO::PARAM_STR );
-            $st->bindValue( ":descripcion_corta", $datosViaje['descripcion_corta'], PDO::PARAM_STR );
-            $st->bindValue( ":descripcion_larga", $datosViaje['descripcion_larga'], PDO::PARAM_STR );
+            $st->bindValue( ":fecha_inicio", $datosViaje['fecha-inicio'], PDO::PARAM_STR );
+            $st->bindValue( ":fecha_fin", $datosViaje['fecha-fin'], PDO::PARAM_STR );
+            $st->bindValue( ":descripcion_corta", $datosViaje['descripcion-corta'], PDO::PARAM_STR );
+            $st->bindValue( ":descripcion_larga", $datosViaje['descripcion-larga'], PDO::PARAM_STR );
             $st->bindValue( ":precio", $datosViaje['precio'], PDO::PARAM_STR );
             $st->bindValue( ":incluye", $datosViaje['incluye'], PDO::PARAM_STR );
             $st->bindValue( ":alojamientos", $datosViaje['alojamientos'], PDO::PARAM_STR );
